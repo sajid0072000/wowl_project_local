@@ -1,0 +1,114 @@
+<main role="main" class="pb-3">
+
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="top_scne">
+                <div class="top_scne_in">
+                    <h1 class="no-margin" *ngIf="assignmentDtl">{{assignmentDtl.username}}'s assignment answers</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <button class="btn btn-secondary float-right mt-4" (click)="downloadlistAssmntDtlPdf()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filetype-pdf" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z"/>
+                  </svg>
+            Download PDF</button>
+        </div>
+        <div class="col-sm-12 mb-3">
+            <div class="row">
+                <div class="col-sm-12" *ngIf="assignmentDtl">
+                    Course Name : <strong>{{assignmentDtl.coursename}}</strong>
+                </div>
+                <div class="col-sm-12" *ngIf="assignmentDtl">
+                    Lession Name : <strong>{{assignmentDtl.lessionname}}</strong>
+                </div>
+                <div class="col-sm-12" *ngIf="assignmentDtl">
+                    Exercise Name: <strong>{{ assignmentDtl.exercisename}}</strong>
+                </div>
+                <div class="col-sm-12"*ngIf="assignmentDtl">
+                    Scores : <strong>{{assignmentDtl.score}}</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <div id="datatables-reponsive_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                            <div class="table-responsive">
+                                <table id="datatables-column-search-select-inputs"
+                                    class="table table-no-striped dataTable" style="width: 100%"
+                                    aria-describedby="datatables-column-search-select-inputs_info">
+                                    <thead class="thead-dark">
+                                        <tr role="row">
+                                            <th class="sorting align-middle" style="width: 7%;">Sl No.</th>
+                                            <th class="sorting align-middle" style="width: 40%;">Question</th>
+                                            <th class="sorting align-middle"style="width: 30%;">Correct Answer</th>
+                                            <th class="sorting align-middle"style="width: 30%;">Answer Given</th>
+                                            <th class="sorting align-middle"style="width: 10%;">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngIf="details.length === 0 ">
+                                            <td class="text-center" colspan="20">
+                                                <h4>No Data Found!</h4>
+                                            </td>
+                                        </tr>
+                                        <tr role="row" class="odd" *ngFor="let item of details;let i =index">
+                                            <td class="align-middle">{{ i + 1 }}. </td>
+                                            <td class="align-middle">{{ item.question }}</td>
+                                            <td class="align-middle">{{ item.correctansdesc }}</td>
+                                            <td class="align-middle">{{ item.answerdesc }}</td>
+                                            <td class="align-middle">
+                                                <span *ngIf="item.iscorrect == 1"
+                                                    class="badge badge-success">Correct</span>
+                                                <span *ngIf="item.iscorrect == 0"
+                                                    class="badge badge-danger">Incorrect</span>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- <div class="d-xl-flex align-items-center mt-3 pegin_sec" *ngIf="assignmentList.length > 0">
+                                <div class="col-auto d-block">
+                                    <div class="text-center">
+                                        <div class="dataTables_length"><label>Courses per page
+                                                <select name="datatables-reponsive_length"
+                                                    aria-controls="datatables-reponsive"
+                                                    class="form-select form-select-sm"
+                                                    (change)="changePagelimit($event)" [(ngModel)]="selectedVal">
+                                                    <option *ngFor="let item of pageList" [value]=item.value>
+                                                        {{item.name}}
+                                                    </option>
+                                                </select> {{offset + 1}} - {{offset + limit}}</label>
+                                            <label class="mx-2">
+                                                <button class="btn btn-dark text-white" [disabled]="previousBtnDesable"
+                                                    (click)="previousPage()"><img src="assets/img/chevron-left.svg"
+                                                        alt="chevron-left"></button>
+                                                &nbsp;
+                                                <button class="btn btn-dark text-white" [disabled]="nextBtnDesable"
+                                                    (click)="nextPage()"><img src="assets/img/chevron-right.svg"
+                                                        alt="chevron-right"></button>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</main>

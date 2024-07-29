@@ -1,0 +1,110 @@
+.chckForm{
+    margin-left: -11px !important;
+}
+
+
+.deleteBtn{
+   text-align: center;
+   background-color:  #4bbe82 !important;
+   border: #4bbe82;
+   color:#fff;
+   width: 85px;
+   padding:8px 8px;
+   border-radius: 3px;
+
+}
+
+.deleteBtn:hover{
+    background-color: #51e297 !important;
+    border: none;
+    color: #fff;
+}
+
+.delete-user-form {
+    width: 500px;
+    margin: 30px auto;
+}
+
+.delete-user-form-header{
+    font-family: 'Lato', sans-serif;
+    color: #3c64aa;
+    font-size: 18px;
+    font-weight: 100;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.delete-user-form-body{
+    background-color: white;
+    padding: 14px 8px;
+}
+
+.subHeadding{
+    
+    font-size: 18px;
+    font-weight:300;
+    
+}
+
+
+
+input:focus {
+    border: 1px solid #ced4da; 
+}
+
+
+
+
+
+msg-error {
+    color: #c65848;
+  }
+  .g-recaptcha.error {
+    border: solid 2px #c64848;
+    padding: 2rem;
+    width: 19em;
+  }
+
+
+
+  .customInput{
+    border-radius: 5px !important;
+  }
+
+
+ 
+  label {
+    width: 90px;
+    display: inline-block;
+  }  
+
+
+  .verification-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+.mat-mdc-checkbox.mat-accent{
+--mdc-checkbox-selected-checkmark-color: #fff;
+--mdc-checkbox-selected-focus-icon-color: #0d6efd;
+--mdc-checkbox-selected-hover-icon-color: #0d6efd;
+--mdc-checkbox-selected-icon-color: #0d6efd;
+--mdc-checkbox-selected-pressed-icon-color:#0d6efd;
+--mdc-checkbox-unselected-focus-icon-color: #212121;
+--mdc-checkbox-unselected-hover-icon-color: #212121;
+--mdc-checkbox-disabled-selected-icon-color: rgba(0, 0, 0, 0.38);
+--mdc-checkbox-disabled-unselected-icon-color: rgba(0, 0, 0, 0.38);
+--mdc-checkbox-unselected-icon-color: rgba(0, 0, 0, 0.54);
+--mdc-checkbox-unselected-pressed-icon-color: rgba(0, 0, 0, 0.54);
+transform: scale(0.75);
+}

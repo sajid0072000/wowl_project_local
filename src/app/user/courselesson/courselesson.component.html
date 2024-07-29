@@ -1,0 +1,310 @@
+<!--Body Header section start-->
+<section>
+  <div class="page_header_section" style="height: unset;">
+    <img [src]="FILE_URL + courseDetails.lessionbannerimg" />
+  </div>
+</section>
+<!--Body Header section end-->
+<!--Body section one start-->
+<section class="grey_bg_three">
+  <div class="container">
+    <div class="row text-center">
+      <div class="common-language-para-text d-flex justify-content-center w-70 mx-auto gap-3">
+        <div class="elem_to_img w-50">
+          <div class="image_vdoe_45 position-relative">
+            <svg (click)="playVideo()" *ngIf="!videoDiv" xmlns="http://www.w3.org/2000/svg" width="60" height="60"
+              fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+              <path
+                d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445" />
+            </svg>
+            <img *ngIf="!videoDiv" [src]="FILE_URL + thumbnailImage" style="height: 450px; width: 550"
+              (click)="playVideo()" />
+            <div *ngIf="videoDiv" id="video-container"></div>
+
+          </div>
+        </div>
+        <div class="elem_to_txt w-25">
+          <strong>{{ courseDetails.coursecode }}</strong>
+          <h4>{{ title }}</h4>
+          <p [innerHTML]="description"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="white_bg pb-0">
+  <div class="container">
+    <div class="row text-center">
+      <div class="top_cargry_in">
+        <!-- added card -->
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-start">YOUR PROGRESS</h5>
+            <div class="progress-container">
+              <mat-progress-bar  
+                mode="determinate"
+                [value]="progressPerecent">
+              </mat-progress-bar>
+              <span class="progress-percent">{{progressPerecent}}%</span>
+              <button mat-button class="lrnBtn">Learn More</button>
+            </div>
+          </div>
+        </div>
+        <ul *ngIf="lessionDetails.length > 0">
+          <li>Jump to...</li>
+          <li *ngFor="let obj of lessionDetails; let i = index">
+            <button [ngClass]="{ active: obj.isActive === true }" (click)="gotoLesson(obj.lessionid, i)">
+              {{ obj.lessiontitle }}
+            </button>
+          </li>
+        </ul>
+
+        <div class="mb-4" *ngIf="lessionDetails.length === 0">
+          <div class="row common_space">
+            <div class="col-sm-3 col-6 themed-grid-col">
+              <div class="language-four-box datanotfound">
+                <img src="assets/images/comingsoon.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="white_bg">
+
+  <div class="container" id="lession-list" *ngIf="!isView"></div>
+
+  <!-- add  go for assessment-->
+  <div class="container" *ngIf="assesmentcompletion">
+    <div class="row mt-4">
+      <div class="col-md-12 d-flex align-items-center justify-content-center mx-auto m-0 p-0">
+        <div class="common-language-blue-head-text">
+          <h3>
+            You're at the end of all the lessons in this level. If you've done it
+            well...
+          </h3>
+        </div>
+
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-12 d-flex align-items-center justify-content-center ">
+        <img src="assets/images/ass_bnr.png" alt="" style="height: 450px; width: 550" role="button"
+          (click)="gotToAdditionalLearning()" />
+      </div>
+    </div>
+  </div>
+  <!-- end -->
+  <div class="container" *ngIf="isView">
+    <div>
+      <div class="common-language-blue-head-text">
+        <h3>{{ lessonObj.lessionTitle }}</h3>
+      </div>
+      <div>
+        <div class="lesn_dv">
+          <div class="lesn_dv_inr">
+            <div class="d-flex justify-content-between align-items-center">
+              <h3 class="m-0">{{ lessonObj.unittitle }}</h3>
+              <strong>{{ lessonObj.unitcode }}</strong>
+            </div>
+          </div>
+          <div class="lesn_dv_img" id="player-container" style="height: unset; text-align: -webkit-center;">
+            <!-- <div id="video-container-big" style="border: 1px solid #eee; width: fit-content;"></div> -->
+            <app-video-player [duration]="duration" [source]="lessionVideoURL" [courseId]="courseid"
+              [lessonId]="lessonObj.lessionId" [unitId]="lessonObj.unitId"></app-video-player>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson_div">
+      <div class="row text-center">
+        <div class="common-language-blue-head-text">
+          <h4>Other videos in the lesson...</h4>
+        </div>
+        <div class="container common_space pt-0">
+          <div class="row d-flex">
+            <div class="col-md-3 col-sm-12 mb-3" *ngFor="let obj of otherVideoLessionArr; let i = index"
+              (click)="playOther(obj, courseid, coursename)">
+              <div class="lesn_dv les-img lesion-video-icon" *ngIf="obj.type === 'unit' ">
+                <div class="lesn_dv_img ">
+                  <strong *ngIf="obj.ispaid===0" class="fre_acs">FREE<span></span></strong>
+                  <img [src]="FILE_URL + obj.thumbnailimg" alt="" />
+                </div>
+                <div class="lesn_dv_inr">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="m-0">{{ obj.unittitle }}</h3>
+                    <strong>{{ obj.unitcode }}</strong>
+                  </div>
+                  <p>{{ obj.description }}</p>
+                  <img *ngIf="obj.isWatchComplete" class="additImg" src="assets/img/accept.png" alt="" />
+                </div>
+              </div>
+            </div>
+            <div class="mb-4" *ngIf="otherVideoLessionArr.length == '0'">
+              <div class="row common_space">
+                <div class="col-sm-3 col-6 themed-grid-col">
+                  <div class="language-four-box datanotfound">
+                    <img src="assets/images/dataNotFound.jpg" />
+                    <p>Data Not Found</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-12" *ngFor="let d of exerciseList;">
+          <div class="d-flex justify-content-between align-items-center slfsatmn">
+            <strong (click)="otherAdditionalLearningRecommendations(lessonObj);">Additional Learning
+              Recommendations</strong>
+            <div class="bg-blue" (click)="openAssesment(d)">
+              <div class="practice-div"><strong>SELF ASSESSMENT</strong></div>
+              <div class="practice-partner">
+                <strong>Check how well you’ve learnt this lesson</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<ng-template #assemessmentModal>
+  <div id="self-modal" tabindex="-1" aria-labelledby="self-modalLabel" aria-hidden="true">
+    <div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">
+            <img src="assets/images/wowl-logo-login.png" />
+          </h5>
+          <!-- <button type="button" class="btn-close new-clos-btn" data-bs-dismiss="modal" aria-label="Close"
+            (click)="closeModal()"></button> -->
+        </div>
+        <div class="modal-body">
+          <div class="swlf_aas_top">
+            <div class="swlf_aas_top_til">
+              <h2 class="title">
+                {{ coursename }}
+              </h2>
+              <hr class="big-blue" />
+              <span>{{ lessionname }}</span>
+            </div>
+            <div class="swlf_aas_prog">
+              <label>ATTEMPT {{ attemptNo }}</label>
+
+              <div *ngIf="timerView">
+                <circle-progress [percent]="progress" [radius]="40" [outerStrokeWidth]="14"
+                  [outerStrokeColor]="'#049dff'" [animation]="false" [animationDuration]="3" [startFromZero]="false"
+                  [showTitle]="true" [showSubtitle]="true" [title]="timerTitle" [subtitle]="subtitle" [units]="''">
+                </circle-progress>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="flag == 0">
+            <div id="startassmnt" class="swlf_aas_mid">
+              <p>{{ exercisedescription }}</p>
+
+              <div class="swlf_aas_btm">
+                <button class="btn btn-assmnt" (click)="showQuestion()">
+                  START ASSESSMENT
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div id="startassmntqstn1" class="swlf_aas_mid" *ngIf="flag == 1">
+            <div *ngFor="let data of questionArr; let j = index">
+              <div class="radio-qstion" *ngIf="j + 1 == qnum">
+                <strong>Q {{ j + 1 }} of {{ questionArr.length }}</strong>
+                <p>{{ data.question }}</p>
+                <form class="form">
+                  <ul *ngFor="let item of data.options; let i = index">
+                    <li>
+                      <input [id]="i" type="radio" name="r" [value]="item.optionid"
+                        (change)="getAns($event, data)" /><label [for]="i">{{ item.optiondesc }}</label>
+                    </li>
+                  </ul>
+                  <span *ngIf="data.required" class="error-msg">Select required</span>
+                </form>
+              </div>
+
+              <div class="swlf_aas_btm" *ngIf="j + 1 == qnum">
+                <button class="btn btn-assmnt btn-undrln" *ngIf="abortTesting" (click)="openaborttestModal()">
+                  ABORT TEST
+                </button>
+                <button class="btn btn-assmnt" (click)="nextQuestion(1, data, j)" *ngIf="!submitBtnFlg">
+                  NEXT
+                </button>
+                <button class="btn btn-assmnt" *ngIf="submitBtnFlg" (click)="submitAns(data)">
+                  SUBMIT
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div id="fnisdiv" class="swlf_aas_mid" *ngIf="flag == 3">
+            <div class="fnish-qstion">
+              <strong>Score<span>{{ score }}/{{ questionArr.length }}</span></strong>
+              <p>
+                {{ scoringmessage }}
+              </p>
+            </div>
+
+            <div class="swlf_aas_btm">
+              <button class="btn btn-assmnt" (click)="closeModal()">
+                FINISH & EXIT
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #abortModal>
+  <div id="self-modal" tabindex="-1" aria-labelledby="self-modalLabel" aria-hidden="false">
+    <div class="modal-content">
+      <div class="modal-header p-0 border-0">
+        <button type="button" class="btn-close new-clos-btn" data-bs-dismiss="modal" aria-label="Close"
+          (click)="closeAbortMOdal()"></button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 12px; font-weight:00px;">DO YOU WANT TO ABORT THE TEST !</p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeAbortMOdal()">No</button>
+        <button type="button" class="btn btn-danger" (click)="closeModal()">Yes</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #timeoutModal>
+  <div id="self-modal" tabindex="-1" aria-labelledby="self-modalLabel" aria-hidden="false">
+    <div class="modal-content">
+      <div class="modal-header p-0 border-0">
+        <button type="button" class="btn-close new-clos-btn" data-bs-dismiss="modal" aria-label="Close"
+          (click)="closetimeOutModal()"></button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 12px; font-weight:00px;">YOUR EXAM SESSION HAS TIMED OUT</p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal"
+          (click)="closetimeOutModal()">Yes</button>
+      </div>
+    </div>
+  </div>
+</ng-template>

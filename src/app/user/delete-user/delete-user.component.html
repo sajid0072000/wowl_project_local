@@ -1,0 +1,49 @@
+
+<div class="delete-user-form">
+<div class="row">
+  <div class="col-sm-12">
+    <div class="delete-user-form-header">
+      <h3>Account Delete Request</h3>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="row delete-user-form-body">
+      <div class="mb-3 col-md-6">
+          <input type="text" class="form-control subHeadding customInput" placeholder="Name"  [(ngModel)]="name" (keyup)="nameFun()">
+          <span class="error-msg" *ngIf="nameErr">Name is required</span>
+      </div>
+      <div class="mb-3 col-md-6">
+        <input type="email" class="form-control subHeadding customInput" placeholder="Email ID*" [(ngModel)]="email" (keyup)="emailFun()">
+        <span class="error-msg" *ngIf="emailErr">Email is required</span>
+        <span class="error-msg" *ngIf="validEmailErr">Valid email is required</span>
+      </div>
+      <div class="mb-3 col-md-6">
+        <input type="number" class="form-control subHeadding customInput" placeholder="Phone Number*" [(ngModel)]="mobile"     (keypress)="onKeyPressMobile($event)" (keyup)="mobileFun()">
+        <span class="error-msg" *ngIf="mobileErr">Phone number is required</span>
+        <span class="error-msg" *ngIf="validMobileNumberErr">Valid phone number is required</span>
+      </div>
+      <div class="mb-3 col-md-6">
+        <input type="text" class="form-control subHeadding customInput" placeholder="Reason*" [(ngModel)]="reason" (keyup)="reasonFun()">
+        <span class="error-msg" *ngIf="reasonErr">Reason is required</span>
+      </div>
+      <div class="row">
+        <div class="chckForm subHeadding mt-2 mb-4 d-flex gap-3 justify-content-start mx-auto text-start">
+          <mat-checkbox [(ngModel)]="isAccountDelete" (change)="checkFun()">
+          </mat-checkbox>
+          <span style="margin-top: 8px; margin-left: -18px;"><p class="subHeadding">please delete my account</p></span>
+          <span class="error-msg mt-2" *ngIf="isAccountDeleteErr">Check it</span>
+        </div>
+      </div>
+      <div class="col-md-6 g-recaptcha"
+      data-sitekey="6LdKdi0pAAAAAGHcnkGusGuC2KPv-21FvR4lR-vD"></div>
+     <p>
+<div class="col-md-6">
+  <button   class="btn deleteBtn" (click)="deleteAccount()">
+    Submit
+  </button>
+
+</div>
+    </div>
+  </div>
+</div>
+</div>

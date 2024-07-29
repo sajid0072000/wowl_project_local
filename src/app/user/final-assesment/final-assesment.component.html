@@ -1,0 +1,289 @@
+<section>
+    <div class="page_header_section" style="height: unset;">
+      <img [src]="FILE_URL + courseDetails.lessionbannerimg" />
+    </div>
+  </section>
+
+<section class="bg-white py-5">
+    <div class="container">
+        <div class="row text-center">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="reading-div" >
+                        <h4>READING ASSESSMENT</h4>
+                        <img src="assets/images/reading-img.png" />
+                        <button class="btn btn-block btn-primary" [disabled]=" readingFlag == true"  (click)="openassesmentModal(1 , assemessmentModal)">GET
+                            STARTED</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="reading-div " >
+                        <h4>LISTENING ASSESSMENT</h4>
+                        <img src="assets/images/listng-img.png" />
+                        <button class="btn btn-block btn-info" [disabled]="listeningFlag == true || readingFlag == false" (click)="openassesmentModal(2 , listeningModal)">GET
+                            STARTED</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<ng-template #assemessmentModal>
+    <div id="self-modal" tabindex="-1" aria-labelledby="self-modalLabel" aria-hidden="true">
+      <div class="reading-mod">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              <img src="assets/images/wowl-logo-login.png" />
+            </h5>
+            <!-- <button type="button" class="btn-close new-clos-btn" data-bs-dismiss="modal" aria-label="Close"
+              (click)="closeModal()"></button> -->
+          </div>
+          <div class="modal-body">
+            <div class="swlf_aas_top">
+              <div class="swlf_aas_top_til">
+                <h2 class="title">
+                  READING ASSESSMENT
+                </h2>
+  
+                <hr class="big-blue" />
+              </div>
+              <div class="swlf_aas_prog">
+                <!-- <label>ATTEMPT {{ attemptNo }}</label> -->
+  
+                <div *ngIf="timerView">
+                  <circle-progress [percent]="progress" [radius]="40" [outerStrokeWidth]="14"
+                    [outerStrokeColor]="'#049dff'" [animation]="false" [animationDuration]="3" [startFromZero]="false"
+                    [showTitle]="true" [showSubtitle]="true" [title]="timerTitle" [subtitle]="subtitle" [units]="''">
+                  </circle-progress>
+                </div>
+              </div>
+            </div>
+  
+            <div *ngIf="flag==0">
+              <div id="startassmnt" class="swlf_aas_mid">
+                <p>10 MCQs to be answered in 20 minutes</p>
+                <p>If you score &lt; 9, we would advise you to 
+                  revise the lesson, practise and retry test</p>
+                  <p>If you score &lt; 7, you must go back, 
+                    revise the lesson, practise and retry test</p>
+                <p>What you score here, will add to your
+                  Final Assessment</p>
+  
+                <div class="swlf_aas_btm">
+                  <button class="btn btn-assmnt btn-final" (click)="showQuestion()">
+                    START ASSESSMENT
+                  </button>
+                </div>
+              </div>
+            </div>
+  
+            <div id="startassmntqstn1" class="swlf_aas_mid" *ngIf="flag==1">
+              <div *ngFor="let data of questionArr; let j = index">
+                <div class="radio-qstion" *ngIf="j + 1 == qnum">
+                  <p class="ddwow" style="text-align: left;">{{data.description}}</p>
+                  <p class="ddwowqstn">{{j+1 +")"+ data.question }}</p>
+                  <form class="form">
+                    <ul *ngFor="let item of data.optionList; let i = index">
+                      <li>
+                        <input [id]="i" type="radio" name="r" [value]="item.optid"
+                          (change)="getAns($event, data)" /><label [for]="i">{{ item.optiontext }}</label>
+                      </li>
+                    </ul>
+                    <span *ngIf="data.required" class="error-msg">Select required</span>
+                  </form>
+                </div>
+  
+                <div class="swlf_aas_btm" *ngIf="j + 1 == qnum">
+                  <button class="btn btn-assmnt btn-undrln btn-final" *ngIf="abortTesting" (click)="openaborttestModal()">
+                    ABORT TEST
+                  </button>
+                  <button class="btn btn-assmnt btn-final" (click)="nextQuestion(1, data, j)" *ngIf="!submitBtnFlg">
+                    NEXT
+                  </button>
+                  <button class="btn btn-assmnt btn-final" *ngIf="submitBtnFlg" (click)="submitAns(data)">
+                    SUBMIT
+                  </button>
+                </div>
+              </div>
+            </div>
+  
+  
+            <div id="fnisdiv" class="swlf_aas_mid" *ngIf="flag == 3">
+              <div class="fnish-qstion">
+                <p class="txt-bold">You've already completed the assessment.</p>
+                <strong>Score<span>{{ score }}/20</span></strong>
+                <p>
+                  {{ scoringmessage }}
+                </p>
+                <!-- <p class="txt-nrml">Well done!
+                  You can continue to the listening assessment.</p> -->
+              </div>
+  
+              <div class="swlf_aas_btm">
+                <button class="btn btn-assmnt" (click)="closeModal()">
+                  FINISH & EXIT
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  
+  <ng-template #listeningModal>
+    <div id="self-modal" tabindex="-1" aria-labelledby="self-modalLabel" aria-hidden="true">
+      <div >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              <img src="assets/images/wowl-logo-login.png" />
+            </h5>
+            <!-- <button type="button" class="btn-close new-clos-btn" data-bs-dismiss="modal" aria-label="Close"
+              (click)="closeModal()"></button> -->
+          </div>
+          <div class="modal-body">
+            <div class="swlf_aas_top">
+              <div class="swlf_aas_top_til">
+                <h2 class="title">
+                  LiSTENiNG ASSESSMENT
+                </h2>
+                <hr class="big-blue" />
+              </div>
+              <div class="swlf_aas_prog">
+                <!-- <label>ATTEMPT {{ attemptNo }}</label> -->
+  
+                <div *ngIf="timerView">
+                  <circle-progress [percent]="progress" [radius]="40" [outerStrokeWidth]="14"
+                    [outerStrokeColor]="'#049dff'" [animation]="false" [animationDuration]="3" [startFromZero]="false"
+                    [showTitle]="true" [showSubtitle]="true" [title]="timerTitle" [subtitle]="subtitle" [units]="''">
+                  </circle-progress>
+                </div>
+              </div>
+            </div>
+  
+            <div *ngIf="flag==0">
+              <div id="startassmnt" class="swlf_aas_mid">
+                <p>10 MCQs to be answered in 20 minutes</p>
+                <p>If you score &lt; 9, we would advise you to 
+                  revise the lesson, practise and retry test</p>
+                  <p>If you score &lt; 7, you must go back, 
+                    revise the lesson, practise and retry test</p>
+                <p>What you score here, will add to your
+                  Final Assessment</p>
+  
+                <div class="swlf_aas_btm">
+                  <button class="btn btn-assmnt btn-final" (click)="showQuestion()">
+                    START ASSESSMENT
+                  </button>
+                </div>
+              </div>
+            </div>
+  
+  
+            <div id="startassmntqstn1" class="swlf_aas_mid" *ngIf="flag==1">
+              <div *ngFor="let data of questionArr; let j = index" class="reading-mod">
+                <div class="radio-qstion" *ngIf="j + 1 == qnum">
+                  <audio hidden class="audio-control" id="audio-plyr" #audioPlayer controls >
+                    <source [src]="FILE_URL + data.audiofile" type="audio/mpeg">
+                  </audio>
+                  <p class="ddwowqstn">{{ j+1+ ")"+ data.question }}</p>
+                  <div class="audio-answr">
+                    <p>&nbsp;</p>
+                    <button class="audio-ans-btn" (click)="playAudio()"><img src="assets/images/spkrs-icn.png" /></button>
+                  </div>
+                  <form class="form">
+                    <ul *ngFor="let item of data.optionList; let i = index">
+                      <li>
+                        <input [id]="i" type="radio" name="r" [value]="item.optid"
+                          (change)="getAns($event, data)" /><label [for]="i">{{ item.optiontext }}</label>
+                      </li>
+                    </ul>
+                    <span *ngIf="data.required" class="error-msg">Select required</span>
+                  </form>
+                </div>
+  
+                <div class="swlf_aas_btm" *ngIf="j + 1 == qnum">
+                  <button class="btn btn-assmnt btn-undrln btn-final" *ngIf="abortTesting" (click)="openaborttestModal()">
+                    ABORT TEST
+                  </button>
+                  <button class="btn btn-assmnt btn-final" (click)="nextQuestion(1, data, j)" *ngIf="!submitBtnFlg">
+                    NEXT
+                  </button>
+                  <button class="btn btn-assmnt btn-final" *ngIf="submitBtnFlg" (click)="submitAns(data)">
+                    SUBMIT
+                  </button>
+                </div>
+              </div>
+            </div>
+  
+  
+            <div id="fnisdiv" class="swlf_aas_mid reading-mod" *ngIf="flag == 3">
+              <div class="fnish-qstion">
+                <p class="txt-bold">You've already completed the assessment.</p>
+                <strong>Score<span>{{ score }}/20</span></strong>
+                <p>
+                  {{ scoringmessage }}
+                </p>
+                <!-- <p class="txt-nrml">Well done!
+                  You can continue to the listening assessment.</p> -->
+              </div>
+  
+              <div class="swlf_aas_btm">
+                <button class="btn btn-assmnt" (click)="closeListeningModal()">
+                  FINISH & EXIT
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+
+
+<ng-template #abortModal>
+    <div id="self-modal" tabindex="-1" aria-labelledby="self-modalLabel" aria-hidden="false">
+        <div class="modal-content">
+            <div class="modal-header p-0 border-0">
+                <button type="button" class="btn-close new-clos-btn" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="closeAbortMOdal()"></button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 12px; font-weight:00px;">DO YOU WANT TO ABORT THE TEST !</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                    (click)="closeAbortMOdal()">No</button>
+                <button type="button" class="btn btn-danger" (click)="closeModal()">Yes</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #timeoutModal>
+    <div id="self-modal" tabindex="-1" aria-labelledby="self-modalLabel" aria-hidden="false">
+        <div class="modal-content">
+            <div class="modal-header p-0 border-0">
+                <button type="button" class="btn-close new-clos-btn" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="closetimeOutModal()"></button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 12px; font-weight:00px;">YOUR EXAM SESSION HAS TIMED OUT</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal"
+                    (click)="closetimeOutModal()">Yes</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

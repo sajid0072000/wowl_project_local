@@ -1,0 +1,113 @@
+<main role="main" class="pb-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="top_scne">
+                <div class="top_scne_in">
+                    <h1>Course</h1>
+                    <button class="btn btn-edtng" (click)="add()">Create New</button>
+                </div>
+                <div class="top_scne_rt">
+                    <div class="btn-group btn-group-sm ms-auto  btn-download-group">
+                        <div>
+                            <label>Course</label>
+                            <div class="search-bar">
+                                <i class="fa fa-search"></i>
+                                <input type="text" [(ngModel)]="searchText" class="form-control search-bar-input"
+                                    placeholder="Search by course name" (keyup)="search()" (keyup.enter)="onEnter()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div id="datatables-reponsive_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                        <div class="table-responsive">
+                            <table id="datatables-column-search-select-inputs" class="table table-no-striped dataTable"
+                                style="width: 100%;" aria-describedby="datatables-column-search-select-inputs_info">
+                                <thead class="thead-dark">
+                                    <tr role="row">
+                                        <th class="sorting align-middle">Sl No.</th>
+                                        <th class="sorting align-middle">Course Name</th>
+                                        <!-- <th class="sorting align-middle">Short Description</th> -->
+                                        <th class="sorting align-middle">Transcoding Status</th>
+                                        <th class="sorting align-middle text-center">Course Code</th>
+                                        <th class="sorting align-middle text-center"
+                                            *ngIf="this.common.getUserTypePermission()==1">Approve</th>
+                                        <th class="sorting align-middle">&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngIf="coursesList.length == 0">
+                                        <td class="text-center" colspan="20">
+                                            <h4>No Data Found!</h4>
+                                        </td>
+                                    </tr>
+                                    <tr role="row" class="odd" *ngFor="let item of coursesList; let i = index">
+                                        <td class="align-middle">{{i+1}}.</td>
+                                        <td class="align-middle">{{item.coursename}}</td>
+                                        <!-- <td class="align-middle">{{item.shortdesc}}</td> -->
+                                        <td class="align-middle"
+                                            *ngIf="item.coursevideourl !== '' && item.coursevideourl !== null && item.trncstatus === 0"
+                                            style="color: #e39013;">Transcoding in progress...</td>
+                                        <td class="align-middle"
+                                            *ngIf="item.coursevideourl !== '' && item.coursevideourl !== null && item.trncstatus === 1"
+                                            style="color: #17a607;">Transcoding in Completed</td>
+                                        <td class="align-middle"
+                                            *ngIf="item.coursevideourl === '' || item.coursevideourl === null"
+                                            style="color: red;">Video not upload yet</td>
+
+                                        <td class="align-middle text-center">{{item.coursecode}}</td>
+                                        <td class="align-middle text-center"
+                                            *ngIf="this.common.getUserTypePermission()==1">
+                                            <div class="form-check form-switch md-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch"
+                                                    [value]="item.courseid" id="flexSwitchCheckChecked"
+                                                    [checked]="item.isapproved === 1" (change)="approve($event)" />
+                                            </div>
+                                        </td>
+                                        <td class="align-middle">
+                                            <button class="btn btn-arow" (click)="edit(item.courseid)"><i
+                                                    class="fa fa-chevron-right"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="d-xl-flex align-items-center mt-3 pegin_sec" *ngIf="coursesList.length > 0">
+                            <div class="col-auto d-block">
+                                <div class="text-center">
+                                    <div class="dataTables_length"><label>Courses per page
+                                            <select name="datatables-reponsive_length"
+                                                aria-controls="datatables-reponsive" class="form-select form-select-sm"
+                                                (change)="changePagelimit($event)" [(ngModel)]="selectedVal">
+                                                <option *ngFor="let item of pageList" [value]=item.value>{{item.name}}
+                                                </option>
+                                            </select> {{offset + 1}} - {{offset + limit}}</label>
+                                        <label class="mx-2">
+                                            <button class="btn btn-dark text-white" [disabled]="previousBtnDesable"
+                                                (click)="previousPage()"><img src="assets/img/chevron-left.svg"
+                                                    alt="chevron-left"></button>
+                                            &nbsp;
+                                            <button class="btn btn-dark text-white" [disabled]="nextBtnDesable"
+                                                (click)="nextPage()"><img src="assets/img/chevron-right.svg"
+                                                    alt="chevron-right"></button>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</main>

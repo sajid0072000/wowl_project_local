@@ -1,0 +1,90 @@
+<main role="main" class="pb-3">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="top_scne">
+                <div class="top_scne_in">
+                    <h1>Subscription User</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-secondary float-right mt-4" (click)="downloadlistSubscriptionExl()"><i
+                class="bi bi-file-earmark-excel"></i> Download Excel</button>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div>
+                        <div id="datatables-reponsive_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                            <div class="table-responsive">
+                                <table id="datatables-column-search-select-inputs" class="table table-no-striped dataTable"
+                                    style="width: 100%;" aria-describedby="datatables-column-search-select-inputs_info">
+                                    <thead class="thead-dark">
+                                        <tr role="row">
+                                            <th class="sorting align-middle" style="width: 7%;">Sl No.</th>
+                                            <th class="sorting align-middle" style="width: 15%;">User Name</th>
+                                            <th class="sorting align-middle" style="width: 15%;">Mobile</th>
+                                            <th class="sorting align-middle" style="width: 13%; text-align: center;">Plan Amount</th>
+                                            <th class="sorting align-middle" style="width: 10%; text-align: center;">Days</th>
+                                            <th class="sorting align-middle" style="width: 13%; text-align: center;">Amount Paid</th>
+                                            <th class="sorting align-middle" style="width: 13%; text-align: center;">Promo Code</th>
+                                            <th class="sorting align-middle" style="width: 15%; text-align: center;">Start Date</th>
+                                            <th class="sorting align-middle" style="width: 15%; text-align: center;">End Date</th>
+                                            <th class="sorting align-middle" style="width: 15%; text-align: center;">Renewal date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngIf="subscriptionlistArr.length == 0">
+                                            <td class="text-center" colspan="20">
+                                                <h4>No Data Found!</h4>
+                                            </td>
+                                        </tr>
+                                        <tr role="row" class="odd" *ngFor="let item of subscriptionlistArr; let i = index">
+                                            <td class="align-middle">{{this.offset+i+1}}.</td>
+                                            <td class="align-middle">{{item.username}}</td>
+                                            <td class="align-middle">{{item.mobile}}</td>
+                                            <td class="align-middle" style="text-align: center;">{{item.planamount}} {{item.currency}}</td>
+                                            <td class="align-middle" style="text-align: center;">{{item.days}}</td>
+                                            <td class="align-middle" style="text-align: center;">{{item.amountpaid}} {{item.currency}}</td>
+                                            <td class="align-middle" style="text-align: center;">{{item.promocode}}</td>
+                                            <td class="align-middle" style="text-align: center;">{{item.startdate | date}}</td>
+                                            <td class="align-middle" style="text-align: center;">{{item.enddate | date}}</td>
+                                            <td class="align-middle" style="text-align: center;">{{item.renewaldate | date}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="d-xl-flex align-items-center mt-3 pegin_sec" *ngIf="subscriptionlistArr.length > 0">
+                                <div class="col-auto d-block">
+                                    <div class="text-center">
+                                        <div class="dataTables_length"><label>Subscription user per page
+                                                <select name="datatables-reponsive_length"
+                                                    aria-controls="datatables-reponsive"
+                                                    class="form-select form-select-sm"
+                                                    (change)="changePagelimit($event)" [(ngModel)]="selectedVal">
+                                                    <option *ngFor="let item of pageList" [value]=item.value>
+                                                        {{item.name}}
+                                                    </option>
+                                                </select> {{offset + 1}} - {{offset + limit}}</label>
+                                            <div class="mx-2 display-inline">
+                                                <button class="btn btn-dark text-white" [disabled]="previousBtnDesable"
+                                                    (click)="previousPage()"><img src="assets/img/chevron-left.svg"
+                                                        alt="chevron-left"></button>
+                                                &nbsp;
+                                                <button class="btn btn-dark text-white" [disabled]="nextBtnDesable"
+                                                    (click)="nextPage()"><img src="assets/img/chevron-right.svg"
+                                                        alt="chevron-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

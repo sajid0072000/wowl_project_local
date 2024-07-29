@@ -1,0 +1,134 @@
+<!-- <p>partner-dashboard works!</p> -->
+
+
+<div class="row ">
+    <div class="col-md-6">
+        <mat-card >
+            <mat-card-content class="card-total">
+                <div class="row">
+                    <div class="col-4" style="margin: auto;text-align: center;">
+                        <img src="assets/images/cart1.png" style="width: 50px; border-radius: 50%;">
+                    </div>
+                    <div class="col-8">
+                        <div>
+                            <h3>{{totalSales}}</h3>
+                        </div>
+                        <div>
+                            <p>Total Sales<p>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="col-md-6">
+        <mat-card>
+            <mat-card-content class="card-total" style="height: 115px;">
+                <div class="row">
+                    <div class="col-4" style="margin: auto;text-align: center;">
+                        <img src="assets/images/rupess.png" style="width: 50px; border-radius: 50%;">
+                    </div>
+                    <div class="col-8">
+                        <div>
+                            <h3>{{totalAmount}}</h3>
+                        </div>
+                        <div>
+                            <p >Total Amount</p>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    </div>
+    <div class="row chart-row">
+    <div class="col-md-6 chart">
+        <mat-card>
+            <mat-card-content class="partner-chart">
+                <app-bar-chart [barchart]="barchartdata" [title]="'Month ' +
+                 '' +
+                  '' +
+                   '' +
+                    'wise total course sales count'"></app-bar-chart>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="col-md-6 chart">
+        <mat-card>
+            <mat-card-content class="partner-chart">
+              <app-pie-chart [piechart]="piechartdata" [title]="'Month wise total course sales amount'"></app-pie-chart>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="row">
+            <div class="col-md-12 ">
+                <div id="datatables-reponsive_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                    <div class="table-responsive">
+                        <table id="datatables-column-search-select-inputs" class="table table-no-striped dataTable"
+                        style="width: 100%;" aria-describedby="datatables-column-search-select-inputs_info">
+                        <thead class="thead-dark">
+                            <tr role="row">
+                                <th class="sorting align-middle" style="width: 7%; padding-left: 5px !important;">Sl No.</th>
+                                <th class="sorting align-middle" style="width: 18%;">Partner Name</th>
+                                <th class="sorting align-middle" style="width: 18%;">User Name</th>
+                                <th class="sorting align-middle" style="width: 18%;">Course Name</th>
+                                <th class="sorting align-middle" style="width: 13%; text-align: center;">Discount Price</th>
+                                <th class="sorting align-middle" style="width: 13%; text-align: center;">Actual Price</th>
+                                <th class="sorting align-middle" style="width: 13%; text-align: center;">GST Price</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="partnerData.length == 0">
+                                <td class="text-center" colspan="20">
+                                    <h4>No Data Found!</h4>
+                                </td>
+                            </tr>
+                            <tr role="row" class="odd" *ngFor="let item of partnerData; let i = index">
+                                <td style="padding-left: 5px !important;">{{i+1}}. </td>
+                                <td class="align-middle">{{item.partnername}}</td>
+                                <td class="align-middle">{{item.username}}</td>
+                                <td class="align-middle">{{item.coursename}}</td>
+                                <td class="align-middle " style="text-align: center;">{{item.discountprice}}</td>
+                                <td class="align-middle" style="text-align: center;">{{item.actualprice}}</td>
+                                <td class="align-middle" style="text-align: center;">{{item.gstamount}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+
+                    <div class="d-xl-flex align-items-center mt-3 pegin_sec" *ngIf="partnerData.length > 0">
+                        <div class="col-auto d-block">
+                            <div class="text-center">
+                                <div class="dataTables_length"><label>Data per page
+                                        <select name="datatables-reponsive_length" aria-controls="datatables-reponsive"
+                                            class="form-select form-select-sm" (change)="changePagelimit($event)"
+                                            [(ngModel)]="selectedVal">
+                                            <option *ngFor="let item of pageList" [value]=item.value>{{item.name}}
+                                            </option>
+                                        </select> {{offset + 1}} - {{offset + limit}}</label>
+                                    <label class="mx-2">
+                                        <button class="btn btn-dark text-white" [disabled]="previousBtnDesable"
+                                            (click)="previousPage()"><img src="assets/img/chevron-left.svg"
+                                                alt="chevron-left"></button>
+                                        &nbsp;
+                                        <button class="btn btn-dark text-white" [disabled]="nextBtnDesable"
+                                            (click)="nextPage()"><img src="assets/img/chevron-right.svg"
+                                                alt="chevron-right"></button>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

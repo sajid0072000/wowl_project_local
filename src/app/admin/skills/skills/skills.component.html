@@ -1,0 +1,205 @@
+<main role="main" class="pb-3">
+
+
+
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="top_scne">
+                <div class="top_scne_in">
+                    <h1>Skills</h1>
+                    <button class="btn btn-edtng" (click)="add()">Create New</button>
+                </div>
+                <div class="top_scne_rt">
+                    <div class="btn-group btn-group-sm ms-auto  btn-download-group">
+                        <div>
+                            <label>Skills</label>
+                        <div class="search-bar">
+                            <i class="fa fa-search"></i>
+                            <input type="text" [(ngModel)]="searchText" class="form-control search-bar-input" placeholder="Search by skills name" (keyup)="search()" (keyup.enter)="onEnter()">
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </div>
+
+
+
+    <div class="main-content">
+        <div class="main-content-inner">
+
+            <div class="row">
+                <div class="col-md-12 ">
+                        <div id="datatables-reponsive_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                            <div class="table-responsive">
+                                <table id="datatables-column-search-select-inputs" class="table table-no-striped dataTable"
+                                    style="width: 100%;" aria-describedby="datatables-column-search-select-inputs_info">
+                                    <thead class="thead-dark">
+                                        <tr role="row">
+                                            <th class="sorting align-middle">Sl No.</th>
+                                            <th class="sorting align-middle">Skill Name</th>
+                                            <th class="sorting align-middle text-center">Active</th>
+                                            <th class="sorting align-middle">&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngIf="skillsList.length == 0">
+                                            <td class="text-center" colspan="20"><h4>No Data Found!</h4></td>
+                                        </tr>
+                                        <tr role="row" class="odd" *ngFor="let item of skillsList; let i = index">
+                                            <td class="align-middle">{{i+1}}.</td>
+                                            <td class="align-middle">{{item.Name}}</td>
+                                            <td class="align-middle text-center">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" role="switch"
+                                                        [value]="item.Id" id="flexSwitchCheckChecked"
+                                                        [checked]="item.active === 1" (change)="enableActive($event)" />
+                                                </div>
+                                            </td>
+                                            <td class="align-middle">
+                                                    <button class="btn btn-arow" (click)="edit(item.Id, item)"><i class="fa fa-chevron-right"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+            
+                            <div class="d-xl-flex align-items-center mt-3 pegin_sec" *ngIf="skillsList.length > 0">
+                                <div class="col-auto d-block">
+                                    <div class="text-center">
+                                        <div class="dataTables_length"><label>Courses per page
+                                                <select name="datatables-reponsive_length" aria-controls="datatables-reponsive"
+                                                    class="form-select form-select-sm" (change)="changePagelimit($event)"
+                                                    [(ngModel)]="selectedVal">
+                                                    <option *ngFor="let item of pageList" [value]=item.value>{{item.name}}
+                                                    </option>
+                                                </select> {{offset + 1}} - {{offset + limit}}</label>
+                                            <label class="mx-2">
+                                                <button class="btn btn-dark text-white" [disabled]="previousBtnDesable" (click)="previousPage()"><img src="assets/img/chevron-left.svg" alt="chevron-left" ></button> 
+                                                &nbsp;
+                                                <button class="btn btn-dark text-white" [disabled]="nextBtnDesable" (click)="nextPage()"><img src="assets/img/chevron-right.svg" alt="chevron-right" ></button>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+        </div>
+        
+        
+    </div>
+    
+</main>
+
+
+<ng-template #deleteModal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-sm-10">
+                        <h4 class="modal-title d-inline-block align-middle me-2">
+                            Are you want to sure delete this skill?
+                        </h4>
+                    </div>
+                    <div class="col-sm-2 d-flex justify-content-end">
+                        <button type="button" (click)="closeModal()" class="btn-close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-secondary btn-lg me-2" (click)="closeModal()">No</button>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-primary btn-lg me-2" (click)="delete()">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #addModal>
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="container-fluid">
+          <div class="row align-items-center position-relative">
+            <div class="col-sm-12">
+              <div class="top_scne">
+                <div class="top_scne_in">
+                  <h4 class="modal-title d-inline-block align-middle me-2 text-info">
+                    Skills
+                  </h4>
+                  <button class="btn btn-edtng" *ngIf="!skillId">Creating</button>
+                  <button class="btn btn-edtng" *ngIf="skillId">Editing</button>
+                </div>
+                <!-- <div class="top_scne_rt"><button class="btn btn-preview" (click)="goToPreview()"
+                    *ngIf="skillId">Preview</button></div> -->
+              </div>
+            </div>
+            <button type="button" (click)="closeModal()" class="mod-clos btn-close"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body">
+  
+      <div class="container-fluid">
+        <div class="row mb-3">
+          <div class="">
+            <div class="row">
+              <div class="mb-3 col-sm-12">
+                <label for="name" class="form-label lebel-text">Skill Name</label>
+                <input type="text" class="form-control input-text" [(ngModel)]="name" (keyup)="changeSkillName()" />
+                <span class="error-msg">{{skillErr}}</span>
+              </div>
+            </div>
+  
+  
+            <div class="row bottom-secne px-0">
+              <div class="col-sm-6 text-left">
+                <div>
+                  <button type="button" class="delete-button btn btn-secondary" *ngIf="skillId"
+                    (click)="onClickDelete(skillId)">
+                    Delete Skill
+                  </button>
+                </div>
+              </div>
+  
+              <div class="col-sm-6 text-right">
+                <div class="d-flex justify-content-end w-100 gap-3">
+                  <button type="button" class="cancel-button btn btn-secondary" (click)="closeModal()">
+                    Cancel
+                  </button>
+                  <button type="button" class="submit-button btn btn-primary" *ngIf="!skillId"
+                    (click)="onSubmit()">
+                    Save
+                  </button>
+                  <button type="button" class="submit-button btn btn-primary" *ngIf="skillId"
+                    (click)="onEdit()">
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
+  
+  
+          </div>
+        </div>
+      </div>
+  
+  
+    </div>
+  </ng-template>
+

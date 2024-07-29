@@ -1,0 +1,19 @@
+.btn-info{
+    color: white;
+}
+
+.profile_img {
+    height: 100px;
+    width: 100px;
+}
+
+.image-upload > input
+{
+    display: none;
+}
+
+.image-upload img
+{   display: inline;
+    width: 30px;
+    cursor: pointer;
+}

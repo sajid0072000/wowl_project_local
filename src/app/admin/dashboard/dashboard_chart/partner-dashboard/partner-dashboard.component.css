@@ -1,0 +1,28 @@
+/* .bar-chart{
+    height: 300px;
+}
+.pie-chart{
+    height: 300px;
+} */
+
+.card1{
+    height: 75px;
+    width: 100%;
+}
+.card2{
+    height: 75px;
+    width: 100%;
+}
+.partner-chart{
+    height: 370px;
+}
+.chart{
+    margin-top: 10px;
+    margin-bottom: 80px;
+}
+h3{
+    color: aquamarine;
+}
+.chart-row{
+    margin-bottom: -50px !important;
+}

@@ -1,0 +1,381 @@
+<div class="full-screen" id="fulldiv">
+  <div>
+    <button class="close" (click)="toggleFullScreenImg(0)">X</button>
+  </div>
+  <div class="full-screen-img">
+    <img [src]="fullScreenImg" alt="" style="width: 500px;">
+  </div>
+</div>
+
+
+<!-- Add/Edit -->
+<ng-template #addmodal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="container-fluid">
+        <div class="row align-items-center position-relative">
+          <div class="col-sm-12">
+            <div class="top_scne">
+              <div class="top_scne_in">
+                <h4 class="modal-title d-inline-block align-middle me-2 text-info">
+                  Category Type
+                </h4>
+                <button class="btn btn-edtng" *ngIf="!categoryTypeId">Creating</button>
+                <button class="btn btn-edtng" *ngIf="categoryTypeId">Editing</button>
+              </div>
+            </div>
+          </div>
+          <button type="button" (click)="closeAddModal()" class="mod-clos btn-close"></button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="container-fluid">
+      <div class="row mb-3">
+
+        <div class="mb-3 col-md-12">
+          <label for="name" class="form-label lebel-text">Name:</label>
+          <input type="text" class="form-control" [(ngModel)]="name" (keyup)="changeNameFun()" />
+          <span class="error-msg">{{nameErr}}</span>
+        </div>
+
+        <div class="mb-3 col-md-12">
+          <label class="form-label lebel-text">Description:</label>
+          <ckeditor [(ngModel)]="description" [editor]="Editor" (change)="changeDescriptionFun()"></ckeditor>
+          <span class="error-msg">{{descriptionErr}}</span>
+        </div>
+
+        <div class="mb-3 col-md-12">
+          <label for="name" class="form-label lebel-text">Landing Title:</label>
+          <input type="text" class="form-control" [(ngModel)]="landingtitle" (keyup)="changelandingtitleFun()" />
+          <span class="error-msg">{{landingtitleErr}}</span>
+        </div>
+
+
+        <!-- logo -->
+
+        <div class="mb-3 col-md-12">
+          <label class="form-label lebel-text">Logo: </label>
+          <div class="row">
+            <div class="col-4">
+              <div class="image-upload">
+                <label for="file-input-logoImage">
+                  <button type="button" class="btn btn-upload-btn" (click)="uploadBtnLogoImage()"> Upload Logo
+                  </button>
+                </label>
+                <input id="file-input-logoImage" type="file" (change)="onFileChangedLogoImage($event)">
+              </div>
+              <span class="error-msg">{{logoErr}}</span>
+            </div>
+            <div class="col-8">
+              <img *ngIf="logo" [src]="FILE_URL + logo" class="form-control profile_img" alt=""
+                (click)="imagePopUp()">
+            </div>
+          </div>
+        </div>
+
+        <!-- end -->
+
+        <div class="mb-3 col-md-12">
+          <label class="form-label lebel-text">Thumbnail Image: </label>
+          <div class="row">
+            <div class="col-4">
+              <div class="image-upload">
+                <label for="file-input-thumbnailImage">
+                  <button type="button" class="btn btn-upload-btn" (click)="uploadBtnthumbnailImage()"> Upload Photo
+                  </button>
+                </label>
+                <input id="file-input-thumbnailImage" type="file" (change)="onFileChangedthumbnailImage($event)">
+              </div>
+              <span class="error-msg">{{thumbnailImageErr}}</span>
+            </div>
+            <div class="col-8">
+              <img *ngIf="thumbnailImage" [src]="FILE_URL + thumbnailImage" class="form-control profile_img" alt=""
+                (click)="imagePopUp()">
+            </div>
+          </div>
+        </div>
+        
+
+
+        <div class="mb-3 col-md-12">
+          <label class="form-label lebel-text">Banner Image: </label>
+          <div class="row">
+            <div class="col-4">
+              <div class="image-upload">
+                <label for="file-input-bannerImage">
+                  <button type="button" class="btn btn-upload-btn" (click)="uploadBtnbannerImage()"> Upload Photo
+                  </button>
+                </label>
+                <input id="file-input-bannerImage" type="file" (change)="onFileChangedbannerImage($event)">
+              </div>
+              <span class="error-msg">{{bannerImageErr}}</span>
+            </div>
+            <div class="col-8">
+              <img *ngIf="bannerImage" [src]="FILE_URL + bannerImage" class="form-control profile_img" alt=""
+                (click)="imagePopUp()">
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 col-md-12">
+          <label for="name" class="form-label lebel-text">Why learn lang with wowl:</label>
+          <input type="text" class="form-control" [(ngModel)]="whylearnlangwithwowl" (keyup)="changeWhylearnlangwithwowlFun()" />
+          <span class="error-msg">{{whylearnlangwithwowlErr}}</span>
+        </div>
+
+        <div class="mb-3 col-md-12">
+          <label class="form-label lebel-text">Demo video: </label>
+          <div class="row">
+            <div class="col-4">
+              <div class="image-upload">
+                <!-- <label for="file-input-demovideo">
+                  <button type="button" class="btn btn-upload-btn" (click)="uploadBtndemovideo()"> Upload Video
+                  </button>
+                </label>
+                <input id="file-input-demovideo" type="file" (change)="onFileChangeddemovideo($event)"> -->
+                <app-ng-chunk-upload (onFileSelect)="onFileChange($event)"></app-ng-chunk-upload>
+              </div>
+              <span class="error-msg">{{demovideoErr}}</span>
+            </div>
+            <div class="col-8">
+              <!-- <video *ngIf="demovideo" width="200" height="140" controls>
+                <source [src]="FILE_URL + demovideo" type="video/mp4">
+            </video> -->
+            <div id="video-container"></div>
+            <span *ngIf="trncstatus == 0" style="color: #e39013;">Transcoding in progress...</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 col-md-12">
+          <label class="form-label lebel-text">Video Thumbnail: </label>
+          <div class="row">
+            <div class="col-4">
+              <div class="image-upload">
+                <label for="file-input-Video-Thumbnail">
+                  <button type="button" class="btn btn-upload-btn" (click)="uploadBtnvideothumbnail()"> Upload Image
+                  </button>
+                </label>
+                <input id="file-input-Video-Thumbnail" type="file" (change)="onFileChangedvideothumbnail($event)">
+              </div>
+              <span class="error-msg">{{videothumbnailErr}}</span>
+            </div>
+            <div class="col-8">
+              <img *ngIf="videothumbnail" [src]="FILE_URL + videothumbnail" class="form-control profile_img" alt=""
+                (click)="imagePopUp()">
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 col-md-12">
+          <label class="form-label lebel-text">Pop up image: </label>
+          <div class="row">
+            <div class="col-4">
+              <div class="image-upload">
+                <label for="file-input-Pop-up">
+                  <button type="button" class="btn btn-upload-btn" (click)="uploadBtnPopup()"> Upload Image
+                  </button>
+                </label>
+                <input id="file-input-Pop-up" type="file" (change)="onFileChangedPopup($event)">
+              </div>
+              <span class="error-msg">{{popupimgErr}}</span>
+            </div>
+            <div class="col-8">
+              <img *ngIf="popupimg" [src]="FILE_URL + popupimg" class="form-control profile_img" alt=""
+                (click)="imagePopUp()">
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <mat-checkbox [(ngModel)]="popupactivate">Pop up image active</mat-checkbox>
+        </div>
+
+        <div class="mb-3" *ngIf="!categoryTypeId">
+          <mat-checkbox [(ngModel)]="Hidden">Hidden</mat-checkbox>
+        </div>
+
+
+        <div class="row bottom-secne px-0">
+          <div class="col-sm-6 text-left">
+            <div>
+              <button type="button" class="delete-button btn btn-secondary" *ngIf="categoryTypeId"
+                (click)="onClickDelete(categoryTypeId)">
+                Delete Category Type
+              </button>
+            </div>
+          </div>
+          <div class="col-sm-6 text-right">
+            <div class="d-flex justify-content-end w-100 gap-3">
+              <button type="button" class="cancel-button btn btn-secondary" (click)="closeAddModal()">
+                Cancel
+              </button>
+              <button type="button" class="submit-button btn btn-primary" *ngIf="!categoryTypeId"
+                (click)="addCategorytype()">
+                Save
+              </button>
+              <button type="button" class="submit-button btn btn-primary" *ngIf="categoryTypeId"
+                (click)="updateCategorytype()">
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #deleteModal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-sm-10">
+            <h4 class="modal-title d-inline-block align-middle me-2">
+              Are you want to sure delete this category type?
+            </h4>
+          </div>
+          <div class="col-sm-2 d-flex justify-content-end">
+            <button type="button" (click)="closeModal()" class="btn-close"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-6 text-center">
+            <button type="button" class="btn btn-secondary btn-lg me-2" (click)="closeModal()">
+              No
+            </button>
+          </div>
+          <div class="col-sm-6 text-center">
+            <button type="button" class="btn btn-primary btn-lg me-2" (click)="deleteCategorytype()">
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+<main role="main" class="pb-3">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="top_scne">
+        <div class="top_scne_in">
+          <h1>Category Type</h1>
+          <button class="btn btn-edtng" (click)="gotoAdd()">Create New</button>
+        </div>
+        <!-- <div class="top_scne_rt">
+          <div class="btn-group btn-group-sm ms-auto  btn-download-group">
+            <div>
+              <label>Category type</label>
+              <div class="search-bar">
+                <i class="fa fa-search"></i>
+                <input type="text" [(ngModel)]="searchText" class="form-control search-bar-input"
+                  placeholder="Search by category type" (keyup)="search()" (keyup.enter)="onEnter()" />
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+
+  <div class="main-content">
+    <div class="main-content-inner">
+
+      <div class="row">
+        <div class="col-md-12">
+          <div>
+            <div id="datatables-reponsive_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+              <div class="table-responsive">
+                <table id="datatables-column-search-select-inputs" class="table table-no-striped dataTable"
+                  style="width: 100%" aria-describedby="datatables-column-search-select-inputs_info">
+                  <thead class="thead-dark">
+                    <tr role="row">
+                      <th class="sorting align-middle">Sl No.</th>
+                      <th class="sorting align-middle">Category Type Name</th>
+                      <th class="sorting align-middle">Short Description</th>
+                      <th class="sorting align-middle">Transcoding Status</th>
+                      <th class="sorting align-middle text-center">Hidden</th>
+                      <th class="sorting align-middle">&nbsp;</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngIf="categorytypeList.length == 0">
+                      <td class="text-center" colspan="20">
+                        <h4>No Data Found!</h4>
+                      </td>
+                    </tr>
+                    <tr role="row" class="odd" *ngFor="let item of categorytypeList; let i = index">
+                      <td class="align-middle">{{ i + 1 }}.</td>
+                      <td class="align-middle">{{ item.name }}</td>
+                      <td class="align-middle" [innerHTML]="item.description"></td>
+                      <td  class="align-middle" *ngIf="item.trncstatus == 0" style="color: #e39013;">Transcoding in progress...</td>
+                      <td  class="align-middle" *ngIf="item.trncstatus == 1" style="color: #17a607;">Transcoding in Completed</td>
+
+
+                      
+                      <td class="align-middle text-center">
+                        <div class="form-check form-switch">
+                          <input class="form-check-input" type="checkbox" role="switch" [value]="item.categoryTypeId"
+                            id="flexSwitchCheckChecked" [checked]="item.Hidden === 1" (change)="enableActive($event)" />
+                        </div>
+                      </td>
+                      <td class="align-middle">
+                        <!-- <i class="fa fa-edit editbtn" (click)="gotoEdit(item)"
+                          style="font-size: 24px; cursor: pointer"></i>
+                        &nbsp;&nbsp;
+                        <i class="deletebtn fa fa-trash" style="font-size: 24px; cursor: pointer"
+                          (click)="onClickDelete(item.categoryTypeId)"></i> -->
+                        <button class="btn btn-arow" (click)="gotoEdit(item)"><i
+                            class="fa fa-chevron-right"></i></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="d-xl-flex align-items-center mt-3 pegin_sec" *ngIf="categorytypeList.length > 0">
+                <div class="col-auto d-block">
+                  <div class="text-center">
+                    <div class="dataTables_length"><label>Category type per page
+                        <select name="datatables-reponsive_length" aria-controls="datatables-reponsive"
+                          class="form-select form-select-sm" (change)="changePagelimit($event)"
+                          [(ngModel)]="selectedVal">
+                          <option *ngFor="let item of pageList" [value]=item.value>{{item.name}}
+                          </option>
+                        </select> {{offset + 1}} - {{offset + limit}}</label>
+                      <label class="mx-2">
+                        <button class="btn btn-dark text-white" [disabled]="previousBtnDesable"
+                          (click)="previousPage()"><img src="assets/img/chevron-left.svg" alt="chevron-left"></button>
+                        &nbsp;
+                        <button class="btn btn-dark text-white" [disabled]="nextBtnDesable" (click)="nextPage()"><img
+                            src="assets/img/chevron-right.svg" alt="chevron-right"></button>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+</main>

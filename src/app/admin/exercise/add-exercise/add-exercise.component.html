@@ -1,0 +1,191 @@
+
+<ng-template #deleteModal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-sm-10">
+                        <h4 class="modal-title d-inline-block align-middle me-2">
+                            Are you want to sure delete this exercise?
+                        </h4>
+                    </div>
+                    <div class="col-sm-2 d-flex justify-content-end">
+                        <button type="button" (click)="closeModal()" class="btn-close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-secondary btn-lg me-2" (click)="closeModal()">No</button>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-primary btn-lg me-2" (click)="delete()">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+
+<main role="main" class="pb-3">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="top_scne">
+                <div class="top_scne_in">
+                    <h1 class="add_heading_text">Exercise</h1>
+                    <button class="btn btn-edtng" *ngIf="!exerciseid">Creating</button>
+                    <button class="btn btn-edtng" *ngIf="exerciseid">Editing</button>
+                </div>
+                <!-- <div class="top_scne_rt"><button class="btn btn-preview" *ngIf="exerciseid"
+                        (click)="goToPreview()">Preview</button></div> -->
+            </div>
+
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="row">
+
+                <div class="mb-3 col-md-6">
+                    <label for="name" class="form-label lebel-text">Course Name </label>
+                    <input type="text" [(ngModel)]="coursename" (keyup)="searchCourseByName()" [matAutocomplete]="auto"
+                        class="input-text form-control" placeholder="Search..." />
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="getCourseIdByName()">
+                        <mat-option *ngIf="spinner">
+                            <mat-spinner style="width:50px;"></mat-spinner>
+                        </mat-option>
+                        <mat-option *ngFor="let item of courseArr" [value]="item.coursename">
+                            {{ item.coursename }}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <span class="error-msg" *ngIf="coursenameErr">Course name required</span>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Lesson Name: </label>
+                    <input type="text" [(ngModel)]="title" (keyup)="searchLessionByName()" [matAutocomplete]="lession"
+                        class="input-text form-control" placeholder="Search..." />
+                    <mat-autocomplete #lession="matAutocomplete" (optionSelected)="getLessionIdByName()">
+                        <mat-option *ngIf="spinnerLession">
+                            <mat-spinner style="width:50px;"></mat-spinner>
+                        </mat-option>
+                        <mat-option *ngFor="let item of lessionArr" [value]="item.title">
+                            {{ item.title }}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <span class="error-msg" *ngIf="lessonnameErr">lesson name required</span>
+
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label for="name" class="form-label lebel-text">Exercise Name: </label>
+                    <input type="text" class="form-control input-text" placeholder="Enter exercise name" [(ngModel)]="exercisename" (keyup)="changeExeciseFun()">
+                    <span class="error-msg" *ngIf="exercisenameErr">Exercise name required</span>
+                </div>
+
+
+                <div class="mb-3 col-md-6">
+                    <label for="name" class="form-label lebel-text">Exam Time: </label>
+                    <input type="text" class="form-control input-text" [(ngModel)]="examtime" (keyup)="changeExametimeFun()">
+                    <span class="error-msg" *ngIf="examtimeErr">Exam time required</span>
+                </div>
+
+                <div class="mb-3 col-md-12">
+                <label for="name" class="form-label lebel-text">Description: </label>
+                <textarea class="form-control input-text" id="exampleFormControlTextarea1"
+                 [(ngModel)]="description" (keyup)="changeDescriptionFun()">
+                </textarea>
+                <span class="error-msg" *ngIf="descriptionErr">Description required</span>
+                </div>
+
+
+                <div class="mb-3 col-md-12">
+                    <mat-card *ngFor="let obj of questionList;let i=index" class="mb-3">
+                        <mat-card-content>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-sm-11">
+                                            <label class="form-label lebel-text">Question No. {{i+1}}</label>
+                                            <input type="text" class="form-control input-text mt-2"
+                                                [(ngModel)]="obj.question" (keyup)="changeQueFun(obj)">
+                                            <span *ngIf="obj.questionErr" class="error-msg">Question required</span>
+
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <i *ngIf="questionList.length>1 && i!==0" class="fa fa-trash deletebtn mt-5"
+                                                style="font-size:24px;  cursor: pointer;" (click)="remove(i)"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 mt-3">
+                                    <mat-card *ngFor="let item of obj.optionList;let ind=index">
+                                        <mat-card-content>
+                                            <div class="row">
+                                                <div class="col-sm-10">
+                                                    <label class="form-label lebel-text"
+                                                        *ngIf="ind ===0">Option:</label>
+                                                    <input type="text" class="form-control input-text mt-2"
+                                                        [(ngModel)]="item.optiondesc" (keyup)="changeOptionFun(item)">
+                                                    <span *ngIf="item.optiondescErr" class="error-msg">Option required</span>
+
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <label class="form-label lebel-text"
+                                                        *ngIf="ind ===0">Correct</label>
+                                                    <div class="mt-2">
+                                                        <mat-checkbox [checked]="obj.selected === ind"
+                                                            (change)="obj.selected = ind"
+                                                            [(ngModel)]="item.iscorrect1"></mat-checkbox>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-1">
+                                                    <i *ngIf="ind!==0" class="fa fa-trash deletebtn mt-3"
+                                                        style="font-size:24px;  cursor: pointer;"
+                                                        (click)="removeOption(i, ind)"></i>
+                                                </div>
+                                            </div>
+                                        </mat-card-content>
+                                    </mat-card>
+                                </div>
+                                <div class="col-sm-12 mt-3">
+                                    <button (click)="addMoreOption(i)" class="add_more" style="float: right;"><img
+                                            src="assets/img/addmore.png" style="width: 40px; " /><span>Add
+                                            More
+                                            Option</span></button>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+
+                </div>
+                <div class="col-sm-12 mt-2">
+                    <button (click)="addMore()" class="add_more" style="float: right;"><img
+                            src="assets/img/addmore.png" style="width: 40px; " /><span>Add More
+                            Question</span></button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="bottom-secne" style="text-align: center;">
+            <button class="delete-button btn btn-primary" *ngIf="exerciseid" (click)="onClickDelete(exerciseid)">Delete Exercise</button>
+            <div *ngIf="!exerciseid"></div>
+            <div>
+                <button class="cancel-button btn btn-primary" (click)="resetForm()">Cancel</button>
+                <button class="submit-button btn btn-primary" *ngIf="!exerciseid" (click)="add()">Save</button>
+                <button class="submit-button btn btn-primary " *ngIf="exerciseid" (click)="edit()">Save</button>
+            </div>
+
+        </div>
+
+
+    </div>
+</main>

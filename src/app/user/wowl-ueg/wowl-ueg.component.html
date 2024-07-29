@@ -1,0 +1,155 @@
+<!--Body Header section start-->
+<section>
+  <div class="page_header_section">
+    <img src="assets/images/wowl-ueg-banner.webp">
+  </div>
+</section>
+<!--Body Header section end-->
+<!--Body section one start-->
+<section class="blue_bg  py-3 header_below_section wowl-ueg-top-video-attached-section">
+  <div class="container">
+    <div class="row text-center">
+      <h1 class="white_text">WOWL-UEG</h1>
+      <!--box start-->
+      <div class="container py-2">
+        <div class="row text-center">
+          <div class="col-sm-3 themed-grid-col">
+          </div>
+          <div class="col-sm-2 col-6 themed-grid-col">
+            <a (click)="gotoButton(1)">
+              <img class="language_box" src="assets/images/wowl-ueg-button-1.webp">
+            </a>
+          </div>
+          <div class="col-sm-2 col-6 themed-grid-col">
+            <a (click)="gotoButton(1)"> 
+              <img class="language_box" src="assets/images/wowl-ueg-button-2.webp">
+            </a>
+          </div>
+          <div class="col-sm-2 col-12 themed-grid-col">
+            <a (click)="gotoButton(2)">
+              <img class="language_box language_box-special-mobile-width"
+                src="assets/images/wowl-ueg-button-3-3.webp">
+            </a>
+          </div>
+          <div class="col-sm-3 themed-grid-col">
+          </div>
+
+        </div>
+      </div>
+      <!--box end-->
+
+    </div>
+  </div>
+</section>
+<!--Body section one end-->
+<!--Body Top Video section start-->
+<section class="transparent_bg wowl-ueg-top-video-section">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-sm-3 themed-grid-col">
+
+      </div>
+      <div class="col-sm-6 themed-grid-col">
+        <div class="about-video position-relative">
+          <svg (click)="playVideo()" *ngIf="!videoDiv" xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+            <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445"/>
+          </svg>
+        <img *ngIf="!videoDiv" [src]="FILE_URL + aboutObj.videothumbnail" (click)="playVideo()" />
+        <div *ngIf="videoDiv" id="video-container"></div>
+      </div>
+      </div>
+      <div class="col-sm-3 themed-grid-col">
+
+      </div>
+    </div>
+  </div>
+
+</section>
+<!--Body Top Video section end-->
+<!--Body section two start-->
+<section class="white_bg wowl-ueg-video-bottom-section">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-sm-6 themed-grid-col">
+        <div class="common-language-blue-head-text head_extra_space_bottom">
+          <h3 class="head_left">About UEG</h3>
+        </div>
+        <div class="common-language-para-text">
+          <p [innerHTML]="aboutObj.aboutUEG"></p>
+        </div>
+      </div>
+      <div class="col-sm-6 themed-grid-col">
+        <div class="common-language-blue-head-text head_extra_space_bottom">
+          <h3 class="head_right mobile-top-space">About WOWL</h3>
+        </div>
+        <div class="common-language-para-text">
+          <p [innerHTML]="aboutObj.aboutWOWL"></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!--Body section two end-->
+<!-- Body section three Start -->
+<section class="teachers green_bg_section">
+  <div class="container ">
+    <div class="row mb-3 text-center">
+      <div class="common-language-white-head-text">
+        <h3 class="common-head-text mb-3 team_main_head">Team WOWL-UEG</h3>
+      </div>
+      <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+
+          <!-- Team Image Start -->
+          <div class="col-6 col-md-3" *ngFor="let data of teamwowlList">
+            <div class="team-wowl-ueg-image">
+              <img [src]="FILE_URL+data.image" />
+              <div class="team-wowl-ueg-image-text">
+                <h3>{{data.name}}</h3>
+                <h4>{{data.designation}}</h4>
+              </div>
+            </div>
+          </div>
+          <!-- Team Image End -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Body section three End -->
+<!--Body section four start-->
+<section class="white_bg" id="programmes-for-students">
+  <div class="container">
+    <div class="row text-center d-flex align-items-center justify-content-center">
+      <div class="common-language-blue-head-text">
+        <h3>Teachers take the lead</h3>
+      </div>
+
+      <div class="container">
+        <div class="row common_space">
+          <!--Box start-->
+          <div class="col-sm-3 col-6 themed-grid-col" *ngFor="let obj of educatorArr">
+            <div class="wowl-ueg-language-box">
+              <img [src]="FILE_URL+obj.educatorphotouri"
+                onerror="this.onerror=null; this.src='assets/images/person.png'" />
+              <div class="teacher_container">
+                <h4 class="teacher_name">{{obj.educatorname}}</h4>
+                <h5 class="teacher_profile">{{obj.categoryTypeName}} Language</h5>
+              </div>
+              <a (click)="gotoEducator(obj.educatorid)">
+                <div class="wowl-ueg-language-box-button" style="color: #fff;">
+                  See profile
+                </div>
+              </a>
+            </div>
+          </div>
+          <!--Box end-->
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

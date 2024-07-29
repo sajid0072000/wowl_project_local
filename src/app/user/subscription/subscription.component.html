@@ -1,0 +1,132 @@
+
+    <div id="self-modal" tabindex="-1" aria-labelledby="self-modalLabel" aria-hidden="false" >
+
+
+        <div class="modal-content" *ngIf="subscribeModalDiv">
+            <div class="modal-header border-0 p-0">
+                <button type="button" class="btn-close new-clos-btn" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="closeModal()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <span>JOIN COURSE</span>
+                        <h3 class="mt-2">{{coursename}}</h3>
+                        <hr class="big-green" />
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <h3 class="liveImg">
+                            <img src="assets/images/button2.webp" />
+                        </h3>
+                    </div>
+                    <div class="" style="text-align: center;">
+                        <h4 style="color: #3c64aa;">{{planname}} <span>SUBSCRIPTION PLAN</span></h4>
+                        <span class="priceTag mb-2">@ INR <span>{{amount}}</span> ONLY </span>
+                        <div class="mb-3">
+                            <p>Plan your pace! Recommended learning
+                                tenure for this course is 3 to 4 months but
+                                you can continue at your own pace as long
+                                as you may need to master this level.</p>
+                        </div>
+                    </div>
+                    <button
+                        class="self-landing_green_button btn btn-outline-secondary self_landing_button_center subsBtn mb-3"
+                        (click)="buySubscription()">BUY SUBSCRIPTION</button>
+
+                </div>
+                <div class="points">
+                    <p class="mb-3">1.If you are under an Institutional Plan and have a Privilege
+                        Passcode or a special Coupon Code, you can apply it in
+                        the next step, before payment, and enjoy its benefits</p>
+                    <p class="mb-3">2. Auto-renewal is not available. You will need to renew at
+                        the end of each month. But don’t worry, we shall remind
+                        you in time</p>
+                    <p class="mb-3">
+                        3. Your access to a course will be available as long as you are
+                        subscribed to the app and until you claim your Certificate
+                        of Completion
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+    <div class="modal-content" *ngIf="subscribeModalDiv1">
+        <div class="modal-header border-0 p-0">
+            <button type="button" class="btn-close new-clos-btn" data-bs-dismiss="modal" aria-label="Close"
+                (click)="closeModal()"></button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-4">
+                    <span>JOIN COURSE</span>
+                    <h3 class="mt-2">{{coursename}}</h3>
+                    <hr class="big-green" />
+                </div>
+                <div class="col-sm-8 text-right">
+
+                    <h3 class="liveImg">
+                        <img src="assets/images/button2.webp" />
+                    </h3>
+                </div>
+                <div class="" style="text-align: center;">
+                    <h4 class="textBlue">{{planname}} SUBSCRIPTION PLAN</h4>
+                    <span class="priceTag mb-2">@ INR <span>{{amount}}</span> ONLY </span>
+                    <div class="mb-3">
+                        <h4>I have a Privilege Passcode / Coupon Code / Partner Code</h4>
+                        <div class="w-50 mx-auto my-4">
+                            <input
+                            type="text"
+                            class="form-control"
+                            style="border-radius: 10px !important;"
+                            id="partnercode"
+                            placeholder="Enter Partner Code here*"
+                            required=""
+                            [(ngModel)]="partnercode"
+
+                            />
+                            <!-- <span class="error-msg" *ngIf="partnercodeErr">Partner code required</span> -->
+                        </div>
+                    </div>
+                    <div class="mb-3">
+
+                        <div class="w-50 mx-auto my-4">
+                            <input type="text" class="form-control" style="border-radius: 10px !important;"
+                                id="promocode" placeholder="Enter Coupon Code here*" required=""
+                                [(ngModel)]="promocode" />
+
+                            <span class="error-msg" *ngIf="promocodeErr">Partner or Coupon code required</span>
+                        </div>
+                        <a (click)="toverifypromoCode()">Apply</a>
+                    </div>
+                    <div>
+                        <h4>You need to pay INR {{totAmt}}
+                          <s style="color: grey;font-weight: normal;" *ngIf="totAmt !== amount"><span style="font-size: 18px;">INR {{amount}}</span></s>
+                        </h4>
+                        <div class="form-check mt-5 mb-4 d-flex gap-3 justify-content-center mx-auto text-center">
+
+                            <mat-checkbox [(ngModel)]="checkterm" ></mat-checkbox>
+                            <span style="margin-top: 8px; margin-left: -18px;">I have read the <a (click)="gotoTermsandCondition('/term-condition')">Terms & Conditions</a> and I agree to those</span>
+
+                        </div>
+                    </div>
+                </div>
+                <button
+                    class="self-landing_green_button btn btn-outline-secondary self_landing_button_center subsBtn mb-3"
+                    (click)="paySubscription()">PAY</button>
+
+            </div>
+            <div class="points w-50 mx-auto mt-3" style="text-align: center;">
+                <p class="mb-4">Please click to complete payment through the
+                    secured payment gateway. </p>
+                <p>On successful completion of the payment
+                    process, the access to the course will be
+                    immediately available and you can get a
+                    quick access from My WOWL. </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<notifier-container></notifier-container>

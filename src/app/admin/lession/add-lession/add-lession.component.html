@@ -1,0 +1,134 @@
+
+<ng-template #deleteModal>
+  <div class="modal-content">
+      <div class="modal-header">
+          <div class="container-fluid">
+              <div class="row align-items-center">
+                  <div class="col-sm-10">
+                      <h4 class="modal-title d-inline-block align-middle me-2">
+                          Are you want to sure delete this Lesson?
+                      </h4>
+                  </div>
+                  <div class="col-sm-2 d-flex justify-content-end">
+                      <button type="button" (click)="closeModal()" class="btn-close"></button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="modal-body">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-sm-6 text-center">
+                      <button type="button" class="btn btn-secondary btn-lg me-2" (click)="closeModal()">No</button>
+                  </div>
+                  <div class="col-sm-6 text-center">
+                      <button type="button" class="btn btn-primary btn-lg me-2" (click)="delete()">Yes</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</ng-template>
+
+
+<main role="main" class="pb-3">
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="top_scne">
+        <div class="top_scne_in">
+          <h1 class="add_heading_text">Lesson</h1>
+          <button class="btn btn-edtng" *ngIf="!lessionid">Creating</button>
+          <button class="btn btn-edtng" *ngIf="lessionid">Editing</button>
+        </div>
+        <!-- <div class="top_scne_rt"><button class="btn btn-preview" *ngIf="lessionid"
+            (click)="goToPreview()">Preview</button></div> -->
+      </div>
+
+    </div>
+  </div>
+
+  <div class="main-content">
+
+    <div class="main-content-inner">
+      <div class="row">
+
+        <div class="mb-3 col-md-6">
+          <label for="name" class="form-label lebel-text">Course name </label>
+          <input type="text" [(ngModel)]="coursename" (keyup)="searchCourseByName()" [matAutocomplete]="auto"
+            class="form-control input-text" placeholder="Search..." />
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="getCourseIdByName()">
+            <mat-option *ngIf="spinner">
+              <mat-spinner style="width:50px;"></mat-spinner>
+            </mat-option>
+            <mat-option *ngFor="let item of courseArr" [value]="item.coursename">
+              {{ item.coursename }}
+            </mat-option>
+          </mat-autocomplete>
+          <span class="error-msg" *ngIf="coursenameErr">Course name required</span>
+        </div>
+
+        <div class="mb-3 col-md-6">
+          <label class="form-label lebel-text">Lesson name </label>
+          <input type="text" class="form-control input-text" placeholder="Enter lesson name" [(ngModel)]="title" (keyup)="changeLessonFun()">
+          <span class="error-msg" *ngIf="lessonnameErr">Lesson name required</span>
+        </div>
+
+        <div class="mb-3 col-md-6">
+          <label class="form-label lebel-text">Sequence </label>
+          <input type="text" class="form-control input-text" placeholder="Enter sequence" [(ngModel)]="seq" (keyup)="changeSeqFun()">
+          <span class="error-msg" *ngIf="seqErr">Sequence required</span>
+        </div>
+
+        <div class="mb-3 col-md-6">
+          <label class="form-label lebel-text">Additional learning recommendations</label>
+          <div class="row">
+              <div class="col-4">
+                  <div class="image-upload">
+                      <label for="file-input-AdditionalLearning">
+                          <button type="button" class="btn btn-upload-btn" (click)="uploadEditBtnAdditionalLearning()">
+                              File upload
+                               </button>
+                      </label>
+                      <input id="file-input-AdditionalLearning" type="file" (change)="onFileChangedAdditionalLearning($event)">
+                  </div>
+                  <span class="error-msg" *ngIf="additional_learning_recommendationsErr">File required</span>
+
+              </div>
+              <div class="col-8">
+                  <h4 *ngIf="additional_learning_recommendations">
+                      <a [href]="FILE_URL + additional_learning_recommendations" target="_blank"><i class="fa fa-file-text fileIcon"
+                              aria-hidden="true"></i></a>
+                  </h4>
+              </div>
+          </div>
+      </div>
+
+        <div class="mb-3 col-md-12">
+          <label class="form-label lebel-text">Description</label>
+          <textarea class="form-control input-text" rows="3" placeholder="Enter description" [(ngModel)]="description" (keyup)="changeDescriptionFun()">
+
+          </textarea>
+          <span class="error-msg" *ngIf="descriptionErr">Description required</span>
+        </div>
+        
+      </div>
+
+
+    </div>
+
+
+    <div class="bottom-secne" style="text-align: center;">
+      <button class="delete-button btn btn-primary" *ngIf="lessionid" (click)="onClickDelete(lessionid)">Delete Lesson</button>
+      <div *ngIf="!lessionid"></div>
+      <div>
+        <button class="cancel-button btn btn-primary" (click)="resetForm()">Cancel</button>
+        <button class="submit-button btn btn-primary" *ngIf="lessionid == null" (click)="add()">Save</button>
+        <button class="submit-button btn btn-primary " *ngIf="lessionid != null" (click)="edit()">Save</button>
+      </div>
+
+    </div>
+  </div>
+
+</main>

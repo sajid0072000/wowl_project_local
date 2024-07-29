@@ -1,0 +1,135 @@
+<div class="full-screen" id="fulldiv"></div>
+
+<main role="main" class="pb-3">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="top_scne">
+        <div class="top_scne_in">
+          <h1 class="add_heading_text">Landing Content
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="main-content-inner">
+      <div *ngIf="!isView">
+        <div class="main-content">
+          <div class="main-content-inner">
+            <div class="row">
+              <div class="col-md-12">
+                <div
+                  id="datatables-reponsive_wrapper"
+                  class="dataTables_wrapper dt-bootstrap5 no-footer"
+                >
+                  <div class="table-responsive">
+                    <table
+                      id="datatables-column-search-select-inputs"
+                      class="table table-no-striped dataTable"
+                      style="width: 100%"
+                      aria-describedby="datatables-column-search-select-inputs_info"
+                    >
+                      <thead class="thead-dark">
+                        <tr role="row">
+                          <th class="sorting align-middle">Sl No.</th>
+                          <th class="sorting align-middle">Title</th>
+                          <th class="sorting align-middle">Description</th>
+                          <th class="sorting align-middle">&nbsp;</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr
+                          role="row"
+                          class="odd"
+                          *ngFor="let item of landingContentArr; let i = index"
+                        >
+                          <td class="align-middle">{{i+1}}.</td>
+                          <td class="align-middle">{{item.title}}</td>
+                          <td class="align-middle" [innerHTML]="item.description"></td>
+                          <td class="align-middle">
+                            <button class="btn btn-arow" (click)="edit(item)">
+                              <i class="fa fa-chevron-right"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="isView">
+        <div class="row">
+          <div class="mb-3 col-md-6">
+            <label class="form-label lebel-text">Title</label>
+            <input
+              type="text"
+              class="form-control input-text"
+              placeholder="Enter Title"
+              [(ngModel)]="title"
+            />
+            <span class="error-msg" *ngIf="titleErr"
+              >Title required</span
+            >
+          </div>
+          <div class="mb-3 col-md-6">
+            <label class="form-label lebel-text">Content Image </label>
+            <div class="row">
+                <div class="col-4">
+                    <div class="image-upload">
+                        <label for="file-input-contentImgage">
+                            <button type="button" class="btn btn-upload-btn"
+                                (click)="uploadBtnContentImage()"> Upload Image
+                            </button>
+                        </label>
+                        <input id="file-input-contentImgage" type="file"
+                            (change)="onFileChangedcontentImage($event)">
+                    </div>
+                    <span class="error-msg" *ngIf="contentimgErr">Content Image Required</span>
+
+                </div>
+                <div class="col-8">
+                    <img *ngIf="contentimg" [src]="FILE_URL + contentimg"
+                        class="form-control profile_img" alt="">
+                </div>
+            </div>
+        </div>
+
+          <div class="mb-3 col-md-12">
+            <div class="mb-3 col-md-12">
+              <label class="form-label lebel-text">Description </label>
+              <ckeditor
+                [(ngModel)]="description"
+                [editor]="Editor"
+                (change)="changeDecs()"
+              ></ckeditor>
+              <span class="error-msg" *ngIf="descriptionErr"
+                >Description required</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-secne" style="text-align: center">
+          <div>
+            <button class="cancel-button btn btn-primary" (click)="cancelForm()">
+              Cancel
+            </button>
+            <button
+              class="submit-button btn btn-primary"
+              (click)="update()"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+

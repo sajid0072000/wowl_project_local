@@ -1,0 +1,82 @@
+.speaker {
+  display: flex;
+  justify-content: space-between;
+  width: 20rem;
+  /* box-shadow: 0 0 13px #0000003d; */
+  border-radius: 5px;
+}
+
+#action {
+  color: grey;
+  font-weight: 800;
+  padding: 0;
+  padding-left: 1rem;
+}
+
+.microphn {
+  background: none;
+  border-radius: 50%;
+  padding: 10px;
+  height: 44px;
+  width: 45px;
+}
+
+.hide {
+  display: none;
+}
+.reading-div ltng-div h3 {
+  font-weight: 600;
+  text-align: center;
+}
+.btn-final {
+  background-color: #4bbe82;
+  color: #fff;
+  text-decoration: none;
+}
+.btn-final:hover {
+  background-color: #4bbe82;
+  color: #fff;
+  text-decoration: none;
+  border: #4bbe8378;
+}
+.final-score{
+  margin-top: 25px;
+  color:  #3C5AAA;;
+  width: 10%;
+}
+h3.marks {
+  text-align: start;
+  font-size: 20px;
+}
+
+span.final-score.py-4 {
+  margin-top: 10px;
+  margin-right: 15px;
+  width: 22%;
+  border: 0;
+  border-radius: 20px;
+  background: #4dbb80;
+  height: 80px;
+  color: #000;
+  text-align: center;
+  font-family: "Lato", sans-serif;
+  font-size: 24px;
+  line-height: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: block;
+  padding: 10px 0;
+}
+.assm_list p{
+  text-align: start;
+  margin-bottom: 0;
+  margin-top:10px;
+  margin-left: 15px;
+}
+.assm_list ol li{
+ list-style: auto;
+}
+.assm_list li{
+  text-align: left;
+}

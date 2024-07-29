@@ -1,0 +1,163 @@
+<!--Body Header section start-->
+<div>
+  <section>
+    <div class="page_header_section"> <!-- [style.background]="'url(' + FILE_URL+bannerImage + ')'" -->
+      <img [src]="FILE_URL+bannerImage" style="height: 440px;">
+    </div>
+  </section>
+  <!--Body Header section end-->
+  <!--Body section one start-->
+  <section class="blue_bg  py-3 header_below_section">
+    <div class="container">
+      <div class="row text-center">
+        <h1 class="white_text">Choose your {{name}} Language Programme</h1>
+        <!--<div class="container py-2">
+            <div class="row text-center">
+              <div class="col-sm-4 themed-grid-col">
+              </div>
+              <div class="col-sm-2 col-6 themed-grid-col">
+                <a href="#programmes-for-students"><img class="language_box" src="assets/images/button_p2_1.webp"></a>
+              </div>
+              <div class="col-sm-2 col-6 themed-grid-col">
+                <a href="#programmes-for-teaches"> <img class="language_box" src="assets/images/button_p2_2.webp"></a>
+              </div>
+              <div class="col-sm-4 themed-grid-col">
+              </div>
+
+            </div>
+          </div>-->
+      </div>
+    </div>
+  </section>
+  <!--Body section one end-->
+  <!--Body section two start-->
+  <section class="white_bg">
+    <div class="container">
+      <div class="row text-center">
+        <div class="common-language-black-head-text head_extra_space_bottom">
+          <h3>{{landingtitle}}</h3>
+        </div>
+        <div class="common-language-blue-head-text">
+          <h3>WOWL brings to you the best platform for</h3>
+        </div>
+        <div class="common-language-green-head-text">
+          <h3>Live Online {{name}} Language Course</h3>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!--Body section two end-->
+  <!--Body section three start-->
+  <section class="grey_bg_three">
+    <div class="container">
+      <div class="row text-center">
+        <div class="common-language-blue-head-text head_extra_space_bottom">
+          <h3>Why learn {{name}} language</h3>
+        </div>
+        <div class="common-language-para-text">
+          <p [innerHTML]="categoryObj.categoryTypeData.description"></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!--Body section three end-->
+  <!--Body section four start-->
+  <section class="white_bg">
+    <div class="container">
+      <div class="row text-center">
+        <div class="common-language-blue-head-text head_extra_space_bottom">
+          <h3>Why learn {{name}} language with WOWL</h3>
+        </div>
+        <div class="container common_space">
+          <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-sm-6 themed-grid-col">
+              <div class="image_vdoe_35 position-relative">
+                <svg (click)="playVideo()" *ngIf="!videoDiv" xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                  <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445"/>
+                </svg>
+                <img *ngIf="!videoDiv" [src]="FILE_URL+videothumbnail"
+                (click)="playVideo()" />
+              <div *ngIf="videoDiv" id="video-container"></div>
+              </div>
+              
+            </div>
+            <div class="col-sm-6 themed-grid-col">
+              <div class="common-language-para-text">
+                <p>{{categoryObj.categoryTypeData.whylearnlangwithwowl}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!--Body section four end-->
+  <!--Body section five start-->
+
+
+  <section class="grey_bg_three" id="programmes-for-students">
+    <div class="container" *ngFor="let obj of categoryObj.categoriesDtl">
+      <div class="row text-center d-flex align-items-center justify-content-center">
+        <div class="col-sm-2 themed-grid-col"></div>
+        <div class="col-sm-7 themed-grid-col">
+          <div class="common-language-blue-head-text head_extra_space_bottom">
+            <h3>{{obj.name}}
+              <img *ngIf="obj.islive === 0" src="assets/images/button2.webp">
+              <img *ngIf="obj.islive === 1" src="assets/images/live-online-button.png" />
+            </h3>
+          </div>
+        </div>
+        <div class="col-sm-1 themed-grid-col"></div>
+        <div *ngIf="obj.courselist.length == 0">
+          <div class="container">
+            <div class="row common_space">
+              <div class="col-sm-3 col-6 themed-grid-col">
+                <div class="language-four-box datanotfound">
+                  <img src="assets/images/dataNotFound.jpg" />
+                  <p>Data Not Found</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="obj.courselist.length> 0">
+          <div class="container mt-3">
+            <div class="row">
+              <div class="col-sm-3 col-6 themed-grid-col" *ngFor="let data of obj.courselist">
+                <div class="language-four-box">
+                  <div class="language-four-box-img-div">
+                    <!-- <strong *ngIf="data.ispaid===0" class="fre_acs">Free <span>Access</span></strong> -->
+                    <!-- <p class="img_ttle">{{data.coursename}} <span class="img_ttle_sp">{{data.coursecode}}</span></p> -->
+                    <img [src]="FILE_URL+data.coursephoto">
+                  </div>
+                  <ul  [ngClass]="{'liveAccess': obj.islive === 0, 'selfAccess': obj.islive === 1}">
+                    <li  [ngClass]="{'liveAccess': obj.islive === 0, 'selfAccess': obj.islive === 1}" *ngFor="let sh of splitDescription(data.shortdesc)"><div class="long">{{sh}}</div></li>
+                  </ul>
+                  <a (click)="goto(data.courseid, obj.islive)">
+                    <div class="language-four-box-button" [ngClass]="{'liveButton': obj.islive === 1, 'selfButton': obj.islive === 0}">
+                      KNOW MORE
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+</div>
+

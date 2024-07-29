@@ -1,0 +1,189 @@
+<div class="full-screen" id="fulldiv">
+    <div>
+        <button class="close" (click)="toggleFullScreenImg(0)">X</button>
+    </div>
+    <div class="full-screen-img">
+        <img [src]="fullScreenImg" alt="" style="width: 500px;">
+    </div>
+</div>
+
+<ng-template #deleteModal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-sm-10">
+                        <h4 class="modal-title d-inline-block align-middle me-2">
+                            Are you want to sure delete this educator?
+                        </h4>
+                    </div>
+                    <div class="col-sm-2 d-flex justify-content-end">
+                        <button type="button" (click)="closeModal()" class="btn-close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-secondary btn-lg me-2" (click)="closeModal()">No</button>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-primary btn-lg me-2"
+                            (click)="deleteEducator()">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+<main role="main" class="pb-3">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="top_scne">
+                <div class="top_scne_in">
+                    <h1 class="add_heading_text">Educator</h1>
+                    <button class="btn btn-edtng" *ngIf="!educatorsId">Creating</button>
+                    <button class="btn btn-edtng" *ngIf="educatorsId">Editing</button>
+                </div>
+                <!-- <div class="top_scne_rt"><button class="btn btn-preview" *ngIf="educatorsId"
+                        (click)="goToPreview()">Preview</button></div> -->
+            </div>
+
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="row">
+
+                <div class="mb-3 col-md-6">
+                    <label for="name" class="form-label lebel-text">Educator name</label>
+                    <input type="text" placeholder="Enter educator name" class="form-control input-text" [(ngModel)]="educatorname" (keyup)="changeEducatorNameFun()" />
+                    <span class="error-msg" *ngIf="educatornameErr">Educator name required</span>
+
+
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label for="shortname" class="form-label lebel-text">Short name</label>
+                    <input type="text" class="form-control input-text" placeholder="Enter short name" [(ngModel)]="educatorshortname" (keyup)="changeEducatorShortNameFun()" />
+                    <span class="error-msg" *ngIf="educatorshortnameErr">Short name required</span>
+
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label for="email" class="form-label lebel-text">Email</label>
+                    <input type="email" class="form-control input-text" placeholder="Enter email" [(ngModel)]="educatoremail" (keyup)="changeEducatorEmailFun()" [disabled]="educatorsId" />
+                    <span class="error-msg" *ngIf="educatoremailErr">Email required</span>
+                    <span class="error-msg" *ngIf="educatoremailValidErr">Valid email required</span>
+
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label for="categorytype" class="form-label lebel-text">Category type</label>
+                    <select class="form-select input-text" aria-label="Default select example"
+                        [(ngModel)]="categoryType" (change)="changeEducatorcategoryTypeFun()">
+                        <option value="">Select</option>
+                        <option *ngFor="let item of categoryTypeList" [value]="item.categorytypeid">{{item.name}}
+                        </option>
+                    </select>
+                    <span class="error-msg" *ngIf="categoryTypeErr">Category type required</span>
+
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label for="address" class="form-label lebel-text">Address</label>
+                    <textarea class="form-control input-text" id="exampleFormControlTextarea1"
+                        [(ngModel)]="educatoraddress" (keyup)="changeEducatorAddressFun()" placeholder="Enter address">
+                    </textarea>
+                    <span class="error-msg" *ngIf="educatoraddressErr">Address required</span>
+
+                </div>
+
+                <div class="mb-3 col-md-6 ">
+                    <label for="phot0" class="form-label lebel-text">Photo</label>
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="image-upload">
+                                <label for="file-input">
+                                    <button type="button" class="btn btn-upload-btn" (click)="uploadBtn()"> Upload photo
+                                    </button>
+                                </label>
+                                <input id="file-input" type="file" (change)="onFileChanged($event)">
+                            </div>
+                            <span class="error-msg" *ngIf="educatorImageErr">Photo required</span>
+
+                        </div>
+                        <div class="col-7">
+                            <img *ngIf="educatorImage" [src]="FILE_URL + educatorImage" class="form-control profile_img"
+                                alt="" (click)="imagePopUp()">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label for="mobile" class="form-label lebel-text">Mobile number</label>
+                    <input type="number" class="form-control input-text" placeholder="Enter mobile number" [(ngModel)]="educatorphone" (keyup)="changeEducatorPhoneFun()" />
+                    <span class="error-msg" *ngIf="educatorphoneErr">Mobile number required</span>
+                    <span class="error-msg" *ngIf="educatorphoneValidErr">Valid mobile number required</span>
+
+                </div>
+                <div class="mb-3 col-md-6" *ngIf="!educatorsId">
+                    <label class="form-label lebel-text" for="inlineFormInputGroupUsername2">Password</label>
+                    <input [type]="passwordType" class="form-control input-text" id="inlineFormInputGroupUsername2"
+                        [(ngModel)]="password"  (keyup)="changeEducatorPasswordFun()" placeholder="Enter password"/>
+                    <span class="error-msg" *ngIf="passwordErr">Password required</span>
+                    <span class="error-msg" *ngIf="passwordValidErr">Valid password required</span>
+
+                </div>
+                <div class="mb-3 col-md-12">
+                    <label for="subheading" class="form-label lebel-text">Sub heading </label>
+                    <input type="text" class="form-control input-text" placeholder="Enter sub heading" [(ngModel)]="subheading" (keyup)="changeEducatorSubHeadingFun()" />
+                    <span class="error-msg" *ngIf="subheadingErr">Sub heading required</span>
+
+                </div>
+                <div class="mb-3 col-md-12">
+                    <label for="expart" class="form-label lebel-text">Educator Expert </label>
+                    <textarea class="form-control input-text" id="exampleForms1ControlTextarea1"
+                        [(ngModel)]="educatorExpert" (keyup)="changeEducatorExpertFun()" placeholder="Enter educator expert">
+                    </textarea>
+                    <span class="error-msg" *ngIf="educatorExpertErr">Educator expert required</span>
+
+                </div>
+
+                <div class="mb-3">
+                    <label for="about" class="form-label lebel-text">Educator about </label>
+                    <ckeditor [(ngModel)]="educatorAbout" [config]="{ placeholder:'Enter educator about'}" [editor]="Editor" (change)="changeEducatorAboutFun()"></ckeditor>
+                    <span class="error-msg" *ngIf="educatorAboutErr">Educator about required</span>
+
+                </div>
+                <div class="mb-3">
+                    <label for="experiance" class="form-label lebel-text">Teaching experiance </label>
+                    <ckeditor [(ngModel)]="teachingExperiance" [editor]="Editor" [config]="{ placeholder:'Enter teaching experiance'}" (change)="changeEducatorTeachingExperianceFun()"></ckeditor>
+                    <span class="error-msg" *ngIf="teachingExperianceErr">Teaching experiance required</span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="bottom-secne" style="text-align: center;">
+            <button class="delete-button btn btn-primary" *ngIf="educatorsId" (click)="onClickDelete(educatorsId)">Delete
+                Educator</button>
+            <div *ngIf="!educatorsId"></div>
+            <div>
+                <button class="cancel-button btn btn-primary" (click)="resetForm()">Cancel</button>
+                <button class="submit-button btn btn-primary" *ngIf="!educatorsId" (click)="addEducator()">Save</button>
+                <button class="submit-button btn btn-primary " *ngIf="educatorsId"
+                    (click)="updateEducator()">Save</button>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</main>

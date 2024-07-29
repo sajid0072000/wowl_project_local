@@ -1,0 +1,267 @@
+<section>
+  <div class="page_header_section">
+    <img [src]="FILE_URL + coursebanner" />
+  </div>
+</section>
+<!--Body Header section end-->
+<!--Body section one start-->
+<section class="white_bg">
+  <div class="container">
+    <div class="row text-center">
+      <div class="common-language-blue-head-text">
+        <h3>Course Features</h3>
+      </div>
+      <div class="common-language-para-text">
+        <p [innerHTML]="longdesc"></p>
+      </div>
+
+      <div class="container common_space">
+        <div class="row d-flex justify-content-center">
+          <div class="col-sm-6 themed-grid-col">
+            <div class="common-language-blue-head-text-other-version head-center-mobile">
+              <h3>Course Overview</h3>
+            </div>
+            <div class="self-landing-list-style">
+              <ul>
+                <li *ngFor="
+                    let sh of splitDescription(
+                      courseDetails.courseDtl.shortdesc
+                    )
+                  ">
+                  {{ sh }}
+                </li>
+              </ul>
+              <div>
+                <a (click)="downloadPdf(courseDetails.courseDtl.syllabus)"
+                  class="self-landing_blue_button btn btn-outline-secondary button_left-desktop">View / Download
+                  Syllabus</a>
+                <a *ngIf="isLive == '1'"
+                  class="self-landing_transparent_button btn btn-outline-secondary button_left-desktop"
+                  (click)="openUcomingModal(upcomingCourseModal)">Upcoming Course</a>
+                <a *ngIf="isLive == '0'"
+                  class="self-landing_transparent_button btn btn-outline-secondary button_left-desktop"
+                  (click)="openSelflearningModal(selfLearningModal)">Self-access Learning Tips</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 themed-grid-col">
+            <div class="common-language-blue-head-text-other-version head_extra_space_top-mobile head-center-mobile">
+              <h3>Preview Lesson</h3>
+            </div>
+            <div class="image_vdoe_45 position-relative">
+              <svg (click)="playVideo()" *ngIf="!videoDiv" xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445"/>
+              </svg>
+              <img *ngIf="!videoDiv" [src]="FILE_URL + courseDetails.courseDtl.videothumbnail" (click)="playVideo()" />
+              <div *ngIf="videoDiv" id="video-container"></div>
+            </div>
+          </div>
+
+          <div>
+            <a
+              *ngIf="isLive == '0'"
+              class="self-landing_green_button btn btn-outline-secondary self_landing_button_center"
+              (click)="checkLoginforJoin(courseDetails.courseDtl.courseid, courseDetails.courseDtl)"
+              >JOIN COURSE</a
+            >
+
+            <!-- <a *ngIf="isLive == '0'"
+              class="self-landing_green_button btn btn-outline-secondary self_landing_button_center"
+              (click)="gotoCourseLesson(courseDetails.courseDtl.courseid)">JOIN COURSE</a> -->
+
+            <a *ngIf="isLive == '1'" data-bs-toggle="modal" data-bs-target="#talktoanadvisormodal"
+              class="self-landing_green_button btn btn-outline-secondary self_landing_button_center"
+              (click)="checkLogin()">TALK TO AN ADVISOR</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Body section one end-->
+<!--Body section two start-->
+<section class="grey_bg_three">
+  <div class="container">
+    <div class="row text-center">
+      <div class="common-language-blue-head-text head_extra_space_bottom">
+        <h3>Learning Outcomes</h3>
+      </div>
+      <div class="self-landing-list-style-two">
+        <ul>
+          <li *ngFor="let out of courseDetails.courseDtl.learningOutcomes">
+            {{ out.outcomes }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Body section two end-->
+<!--Body section three start-->
+<section class="white_bg">
+  <div class="container">
+    <div class="row text-center">
+      <div class="common-language-blue-head-text">
+        <h3>Educator(s)</h3>
+      </div>
+
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-sm-3 themed-grid-col"></div>
+
+          <div class="col-6 col-sm-3 themed-grid-col" *ngFor="let edu of courseDetails.educator">
+            <div class="self-landing-educators-image">
+              <img *ngIf="edu.educatorphotouri" [src]="FILE_URL + edu.educatorphotouri"
+                onerror="this.onerror=null; this.src='assets/images/person.png'" />
+              <div class="self-landing-educators-image-text">
+                <h3>{{ edu.educatorname }}</h3>
+                <a (click)="gotoEducator(edu.educatorid)">See profile</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-3 themed-grid-col"></div>
+
+          <div>
+             <a
+              *ngIf="isLive == '0'"
+              class="self-landing_green_button btn btn-outline-secondary self_landing_button_center"
+              (click)="checkLoginforJoin(courseDetails.courseDtl.courseid, courseDetails.courseDtl)"
+              >JOIN COURSE</a
+            >
+            <!-- <a
+              *ngIf="isLive == '0'"
+              class="self-landing_green_button btn btn-outline-secondary self_landing_button_center"
+              (click)="gotoCourseLesson(courseDetails.courseDtl.courseid)"
+              >JOIN COURSE</a
+            > -->
+
+            <a *ngIf="isLive == '1'" data-bs-toggle="modal" data-bs-target="#talktoanadvisormodal"
+              class="self-landing_green_button btn btn-outline-secondary self_landing_button_center"
+              (click)="checkLogin()">TALK TO AN ADVISOR</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal Start-->
+<ng-template #advierModal>
+
+  <div id="talktoanadvisormodal" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+          TALK TO AN ADVISOR
+        </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="closeModal1()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="footer_form popup-form">
+          <div action="">
+            <div class="">
+              <input type="text" class="form-control" id="floatingname" placeholder="Name*" required=""
+                [(ngModel)]="name" (keyup)="changeNameFun()" />
+              <span class="error-msg" *ngIf="nameErr">Name is required </span>
+            </div>
+
+            <div class="">
+              <input type="email" class="form-control" id="floatingemailaddress" placeholder="E-mail address*"
+                required="" [(ngModel)]="email" (keyup)="changeEmalFun()" />
+              <span class="error-msg" *ngIf="emailErr">Email is required </span>
+              <span class="error-msg" *ngIf="validEmailErr">Valid email is required
+              </span>
+            </div>
+            <div class="">
+              <input type="number" class="form-control" id="floatingphonenumber" placeholder="Phone number*" required=""
+                [(ngModel)]="mobile" (keyup)="chngeMobileFun()" />
+              <span class="error-msg" *ngIf="mobileErr">Mobile number is required
+              </span>
+              <span class="error-msg" *ngIf="validMobileNumberErr">Valid mobile number is required
+              </span>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-4"></div>
+              <div class="col-sm-4">
+                <button class="btn btn-primary w-100 py-2" type="submit" (click)="LiveCourseRequestBySessionId()">
+                  SUBMIT
+                </button>
+              </div>
+              <div class="col-sm-4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ng-template>
+
+<!-- Modal Start-->
+<ng-template #upcomingCourseModal>
+  <div id="talktoanadvisormodal" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+          Upcoming Course
+        </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="up-come-body">
+          <ul>
+            <li *ngFor="let sh of splitDescription(selfaccess)">{{ sh }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!-- Modal Start-->
+<ng-template #selfLearningModal>
+  <div id="talktoanadvisormodal" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+          Self-access Learning Tips
+        </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body self-assess">
+        <p [innerHTML]="selfaccess"></p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #awesomeModal>
+  <div id="self-modal" tabindex="-1" aria-labelledby="self-modalLabel" aria-hidden="false">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close new-clos-btn" data-bs-dismiss="modal" aria-label="Close"
+          (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <h4 style="color: blue;">AWESOME !</h4>
+        <hr class="big-green" />
+        <div>
+          <p>
+            You Have Taken a great step ahead. We are happy to seen you
+            interested. Our expert Advisor wil call You soon
+          </p>
+          <span style="color: blue;">Thank You</span>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</ng-template>
+

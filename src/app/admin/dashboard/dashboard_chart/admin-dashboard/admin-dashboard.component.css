@@ -1,0 +1,16 @@
+.chart{
+    margin-bottom: 27px;
+}
+mat-card-content{
+    height: 370px;
+}
+.total-class{
+    color: gray;
+}
+.table.table-no-striped tbody td {
+    padding:2px 2px;
+    background: none;
+}
+.table.table-no-striped th {
+    padding:0 0 !important ;
+}

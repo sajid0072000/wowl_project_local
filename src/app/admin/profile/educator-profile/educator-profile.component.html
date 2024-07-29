@@ -1,0 +1,354 @@
+<main role="main" class="pb-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="top_scne">
+                <div class="top_scne_in">
+                    <button *ngIf="!isView" class="back_btn" type="button" (click)="goBack()">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+                    </button>
+                    <h1 *ngIf="isView">Educator Profile</h1>
+                    <h1 *ngIf="!isView">Edit Profile</h1>
+                </div>
+                    <div class="btn-group btn-group-sm ms-auto  btn-download-group">
+
+                        <button class="add-button-sm mx-2" type="button" (click)="edit()" *ngIf="isView">
+                            Edit
+                        </button>
+                        <button class="add-button-sm mx-2" type="button" (click)="save()" *ngIf="!isView">
+                            Save
+                        </button>
+                    </div>
+                
+            </div>
+
+        </div>
+    </div>
+
+    <div class="main-content" *ngIf="isView">
+        <div class="main-content-inner">
+            <div class="row" style="text-align: left;">
+                <div class="col-sm-12">
+                    <div><img [src]="FILE_URL + educatorObj.educatorphotouri" class="profile_img" /></div>
+                </div>
+            </div>
+            <div class="row mt-3 profile-row">
+                <div class="col-sm-2 profile-lable">
+                    <div>Educator Name:</div>
+                </div>
+
+                <div class="col-sm-4 profile-text">
+                    <div>{{educatorObj.educatorname}}</div>
+                </div>
+
+                <div class="col-sm-2 profile-lable">
+                    <div>Short Name:</div>
+                </div>
+
+                <div class="col-sm-4 profile-text">
+                    <div>{{educatorObj.shortname}}</div>
+                </div>
+
+            </div>
+            <div class="row profile-row">
+
+                <div class="col-sm-2 profile-lable">
+                    <div>Email:</div>
+                </div>
+
+                <div class="col-sm-4 profile-text">
+                    <div>{{educatorObj.email}}</div>
+                </div>
+
+                <div class="col-sm-2 profile-lable">
+                    <div>Mobile No.:</div>
+                </div>
+
+                <div class="col-sm-4 profile-text">
+                    <div>{{educatorObj.mobile}}</div>
+                </div>
+
+            </div>
+            <div class="row profile-row">
+
+                <div class="col-sm-2 profile-lable">
+                    <div>Category Type:</div>
+                </div>
+
+                <div class="col-sm-4 profile-text">
+                    <div>{{educatorObj.categorytypename}}</div>
+                </div>
+
+                <div class="col-sm-2 profile-lable">
+                    <div>Address:</div>
+                </div>
+
+                <div class="col-sm-4 profile-text">
+                    <div>{{educatorObj.address}}</div>
+                </div>
+
+            </div>
+            <div class="row profile-row">
+
+                <div class="col-sm-2 profile-lable">
+                    <div>Subheading:</div>
+                </div>
+
+                <div class="col-sm-4 profile-text">
+                    <div>{{educatorObj.educatorsubheading}}</div>
+                </div>
+
+                <div class="col-sm-2 profile-lable">
+                    <div>Educator Expert:</div>
+                </div>
+
+                <div class="col-sm-4 profile-text">
+                    <div>{{educatorObj.educatorexcerpt}}</div>
+                </div>
+
+            </div>
+            <div class="row profile-row">
+
+                <div class="col-sm-2 profile-lable">
+                    <div>Category:</div>
+                </div>
+
+                <div class="col-sm-4 profile-text">
+                    <span *ngFor="let obj of educatorObj.categoryList; let i = index">
+                        {{obj.name}} {{i === educatorObj.categoryList.length -1 ? '' : ',&nbsp;' }}
+                    </span>
+                </div>
+
+                <div class="col-sm-2 profile-lable">
+                    <div>Subject Tought:</div>
+                </div>
+
+                <div class="col-sm-4 profile-text">
+                    <span *ngFor="let obj of educatorObj.subjectList; let i = index">
+                        {{obj.name}} {{i === educatorObj.subjectList.length -1 ? '' : ',&nbsp;' }}
+                    </span>
+                </div>
+
+            </div>
+            <div class="row profile-row">
+
+                <div class="col-sm-2 profile-lable">
+                    <div>About:</div>
+                </div>
+
+                <div class="col-sm-4 profile-text">
+                    <div>
+                        <div [innerHTML]="educatorObj.about"></div>
+                    </div>
+                </div>
+
+                <div class="col-sm-2 profile-lable">
+                    <div>Teaching Experiance:</div>
+                </div>
+
+                <div class="col-sm-4 profile-text">
+                    <div>
+                        <div [innerHTML]="educatorObj.teachingexp"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row profile-row">
+                <div class="col-sm-12 profile-lable">
+                    <div class="text-info">Qualifications</div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="table-responsive">
+
+                        <table class="table table-striped dataTable" style="width: 100%;">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="profile-lable">Subject</th>
+                                    <th class="profile-lable">Level</th>
+                                    <th class="profile-lable">Grade</th>
+                                    <th class="profile-lable">Institutions</th>
+                                    <th class="profile-lable">Years Studied</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let obj of educatorObj.qualificationList">
+                                    <td class="profile-text">{{obj.subjectname}}</td>
+                                    <td class="profile-text">{{obj.levelname}}</td>
+                                    <td class="profile-text">{{obj.greadname}}</td>
+                                    <td class="profile-text">{{obj.institutename}}</td>
+                                    <td class="profile-text">{{obj.time}}</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+</div>
+    <div class="main-content" *ngIf="!isView">
+        <div class="main-content-inner">
+        <div class="row">
+
+            <div class="mb-3 col-md-6">
+                <label for="name" class="form-label lebel-text">Educator Name:</label>
+                <input type="text" class="form-control" [(ngModel)]="educatorname">
+            </div>
+            <div class="mb-3 col-md-6">
+                <label for="shortname" class="form-label lebel-text">Short Name: </label>
+                <input type="text" class="form-control" [(ngModel)]="educatorshortname">
+            </div>
+            <div class="mb-3 col-md-6">
+                <label for="email" class="form-label lebel-text">Email: </label>
+                <input type="email" class="form-control" [(ngModel)]="educatoremail">
+            </div>
+            <div class="mb-3 col-md-6">
+                <label for="categorytype" class="form-label lebel-text">Category Type: </label>
+                <select class="form-select" aria-label="Default select example" [(ngModel)]="categoryType" (change)="getCategories()">
+                    <option *ngFor="let item of categoryTypeList" [value]="item.categorytypeid">{{item.name}}</option>
+                </select>
+            </div>
+            <div class="mb-3 col-md-6">
+                <label for="address" class="form-label lebel-text">Address: </label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
+                    [(ngModel)]="educatoraddress"></textarea>
+            </div>
+
+            <div class="mb-3 col-md-6 ">
+                <label for="phot0" class="form-label lebel-text">Photo: </label>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="image-upload">
+                            <label for="file-input">
+                                <img src="assets/img/upload_icon.jpg" style="width: 60px;" />
+                            </label>
+                            <input id="file-input" type="file" (change)="onFileChanged($event)">
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <img *ngIf="educatorImage" [src]="FILE_URL + educatorImage" class="form-control profile_img"
+                            alt="" (click)="imagePopUp()">
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="mb-3 col-md-6">
+                <label for="mobile" class="form-label lebel-text">Mobile Number: </label>
+                <input type="number" class="form-control" [(ngModel)]="educatorphone">
+            </div>
+            <div class="mb-3 ">
+                <label for="subheading" class="form-label lebel-text">Subheading: </label>
+                <input type="text" class="form-control" [(ngModel)]="subheading">
+            </div>
+            <div class="mb-3">
+                <label for="expart" class="form-label lebel-text">Educator Expert: </label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                    [(ngModel)]="educatorExpert"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label lebel-text">Category: </label>
+                <ng-multiselect-dropdown [placeholder]="'Select catagory'" [settings]="dropdownSettings"
+                    [data]="dropdownList" [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)"
+                    (onSelectAll)="onSelectAll($event)" [disabled]="categoryType == ''">
+                </ng-multiselect-dropdown>
+            </div>
+            <div class="mb-3">
+                <label for="subjectTought" class="form-label lebel-text">Subject Tought: </label>
+                <ng-multiselect-dropdown [placeholder]="'Select subject'" [settings]="dropdownSettings2"
+                    [data]="dropdownList2" [(ngModel)]="selectedItems2" (onSelect)="onItemSelect2($event)"
+                    (onSelectAll)="onSelectAll2($event)">
+                </ng-multiselect-dropdown>
+            </div>
+
+            <div class="mb-3">
+                <label for="about" class="form-label lebel-text">About: </label>
+                <ckeditor [(ngModel)]="educatorAbout" [editor]="Editor"></ckeditor>
+
+            </div>
+            <div class="mb-3">
+                <label for="experiance" class="form-label lebel-text">Teaching Experiance: </label>
+                <ckeditor [(ngModel)]="teachingExperiance" [editor]="Editor"></ckeditor>
+            </div>
+
+            <div class="heading">
+                <mat-card>
+                    <mat-card-content>
+                        <h4 class="text-info">Qualifications</h4>
+                        <table class="table-responsive table table-striped dataTable" style="width: 100%;">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Level</th>
+                                    <th>Grade</th>
+                                    <th>Institutions</th>
+                                    <th>Years Studied (eg,2018-2021)</th>
+                                    <th *ngIf="qualificationArr.length >1"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let arr of qualificationArr; index as i; let j = index;">
+                                    <td style="width: 200px;">
+                                        <ng-select appendTo="body" [(ngModel)]="arr.subjectid"
+                                            (search)="getQualificationSubjects($event.term, arr)">
+                                            <ng-option class="form-control" *ngFor="let sub of arr.subjectArr"
+                                                [value]="sub.id">{{sub.name}}</ng-option>
+                                        </ng-select>
+                                    </td>
+
+                                    <td style="width: 200px;">
+                                        <ng-select appendTo="body" [(ngModel)]="arr.levelid"
+                                            (search)="getQualificationLevels($event.term , arr)">
+                                            <ng-option class="form-control" *ngFor="let level of arr.levelArr"
+                                                [value]="level.id">{{level.name}}</ng-option>
+                                        </ng-select>
+                                    </td>
+
+                                    <td style="width: 200px;">
+                                        <ng-select appendTo="body" [(ngModel)]="arr.gradeid"
+                                            (search)="getQualificationGrade($event.term , arr)">
+                                            <ng-option class="form-control" *ngFor="let grade of arr.gradeArr"
+                                                [value]="grade.id">{{grade.name}}</ng-option>
+                                        </ng-select>
+                                    </td>
+                                    <td style="width: 200px;">
+                                        <ng-select appendTo="body" [(ngModel)]="arr.institutionid"
+                                            (search)="getInstitution($event.term , arr)">
+                                            <ng-option class="form-control" *ngFor="let ins of arr.institutionArr"
+                                                [value]="ins.id">{{ins.name}}</ng-option>
+                                        </ng-select>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" [(ngModel)]="arr.time">
+                                    </td>
+                                    <td *ngIf="qualificationArr.length >1 && j!==0">
+                                        <i class="deletebtn fa fa-trash mt-2" style="font-size:24px;  cursor: pointer;"
+                                            (click)="deleteExpTable()"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </mat-card-content>
+                </mat-card>
+                <button (click)="addExpTable()" class="add_more mt-3" style="float: right;">
+                    <img
+                        src="assets/img/addmore.png" style="width: 40px; " /><span>Add More
+                        Educational Experience</span></button>
+
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+
+<div class="full-screen" id="fulldiv">
+    <div>
+        <button class="close" (click)="toggleFullScreenImg(0)">X</button>
+    </div>
+    <div class="full-screen-img">
+        <img [src]="fullScreenImg" alt="" style="width: 500px;">
+    </div>
+</div>

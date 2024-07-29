@@ -1,0 +1,33 @@
+.image-upload > input
+{
+    display: none;
+}
+
+input[type="date"]::-webkit-datetime-edit-day-field, 
+input[type="date"]::-webkit-datetime-edit-fields-wrapper,
+input[type="date"]::-webkit-datetime-edit-month-field, 
+input[type="date"]::-webkit-datetime-edit-year-field ,
+input[type="date"]::-webkit-datetime-edit-text{
+    opacity: var(--field-opacity, 0.4);
+    }
+    input[type="date"].has-value, input[type="date"].has-value::-webkit-datetime-edit-fields-wrapper {
+        --field-opacity: 1;
+    }
+
+
+
+    /* .active-sub , .history{
+        border: 1px solid #eee;
+        box-shadow: 0px 5px 5px 0px #eee;
+        height: 42px;
+        padding: 8px;
+        text-align: center;   
+     } */
+
+    .renew-th{
+        width: 25%;
+    }
+
+    .sub::first-letter {
+        text-transform:capitalize;
+    }

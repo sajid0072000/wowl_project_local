@@ -1,0 +1,8 @@
+.heading{
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+.image-upload > input
+{
+    display: none;
+}

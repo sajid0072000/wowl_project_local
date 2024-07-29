@@ -1,0 +1,132 @@
+<main role="main" class="pb-3">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="top_scne">
+                <div class="top_scne_in">
+                    <h1>Public Source</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="main-content">
+        <div class="main-content-inner">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>Youtube Url</mat-card-title>
+                        </mat-card-header>
+
+                        <mat-card-content>
+                            <div *ngIf="isEdityoutube">
+                                <input type="text" class="form-control input-text" [(ngModel)]="sourceValue"/>
+                                <span class="error-msg" *ngIf="isEdityoutubeErr">Url required</span>
+                            </div>
+                            <div *ngIf="!isEdityoutube">
+                                {{publicResourceList.youtubeurl}}
+                            </div>
+                            
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button class="btn btn-primary" *ngIf="!isEdityoutube" (click)="onEditYoutube()">Edit</button>
+                            <button class="btn btn-primary" *ngIf="isEdityoutube" (click)="onSaveYoutube()">Save</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+                <div class="col-md-4">
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>Promo banner</mat-card-title>
+                        </mat-card-header>
+
+                        <mat-card-content>
+                            <div *ngIf="isEditBanner">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="image-upload">
+                                            <label for="file-input-Banner">
+                                                <button type="button" class="btn btn-upload-btn"
+                                                    (click)="uploadBtnBanner()"> Upload Image
+                                                </button>
+                                            </label>
+                                            <input id="file-input-Banner" type="file"
+                                                (change)="onFileChangedBanner($event)">
+                                        </div>
+                                        <span class="error-msg" *ngIf="isEditBannerErr">Banner image required</span>
+            
+                                    </div>
+                                    <div class="col-6">
+                                        <img *ngIf="bannerImage" [src]="FILE_URL + bannerImage"
+                                            class="form-control profile_img" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="!isEditBanner">
+                                <img [src]="FILE_URL + bannerImage"
+                            class="form-control public_img" alt="" >
+                            </div>
+
+                            
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button class="btn btn-primary" *ngIf="!isEditBanner" (click)="onEditBanner()">Edit</button>
+                            <button class="btn btn-primary" *ngIf="isEditBanner" (click)="onSaveBanner()">Save</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+                <div class="col-md-4">
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>Practice banner</mat-card-title>
+                        </mat-card-header>
+
+                        <mat-card-content>
+
+                            <div *ngIf="isEditPractice">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="image-upload">
+                                            <label for="file-input-Practice">
+                                                <button type="button" class="btn btn-upload-btn"
+                                                    (click)="uploadBtnPracticeImage()"> Upload Image
+                                                </button>
+                                            </label>
+                                            <input id="file-input-Practice" type="file"
+                                                (change)="onFileChangedPracticeImage($event)">
+                                        </div>
+                                        <span class="error-msg" *ngIf="isEditPracticeErr">Practice image required</span>
+            
+                                    </div>
+                                    <div class="col-6">
+                                        <img *ngIf="practiceImage" [src]="FILE_URL + practiceImage"
+                                            class="form-control profile_img" alt="" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="!isEditPractice">
+                                <img [src]="FILE_URL + practiceImage"
+                            class="form-control public_img" alt="" >
+                            </div>
+
+                            
+                        
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button class="btn btn-primary" *ngIf="!isEditPractice" (click)="onEditPractice()">Edit</button>
+                            <button class="btn btn-primary" *ngIf="isEditPractice" (click)="onSavePractice()">Save</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</main>

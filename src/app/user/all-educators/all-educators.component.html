@@ -1,0 +1,31 @@
+<section class="white_bg" id="programmes-for-students">
+    <div class="container">
+        <div class="row text-center d-flex align-items-center justify-content-center">
+            <div class="common-language-blue-head-text">
+                <h3>All Teachers</h3>
+            </div>
+
+            <div class="container">
+                <div class="row common_space">
+                    <!--Box start-->
+                    <div class="col-sm-3 col-6 themed-grid-col" *ngFor="let obj of educatorArr">
+                        <div class="wowl-ueg-language-box">
+                            <img [src]="FILE_URL+obj.educatorphotouri" onerror="this.onerror=null; this.src='assets/images/person.png'" />
+                            <div class="teacher_container">
+                                <h4 class="teacher_name">{{obj.educatorname}}</h4>
+                                <h5 class="teacher_profile">{{obj.categoryTypeName}} Language</h5>
+                            </div>
+                            <a (click)="gotoEducator(obj.educatorid)">
+                                <div class="wowl-ueg-language-box-button">
+                                    See profile
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--Box end-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

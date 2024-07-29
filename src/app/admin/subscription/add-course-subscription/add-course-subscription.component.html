@@ -1,0 +1,104 @@
+<main role="main" class="pb-3">
+
+
+    <div class="row">
+      <div class="col-md-12">
+          <div class="top_scne">
+              <div class="top_scne_in">
+                  <h1 class="add_heading_text">Course Subscription</h1>
+                  <button class="btn btn-edtng" *ngIf="!coursesubscriptionid">Creating</button>
+                  <button class="btn btn-edtng" *ngIf="coursesubscriptionid">Editing</button>
+              </div>
+          </div>
+  
+      </div>
+  </div>
+  
+  
+  
+    <div class="main-content">
+      <div class="main-content-inner">
+  
+        <div class="row">
+          <div class="mb-3 mt-2 col-md-6">
+            <label for="" class="form-label lebel-text">Course Name: </label>
+            <div class="example-form">
+              <input type="text" class="form-control input-text" [(ngModel)]="coursename"
+                [matAutocomplete]="auto" (keyup)="searchCourseByName()" />
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="getCourseIdByName()">
+                <mat-option *ngIf="spinner">
+                  <mat-spinner style="width: 50px"></mat-spinner>
+                </mat-option>
+                <mat-option *ngFor="let item of courselist" [value]="item.coursename">
+                  {{ item.coursename }}
+                </mat-option>
+              </mat-autocomplete>
+              <span class="error-msg" *ngIf="courseidErr">Course required</span>
+            </div>
+          </div>
+
+          <div class="mb-3 mt-2 col-md-6">
+            <label for="" class="form-label lebel-text">Subscription Plan: </label>
+            <div class="example-form">
+                <select class="form-select input-text" [(ngModel)]="mstsubscriptionplanid">
+                    <option value="">Select</option>
+                    <option *ngFor="let data of subscriptionList" [value]="data.id">{{data.planname}} ({{data.amount}})</option>
+                </select>
+              
+              <span class="error-msg" *ngIf="mstsubscriptionplanidErr">Subscription plan required</span>
+            </div>
+          </div>
+
+
+
+        </div>
+  
+  
+      </div>
+  
+      <div class="bottom-secne" style="text-align: center;">
+        <button class="delete-button btn btn-primary" *ngIf="coursesubscriptionid" (click)="onClickDelete(coursesubscriptionid)">Delete course subscription</button>
+        <div *ngIf="!coursesubscriptionid"></div>
+        <div>
+          <button class="cancel-button btn btn-primary" (click)="resetForm()">Cancel</button>
+          <button class="submit-button btn btn-primary" *ngIf="!coursesubscriptionid" (click)="add()">Save</button>
+          <button class="submit-button btn btn-primary " *ngIf="coursesubscriptionid" (click)="edit()">Save</button>
+        </div>
+  
+      </div>
+  
+  
+  
+    </div>
+  </main>
+  
+  <ng-template #deleteModal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-sm-10">
+                        <h4 class="modal-title d-inline-block align-middle me-2">
+                            Are you want to sure delete this course subscription?
+                        </h4>
+                    </div>
+                    <div class="col-sm-2 d-flex justify-content-end">
+                        <button type="button" (click)="closeModal()" class="btn-close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-secondary btn-lg me-2" (click)="closeModal()">No</button>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-primary btn-lg me-2" (click)="delete()">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </ng-template>

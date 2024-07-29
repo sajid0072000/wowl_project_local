@@ -1,0 +1,206 @@
+<main role="main" class="pb-3">
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="top_scne">
+                <div class="top_scne_in">
+                    <h1 class="add_heading_text">Unit</h1>
+                    <button class="btn btn-edtng" *ngIf="!upDatebtnFlag">Creating</button>
+                    <button class="btn btn-edtng" *ngIf="upDatebtnFlag">Editing</button>
+                </div>
+                <!-- <div class="top_scne_rt"><button class="btn btn-preview" *ngIf="upDatebtnFlag"
+                        (click)="goToPreview()">Preview</button></div> -->
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="main-content">
+        <div class="main-content-inner">
+
+            <div class="row">
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Course name </label>
+                    <input type="text" [(ngModel)]="coursename" (keyup)="searchCourseByName()" [matAutocomplete]="auto"
+                        class="input-text form-control" placeholder="Search..." />
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="getCourseIdByName()">
+                        <mat-option *ngIf="spinner">
+                            <mat-spinner style="width:50px;"></mat-spinner>
+                        </mat-option>
+                        <mat-option *ngFor="let item of courseArr" [value]="item.coursename">
+                            {{ item.coursename }}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <span class="error-msg">{{courseErr}}</span>
+                </div>
+
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Lesson name </label>
+                    <input type="text" [(ngModel)]="title" (keyup)="searchLessionByName()" [matAutocomplete]="lession"
+                        class="input-text form-control" placeholder="Search..." />
+                    <mat-autocomplete #lession="matAutocomplete" (optionSelected)="getLessionIdByName()">
+                        <mat-option *ngIf="spinnerLession">
+                            <mat-spinner style="width:50px;"></mat-spinner>
+                        </mat-option>
+                        <mat-option *ngFor="let item of lessionArr" [value]="item.title">
+                            {{ item.title }}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <span class="error-msg">{{lessionErr}}</span>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Unit name </label>
+                    <input type="text" class="input-text form-control" placeholder="Enter unit name" [(ngModel)]="unittitle"
+                        (keyup)="changeUnitFun()">
+                    <span class="error-msg">{{unittitileErr}}</span>
+                </div>
+
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Educator</label>
+                    <input type="text"  placeholder="Select Educator" placeholder="Search..." [(ngModel)]="educatorname" (keyup)="searchEducatorByName()" [matAutocomplete]="educator" class="form-control input-text" />
+                    <mat-autocomplete #educator="matAutocomplete" (optionSelected)="getEducatorIdByName()">
+                        
+                        <mat-option *ngIf="spinnerEducator">
+                            <mat-spinner style="width:50px;"></mat-spinner>
+                        </mat-option>
+                        <mat-option *ngFor="let item of educatorArr" [value]="item.educatorname">
+                            {{ item.educatorname }}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <span class="error-msg">{{educatoridErr}}</span>
+                </div>
+
+
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Unit code </label>
+                    <input type="text" class="input-text form-control" [(ngModel)]="unitcode"
+                        (keyup)="changeUnitFun()" placeholder="Enter unit code">
+                    <span class="error-msg">{{unitcodeErr}}</span>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Video duration</label>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control input-text" placeholder="Minute" [(ngModel)]="minutes" />
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control input-text" placeholder="Seconds" [(ngModel)]="seconds" />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mb-3 col-lg-12">
+                    <label class="form-label lebel-text">Unit description </label>
+                    <textarea class="form-control input-text" id="exampleFormControlTextarea1" rows="3"
+                        [(ngModel)]="description" (keyup)="changeDecriptionFun()" placeholder="Enter unit description"></textarea>
+                    <span class="error-msg">{{descriptionErr}}</span>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Course video </label>
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="image-upload">
+                                <app-ng-chunk-upload (onFileSelect)="onFileChange($event)"></app-ng-chunk-upload>
+                            </div>
+                        </div>
+                        <div class="col-7">
+                            <div id="video-container"></div>
+                            <span *ngIf="videourl !== '' && videourl !== null &&  trncstatus == 0" style="color: #e39013;">Transcoding in progress...</span>
+                        </div>
+                    </div>
+                    <span class="error-msg">{{videourlErr}}</span>
+
+                </div>
+
+                <div class="mb-3 col-md-6">
+                  <label class="form-label lebel-text">Video thumbnail image </label>
+                  <div class="row">
+                    <div class="col-5">
+                      <div class="image-upload">
+                        <label for="file-input-thumbImage">
+                          <button type="button" class="btn btn-upload-btn" (click)="uploadThumbImage()"> Upload image
+                          </button>
+                        </label>
+                        <input id="file-input-thumbImage" type="file" (change)="onFileChangedThumbImage($event)">
+                      </div>
+                      <span class="error-msg">{{thumbnailimgErr}}</span>
+                    </div>
+                    <div class="col-7">
+                      <img *ngIf="thumbnailimg" [src]="FILE_URL + thumbnailimg" class="form-control profile_img" alt="">
+                    </div>
+                  </div>
+                </div>
+
+                
+
+                <div class="col-sm-12 mb-3" >
+                    <mat-checkbox [(ngModel)]="ispaid">Paid</mat-checkbox>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="bottom-secne" style="text-align: center;">
+            <button class="delete-button btn btn-primary" *ngIf="upDatebtnFlag" (click)="onClickDelete(unitId)">Delete
+                Unit</button>
+            <div *ngIf="!upDatebtnFlag"></div>
+            <div>
+                <button class="cancel-button btn btn-primary" (click)="resetForm()">Cancel</button>
+                <button class="submit-button btn btn-primary" *ngIf="!upDatebtnFlag" (click)="addUnits()">Save</button>
+                <button class="submit-button btn btn-primary " *ngIf="upDatebtnFlag"
+                    (click)="updateUnit()">Save</button>
+            </div>
+
+        </div>
+
+    </div>
+</main>
+
+
+<ng-template #deleteModal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-sm-10">
+                        <h4 class="modal-title d-inline-block align-middle me-2">
+                            Are you want to sure delete this unit?
+                        </h4>
+                    </div>
+                    <div class="col-sm-2 d-flex justify-content-end">
+                        <button type="button" (click)="closeModal()" class="btn-close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-secondary btn-lg me-2" (click)="closeModal()">
+                            No
+                        </button>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-primary btn-lg me-2" (click)="delete()">
+                            Yes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

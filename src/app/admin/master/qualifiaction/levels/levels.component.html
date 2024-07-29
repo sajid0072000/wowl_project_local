@@ -1,0 +1,221 @@
+
+
+<ng-template #addmodal>
+  <div class="modal-content">
+    <div class="modal-header">
+
+      <div class="container-fluid">
+        <div class="row align-items-center position-relative">
+          <div class="col-sm-12">
+            <div class="top_scne">
+              <div class="top_scne_in">
+                <h4 class="modal-title d-inline-block align-middle me-2 text-info">
+                  Levels
+                </h4>
+                <button class="btn btn-edtng" *ngIf="!levelId">Creating</button>
+                <button class="btn btn-edtng" *ngIf="levelId">Editing</button>
+              </div>
+              <!-- <div class="top_scne_rt"><button class="btn btn-preview" (click)="goToPreview()"
+                  *ngIf="levelId">Preview</button></div> -->
+            </div>
+          </div>
+          <button type="button" (click)="closeAddModal()" class="mod-clos btn-close"></button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="container-fluid">
+      <div class="row mb-3">
+        <div class="mb-3">
+          <label for="name" class="form-label lebel-text">Level Name</label>
+          <input type="text" class="form-control" [(ngModel)]="levelname" (keyup)="changeLevelFun()" />
+          <span class="error-msg">{{levelNameErr}}</span>
+        </div>
+
+        <div class="mb-3">
+          <label for="name" class="form-label lebel-text">Parent Category: </label>
+          <input type="text" [(ngModel)]="parentcategoryname" (keyup)="searchCategoryName()" [matAutocomplete]="auto"
+            class="example-input form-control" />
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="getparentCategoryIdByName()">
+            <mat-option *ngIf="spinner">
+              <mat-spinner style="width:50px;"></mat-spinner>
+            </mat-option>
+            <mat-option *ngFor="let item of categoryArr" [value]="item.name">
+              {{ item.name }}
+            </mat-option>
+          </mat-autocomplete>
+          <span class="error-msg">{{parentcategorynameErr}}</span>
+
+        </div>
+        
+
+        <div class="row bottom-secne px-0">
+          <div class="col-sm-6 text-left">
+            <div>
+              <button type="button" class="delete-button btn btn-secondary" *ngIf="levelId"
+                (click)="onClickDelete(levelId)">
+                Delete Level
+              </button>
+            </div>
+          </div>
+
+          <div class="col-sm-6 text-right">
+            <div class="d-flex justify-content-end w-100 gap-3">
+              <button type="button" class="cancel-button btn btn-secondary" (click)="closeAddModal()">
+                Cancel
+              </button>
+              <button type="button" class="submit-button btn btn-primary" *ngIf="!levelId"
+                (click)="addQualificationlevel()">
+                Save
+              </button>
+              <button type="button" class="submit-button btn btn-primary" *ngIf="levelId"
+                (click)="updateualificationlevel()">
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #deleteModal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-sm-10">
+            <h4 class="modal-title d-inline-block align-middle me-2">
+              Are you want to sure delete this Level?
+            </h4>
+          </div>
+          <div class="col-sm-2 d-flex justify-content-end">
+            <button type="button" (click)="closeModal()" class="btn-close"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-6 text-center">
+            <button type="button" class="btn btn-secondary btn-lg me-2" (click)="closeModal()">No</button>
+          </div>
+          <div class="col-sm-6 text-center">
+            <button type="button" class="btn btn-primary btn-lg me-2" (click)="deleteQualificationLevel()">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<main role="main" class="pb-3">
+
+
+  <div class="row">
+    <div class="col-md-12">
+        <div class="top_scne">
+            <div class="top_scne_in">
+                <h1>Qualification Level</h1>
+                <button class="btn btn-edtng" (click)="gotoAdd()">Create New</button>
+            </div>
+            <div class="top_scne_rt">
+                <div class="btn-group btn-group-sm ms-auto  btn-download-group">
+                    <div>
+                        <label>Qualification Level</label>
+                    <div class="search-bar">
+                        <i class="fa fa-search"></i>
+                        <input type="text" [(ngModel)]="searchText" class="form-control search-bar-input" placeholder="Search by level name" (keyup)="search()" (keyup.enter)="onEnter()">
+                      </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </div>
+</div>
+
+
+  <div class="main-content">
+    <div class="main-content-inner">
+
+      <div class="row">
+        <div class="col-md-12">
+          <div>
+            <div id="datatables-reponsive_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+              <div class="table-responsive">
+                <table id="datatables-column-search-select-inputs" class="table table-no-striped dataTable" style="width: 100%"
+                  aria-describedby="datatables-column-search-select-inputs_info">
+                  <thead class="thead-dark">
+                    <tr role="row">
+                      <th class="sorting align-middle">Sl No.</th>
+                      <th class="sorting align-middle"> Name</th>
+                      <!-- <th class="sorting align-middle">Score</th> -->
+                      <th class="sorting align-middle"> Category Name</th>
+                      <th class="sorting align-middle">&nbsp;</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngIf="levelArr.length == 0">
+                      <td class="text-center" colspan="20">
+                        <h4>No Data Found!</h4>
+                      </td>
+                    </tr>
+                    <tr role="row" class="odd" *ngFor="let item of levelArr; let i = index">
+                      <td class="align-middle">{{ i + 1 }}.</td>
+                      <td class="align-middle">{{ item.Name }}</td>
+                      <!-- <td class="align-middle">{{ item.Score }}</td> -->
+                      <td class="align-middle">{{ item.categoryname }}</td>
+      
+                      <td class="align-middle">
+                        <!-- <i class="fa fa-edit editbtn" (click)="gotoEdit(item)"
+                          style="font-size: 24px; cursor: pointer"></i>
+                        &nbsp;&nbsp;
+                        <i class="deletebtn fa fa-trash" style="font-size: 24px; cursor: pointer"
+                          (click)="onClickDelete(item.Id)"></i> -->
+                          <button class="btn btn-arow" (click)="gotoEdit(item)"><i class="fa fa-chevron-right"></i></button>
+
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+      
+              <div class="d-xl-flex align-items-center mt-3 pegin_sec" *ngIf="levelArr.length > 0">
+                <div class="col-auto d-block">
+                  <div class="text-center">
+                    <div class="dataTables_length">
+                      <label>levels Type per page
+                        <select name="datatables-reponsive_length" aria-controls="datatables-reponsive"
+                          class="form-select form-select-sm" (change)="changePagelimit($event)" [(ngModel)]="limit">
+                          <option *ngFor="let item of pageList" [value]="item.value">
+                            {{ item.name }}
+                          </option>
+                        </select>
+                        {{ offset + 1 }} - {{ offset + limit }}</label>
+                        <label class="mx-2">
+                          <button class="btn btn-dark text-white" [disabled]="previousBtnDesable" (click)="previousPage()"><img
+                              src="assets/img/chevron-left.svg" alt="chevron-left"></button>
+                          &nbsp;
+                          <button class="btn btn-dark text-white" [disabled]="nextBtnDesable" (click)="nextPage()"><img src="assets/img/chevron-right.svg"
+                              alt="chevron-right"></button>
+                        </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+      
+  </div>
+  
+</main>

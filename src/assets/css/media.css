@@ -1,0 +1,830 @@
+﻿/* Media */
+
+.display-on-mobile {
+    display: none !important;
+}
+
+.banner-display-on-mobile {
+    display: none !important;
+}
+
+/*About us image width overlap*/
+@media (max-width: 1383px) {
+    .about-us-wide-img {
+        display: none;
+    }
+}
+
+/* Container */
+@media (min-width: 1400px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1400px;
+    }
+
+    #mobile-global-search {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1500px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1500px;
+    }
+    
+}
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 600px;
+        margin: 1.75rem auto;
+    }
+}
+
+/* Desktops */
+@media(min-width: 1200px) and (max-width: 1400px) {
+    .page-banner-img .banner-accent {
+        transform: rotate(13deg) !important;
+    }
+
+    .sub-banner-background.partnerships {
+        width: 80% !important;
+    }
+
+    .info-bar .single-sector .educator-type-text {
+        font-size: 10px;
+    }
+
+    #mobile-global-search {
+        display: none !important;
+    }
+}
+
+@media(max-width: 1400px) {
+    .wide-only {
+        display: none;
+    }
+}
+
+/* Laptops */
+@media(min-width: 991px) and (max-width: 1200px) {
+    .banner .banner-title-break {
+        display: none;
+    }
+
+    .banner .banner-container .banner-content .sub-banner-background.blue-triangle {
+        width: 75%;
+    }
+
+    .page-banner-img .banner-accent {
+        transform: rotate(12deg) !important;
+    }
+
+    .sub-banner-background.partnerships {
+        width: 80% !important;
+    }
+
+    .banner-triangle {
+        width: 70% !important;
+    }
+
+    .display-on-mobile.mobile-nav-menu {
+        display: block !important;
+    }
+
+    .partnerships .home-banner-blue-arrow {
+        width: 70% !important;
+    }
+
+    .partnerships-banner .main-title {
+        font-size: 3.5rem !important;
+    }
+
+    .info-bar .single-sector .educator-type-text {
+        font-size: 10px;
+    }
+    
+}
+
+@media(max-width: 1200px) {
+    .navbar-collapse {
+        display: none !important;
+    }
+
+    .pagination .nav-item .nav-link {
+        white-space: normal !important;
+    }
+
+    /*about page icons*/
+    .offer-grid div {
+        display: grid;
+        grid-template-rows: 50% 50%;
+    }
+}
+
+/* Tablets */
+@media(max-width: 991px) {
+    .pagination .nav-item a.nav-link.active::after {
+        display: none;
+    }
+
+    .course-info .info-group {
+        justify-content: flex-start;
+    }
+
+    .line-right {
+        border-right: 0 !important
+    }
+
+    .edu-crest {
+        display: flex !important;
+        align-items: flex-start !important;
+        flex-direction: column;
+    }
+
+    .main-footer.uegfooter .copyright {
+        font-size: 12px !important;
+    }
+
+    .partnerships-banner.partnerships-banner-contact-background {
+        background-position: 80%;
+    }
+
+    .crest-svg {
+        margin-bottom: 1rem;
+    }
+
+    .partnerships-banner .main-title {
+        font-size: 30px;
+    }
+
+    .partnerships-banner-row {
+        padding-top: 7rem;
+    }
+
+    .partnerships-banner.contact .main-content-para, .email.contact {
+        font-size: 16px
+    }
+
+    .sub-banner-background.partnerships.mobile img {
+        height: 100% !important;
+        left: unset !important;
+        top: 30% !important;
+    }
+
+    .banner-triangle.mobile {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+        .banner-triangle.mobile img {
+            height: 250%;
+            object-fit: cover;
+            object-position: center;
+            width: 100%;
+        }
+
+    .course-info .info-group {
+        padding: .7rem .5rem;
+        height: 100%;
+    }
+
+    .course-info .row {
+        padding: 1rem;
+    }
+
+    .filter-result {
+        display: flex;
+        justify-content: center;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .info-bar {
+        padding-top: 2rem;
+    }
+
+        .info-bar .course-title {
+            justify-content: center;
+            text-align: center;
+        }
+
+        .info-bar .single-sector {
+            justify-content: center !important;
+            padding-top: 1rem;
+            padding-bottom: 1.5rem;
+        }
+
+    .mini-carousel-grid .carousel-title-row {
+        font-size: 15px;
+    }
+
+    .btn {
+        font-size: 15px !important;
+    }
+
+    .social-icons .single-social svg {
+        max-height: 40px;
+    }
+
+    .pagination {
+        position: static !important;
+    }
+
+    .display-on-mobile {
+        display: block !important;
+    }
+
+        .display-on-mobile.d-flex {
+            display: flex !important;
+        }
+
+    .banner-card .card .card-image {
+        height: 100% !important;
+    }
+
+    .display-off-mobile {
+        visibility: hidden !important;
+        display: none !important;
+    }
+
+    .banner .banner-container .banner-content .sub-banner-background.blue-triangle {
+        width: 100%;
+    }
+
+        .banner .banner-container .banner-content .sub-banner-background.blue-triangle.mobile {
+            display: unset;
+        }
+
+        .banner .banner-container .banner-content .sub-banner-background.blue-triangle.desktop {
+            display: none;
+        }
+
+        .banner .banner-container .banner-content .sub-banner-background.blue-triangle.mobile {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            z-index: 10;
+            right: 0;
+            object-fit: cover;
+            display: flex;
+            overflow: hidden;
+            justify-content: center;
+            align-items: center;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+            .banner .banner-container .banner-content .sub-banner-background.blue-triangle.mobile img {
+                height: 130%;
+                width: unset;
+                left: -500px;
+                top: 35%;
+                position: absolute;
+            }
+
+    .banner .banner-container {
+        margin-top: 15rem;
+    }
+
+        .banner .banner-container .banner-content .banner-text .banner-title {
+            font-size: 2rem !important;
+            letter-spacing: .3rem !important;
+        }
+
+    .banner.home-banner {
+        background-position: 70% 60px;
+    }
+
+    .banner .banner-container .banner-content .banner-text .banner-content {
+        font-size: 1.2rem;
+    }
+
+    .page-banner .page-banner-img.mobile .banner-img {
+        /* clip-path: polygon(0 0, 0 40%, 100% 100%, 100% 0); */
+        clip-path: polygon(0 0, 0 190px, 1200px 510px, 1200px 0);
+        width: 100%;
+        overflow: hidden;
+        object-fit: cover;
+        object-position: center;
+        height: 300px;
+    }
+
+    .page-banner .page-banner-img.mobile .banner-accent {
+        border-width: 13px;
+        border-color: var(--ueg-dark-blue);
+        background-color: var(--ueg-dark-blue);
+        border-radius: 25px;
+        height: 90%;
+        border-style: solid;
+        position: absolute;
+        transform: rotate(-65deg);
+        top: 23%;
+        left: 45%;
+        z-index: 1;
+    }
+
+    .page-banner .page-banner-content .page-banner-text h1.title {
+        font-size: 1.8rem;
+        letter-spacing: 3px;
+    }
+
+    .banner-icon.mobile svg {
+        height: 70px;
+    }
+
+    .banner-icon.mobile img {
+        height: 70px;
+        margin-top: 1rem;
+    }
+
+    .page-banner .page-banner-content .page-banner-text {
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+    }
+
+    .page-banner .page-banner-content .page-banner-excerpt p.excerpt {
+        font-size: 15px;
+    }
+
+    .page-banner-content {
+    }
+
+    .banner-card .card-content {
+        padding: 2rem !important;
+    }
+
+    .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        padding-right: var(--bs-gutter-x,1.2rem);
+        padding-left: var(--bs-gutter-x,1.2rem);
+    }
+
+    .search-bar .search-bar-content input {
+        font-size: 15px;
+    }
+
+        .search-bar .search-bar-content input::placeholder {
+            font-size: 10px;
+        }
+
+    .search-bar .search-bar-button .btn.btn-yellow {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .banner-card .card .card-content {
+        display: block;
+        padding-left: 0;
+        padding: 2rem;
+    }
+
+    .card .card-image {
+        height: 100% !important;
+        padding-bottom: 1rem;
+    }
+
+    .educator-month-card {
+        padding: unset;
+    }
+
+        .educator-month-card .educator-img-container {
+            height: 200px !important;
+            width: 200px !important;
+            border-width: 15px !important;
+        }
+
+    .educator-month-bg {
+        height: 200px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        padding-right: 0;
+        right: 0;
+        left: 0;
+        margin-left: 0;
+        padding-left: 0;
+        overflow: hidden;
+        z-index: 1;
+        border-radius: unset;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+    }
+
+        .educator-month-bg img {
+            object-position: bottom !important;
+            height: auto !important;
+        }
+
+    .educator-month-card .educator-img {
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    .display-on-mobile.educator-img {
+        display: flex !important;
+    }
+
+    .display-off-mobile.educator-img {
+        display: none !important;
+    }
+
+    .educator-month-content {
+        padding: 2rem;
+        z-index: 9;
+    }
+
+    .educator.card {
+        margin-left: unset;
+    }
+
+    .page-banner-img {
+        margin-bottom: -3rem;
+    }
+
+    .col-search {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .educator-banner.banner .edu-background {
+        height: 400px;
+        position: absolute;
+        top: 0;
+        bottom: unset;
+        left: 0;
+        padding-right: calc(var(--bs-gutter-x)/ 2);
+        padding-left: calc(var(--bs-gutter-x)/ 2);
+        right: 0;
+        border-radius: 0;
+        overflow: hidden;
+    }
+
+    .educator-banner.banner .educator-img-container {
+        width: 250px;
+        height: 250px;
+        margin-top: 4rem;
+    }
+
+    .educator-banner .educator-img {
+        justify-content: center;
+    }
+
+    .educator-banner .edu-background img {
+        object-position: bottom;
+    }
+
+    .site-search .search-item {
+        padding: .5rem;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    h4.title, .lesson-number {
+        font-size: 20px !important;
+    }
+
+    p.content {
+        font-size: 16px !important
+    }
+
+    p.content.white-text-mobile {
+        font-size: 1.2rem !important;
+    }
+
+    p.banner-content {
+        font-size: 16px !important
+    }
+
+    .btn.btn-primary.btn-find-out-more {
+        font-size: 12px;
+    }
+
+    .page-banner-img.mobile {
+        width: 100%;
+    }
+
+    .pagination a.nav-link.active::after {
+        content: '';
+        border-bottom: 3px solid var(--ueg-aqua) !important;
+        width: 80% !important;
+        left: 10% !important;
+        bottom: -1px !important;
+    }
+}
+
+@media (pointer: coarse) {
+    .btn.btn-primary.btn-find-out-more:hover {
+        transition: none !important;
+    }
+}
+
+/* Mobiles */
+@media(min-width: 767px) and (max-width: 991px) {
+
+    .banner .banner-container .banner-content .sub-banner-background.blue-triangle.mobile img {
+        left: -550px;
+        width: 180%;
+    }
+
+    .page-banner .page-banner-img.mobile .banner-accent {
+        transform: rotate(-75deg);
+    }
+
+    .page-banner-img.mobile {
+        width: 100%;
+    }
+}
+
+/* XS */
+@media(min-width: 634px) and (max-width: 991px) {
+    .banner .banner-container .banner-content .sub-banner-background.blue-triangle.mobile img {
+        left: -550px;
+        width: 220%;
+    }
+}
+
+/*Converts 'educator' drop down option from subnav to column to fit all text in*/
+@media (max-width: 910px) {
+    .subnav {
+        flex-direction: column;
+        display: none !important;
+    }
+
+        .subnav.subnav-open {
+            display: flex !important;
+        }
+
+}
+
+@media(max-width: 767px) {
+    
+    .banner-button.col-lg-12.pt-5.p-0 {
+        text-align: center;
+    }
+
+    .page-banner .page-banner-content .page-banner-excerpt {
+        width: unset !important;
+    }
+
+    .page-banner-text .social-icons {
+        width: unset !important;
+    }
+
+    .page-banner .page-banner-img.mobile .banner-accent {
+        transform: rotate(-75deg);
+        top: 63px;
+        height: 365px;
+    }
+
+  
+    .search-bar-home input {
+        font-size: 14px !important;
+    }
+
+        .search-bar-home input::placeholder {
+            font-size: 14px !important;
+        }
+
+    .search-bar-home .search-icon svg {
+        height: 19px !important;
+    }
+
+    /*.banner-img.list-img img {
+        height: unset !important;
+    }*/
+
+    .page-banner .page-banner-content .page-banner-text h1.title {
+        font-size: 1.5rem !important;
+    }
+
+    .home-banner-left h1 {
+        font-size: 2.5rem !important;
+    }
+
+    #filtersSearch {
+        overflow: hidden;
+        height: 0px;
+        transition: 0.5s all ease-in-out;
+    }
+
+        #filtersSearch.filters-search-open {
+            height: unset;
+        }
+
+    .filter-title .title {
+        font-size: 16px !important;
+    }
+
+        .filter-title .title::after {
+            content: var(--ueg-filter-collapse);
+            float: right;
+        }
+
+    .filter-search .container .row .filter-search-col {
+        padding-bottom: 0px !important;
+    }
+
+    .home-banner-left.col-lg-6 {
+        padding-top: 10rem;
+    }
+
+    .educator-experience {
+        overflow: hidden;
+    }
+
+    .banner-icon.mobile {
+        padding-left: 2rem;
+    }
+
+    .educator-banner.banner .educator-img-container {
+        width: 300px !important;
+        height: 300px !important;
+        margin-top: 0px;
+    }
+
+    .educator-banner.col-lg-12.row {
+        width: unset;
+        padding-right: 0px;
+        margin-right: 0px;
+    }
+
+    .educator-type-text {
+        width: 100%;
+    }
+
+    .partnerships-contact-banner.partnerships .home-banner-text .main-content {
+        color: white;
+    }
+
+    .partnerships-contact-banner.partnerships .home-banner-text .main-content .main-title {
+        color: white;
+    }
+
+    .content.white-text-mobile {
+        color: white;
+    }
+
+    .partnerships-contact-banner.partnerships .home-banner-text .contact-info a {
+        color: white;
+        font-size: 23px;
+    }
+
+    /*.contact-info .col-md-6 .email.contact {
+        font-size: 23px !important;
+    }*/
+
+    .contact-info .yellow-tag .tag-title {
+        margin-left: 10px;
+    }
+
+    #contactEnrollForm .row .col-md-6.row {
+        width: unset;
+        margin-right: 0px;
+        margin-left: 0px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .justify-content-flex-end {
+        justify-content: center !important;
+        margin: auto;
+    }
+
+    .page-banner-img.mobile {
+        width: 100%;
+    }
+}
+
+@media(min-width: 768px) and (max-width: 991px) {
+    .banner-icon.mobile {
+        padding-left: 2rem;
+    }
+
+    .banner-img {
+        clip-path: polygon(0 0, 0 240px, 1200px 450px, 1200px 0) !important;
+        height: 375px !important;
+    }
+
+    .get-started .sector-item .single-sector-icon {
+        float: unset !important;
+        text-align: center;
+        margin-bottom: 14px !important;
+    }
+}
+
+@media(max-height: 568px) {
+    .navbar {
+        min-height: 75px !important;
+    }
+
+    /*.search-bar-home {
+        padding-top: unset !important;
+        padding-bottom: unset !important;
+    }*/
+
+    .subnav-open {
+        top: 75px !important;
+    }
+
+    .search-bar-home input {
+        font-size: 16px !important;
+    }
+
+    .search-bar-home input::placeholder {
+        font-size: 16px !important;
+    }
+
+    .search-bar-home .search-icon svg {
+        height: 20px !important;
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        font-size: 0.9rem;
+    }
+
+    .navbar-nav .nav-item .nav-link .nav-arrow img {
+        height: 12px;
+    }
+
+    .navbar .navbar-nav .nav-item .search-icon {
+        width: 30px !important;
+        height: 30px !important;
+        margin-top: 3px !important;
+    }
+
+    .nav-item .btn.enrol-btn {
+        font-size: 12px !important;
+        padding: .5rem 1.6rem !important;
+    }
+
+    .display-on-mobile.mobile-nav-menu {
+        top: 75px !important;
+    }
+
+    #DropDownCourses {
+        top: -85px;
+    }
+
+    #DropDownEducators {
+        top: -85px;
+    }
+}
+
+/*Reduces font size for smallest screens for icon text on About page*/
+@media (max-width: 500px){
+    .offer-grid div {
+        font-size: 2.7vmin !important;
+    }
+}
+
+/*Adds right padding to yellow button on contact us page on medium sized screens*/
+@media (min-width: 768px) and (max-width: 1200px) {
+    .btn-ipad-padding {
+        padding-right: 6.5rem !important;
+    }
+}
+
+/*Partnerships banner*/
+@media (max-width: 545px) {
+    .banner-display-off-mobile {
+        visibility: hidden !important;
+        display: none !important;
+    }
+
+    .banner-display-on-mobile {
+        display: block !important;
+    }
+
+    .sub-banner-background.banner-display-on-mobile.blue-triangle.partnerships {
+        left: -30%;
+    }
+
+    #contact-partnerships-text {
+        top: 10% !important;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 545px) {
+    .home-banner.partnerships .home-banner-blue-arrow {
+        top: -80% !important;
+    }
+
+    #contact-partnerships-banner {
+        top: -100% !important;
+    }
+
+    p.banner-content {
+        width: 80%;
+    }
+}
+
+@media (max-width: 545px) and (min-width: 518px) {
+    p.banner-content {
+        width: 90%;
+    }
+}

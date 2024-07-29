@@ -1,0 +1,3543 @@
+﻿ :root {
+     --ueg-dark-blue: #0B154B;
+     --ueg-aqua: #00CAD9;
+     --ueg-dark-gray: #B4B4B4;
+     --ueg-darker-gray: #636363;
+     --ueg-yellow: #F2D415;
+     --ueg-background-blue: rgba(154, 189, 221, .2);
+     --ueg-logo-red: #E01E5A;
+     --ueg-logo-yellow: #FFBE0B;
+     --ueg-logo-green: #39B07C;
+     --ueg-filter-collapse: '+';
+ }
+
+ a.navbar-brand {
+     white-space: normal;
+     text-align: center;
+     word-break: break-all;
+ }
+
+ /* Provide sufficient contrast against white background */
+ a {
+     color: #0366d6;
+ }
+
+ .btn-primary {
+     color: #fff;
+     background-color: #1b6ec2;
+     border-color: #1861ac;
+ }
+
+ .nav-pills .nav-link.active,
+ .nav-pills .show>.nav-link {
+     color: #fff;
+     background-color: #1b6ec2;
+     border-color: #1861ac;
+ }
+
+ .lemon-normal {
+     font-family: 'LEMON MILK';
+ }
+
+ .lemon-small {
+     font-family: 'LEMON MILK';
+     font-size: 12px;
+ }
+
+ .lemon-smallest {
+     font-family: 'LEMON MILK';
+     font-size: 11px;
+ }
+
+ .weight-100 {
+     font-weight: 100;
+ }
+
+ .alert-bar {
+     position: fixed;
+     top: 120px;
+     width: 100%;
+     background-color: #F15062;
+     color: white;
+     z-index: 10;
+     padding-top: 2px;
+     padding-bottom: 4px;
+ }
+
+ .alert-bar .container {
+     text-align: center;
+ }
+
+ /* Sticky footer styles
+-------------------------------------------------- */
+ html {
+     font-size: 14px;
+ }
+
+ @media (min-width: 768px) {
+     html {
+         font-size: 16px;
+     }
+ }
+
+ .border-top {
+     border-top: 1px solid #e5e5e5;
+ }
+
+ .border-bottom {
+     border-bottom: 1px solid #e5e5e5;
+ }
+
+ .box-shadow {
+     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+ }
+
+ button.accept-policy {
+     font-size: 1rem;
+     line-height: inherit;
+ }
+
+ /* Sticky footer styles
+-------------------------------------------------- */
+ html {
+     position: relative;
+     min-height: 100%;
+ }
+
+ body {}
+
+ .footer {
+     position: absolute;
+     bottom: 0;
+     width: 100%;
+     white-space: nowrap;
+     line-height: 60px;
+     /* Vertically center the text there */
+ }
+
+ .navbar {
+     min-height: 120px;
+     margin-bottom: 0px !important;
+ }
+
+ .nav-link {
+     color: var(--ueg-dark-blue);
+     font-family: 'LEMON MILK';
+     letter-spacing: .1rem;
+     font-weight: 300;
+     cursor: pointer;
+ }
+
+ .nav-link .nav-arrow {
+     display: inline;
+ }
+
+ .nav-link .nav-arrow img {
+     transform: rotate(-90deg);
+     transition: all 0.5s ease-out;
+     margin-top: -4px;
+     margin-left: 4px;
+ }
+
+ .nav-open .nav-arrow img {
+     transform: rotate(0deg);
+ }
+
+ #mobile-global-search {
+     margin-left: auto;
+     margin-right: 10px;
+ }
+
+ #mobile-global-search svg {
+     width: 14px;
+     height: auto;
+ }
+
+ .banner {
+     padding-left: 0px;
+     padding-right: 0px;
+ }
+
+ .page-banner-img .banner-accent {
+     border-width: 20px;
+     border-color: var(--ueg-dark-blue);
+     background-color: var(--ueg-dark-blue);
+     border-radius: 25px;
+     height: 80%;
+     border-style: solid;
+     position: absolute;
+     transform: rotate(18deg);
+     top: 10%;
+     left: 13%;
+     z-index: 1;
+ }
+
+ .page-banner-img.mobile {
+     margin-top: 120px;
+ }
+
+ .page-banner-img.mobile .banner-accent {
+     margin-top: 120px;
+ }
+
+ .educator-img.display-on-mobile {
+     margin-top: 120px;
+ }
+
+ .page-banner .page-banner-content .page-banner-excerpt {
+     margin-bottom: 2rem;
+ }
+
+ .page-banner .page-banner-content .page-banner-text h1.title {
+     font-family: 'LEMON MILK';
+     font-weight: 400;
+     letter-spacing: .5rem;
+     font-size: 2rem;
+     color: var(--ueg-dark-blue);
+ }
+
+ .page-banner .page-banner-content .page-banner-excerpt p.excerpt {
+     font-family: Lato;
+     font-weight: 600;
+     color: var(--ueg-dark-blue);
+     font-size: 20px;
+ }
+
+ .accent-skill-acquisition {
+     background-color: #EA132D !important;
+     border-color: #EA132D !important;
+ }
+
+ .accent-professional-learning {
+     background-color: #F3AF04 !important;
+     border-color: #F3AF04 !important;
+ }
+
+ .accent-wellbeing {
+     background-color: #7CB82A !important;
+     border-color: #7CB82A !important;
+ }
+
+ .accent-undergraduate {
+     background-color: #545870 !important;
+     border-color: #545870 !important;
+ }
+
+ .home-banner {
+     background-image: url("../img/home-banner.jpg");
+     background-position: 50% 50%;
+     background-size: cover;
+     height: 482px;
+     overflow: hidden;
+ }
+
+ .home-banner-blue-arrow {
+     width: 60%;
+     height: 100%;
+     object-fit: cover;
+     display: flex;
+     overflow: hidden;
+     justify-content: center;
+ }
+
+ .home-banner-blue-arrow img {
+     width: 100%;
+ }
+
+ .home-banner-left {
+     color: var(--ueg-dark-blue);
+ }
+
+ .home-banner-left h1 {
+     font-family: 'LEMON MILK';
+     color: var(--ueg-dark-blue);
+     letter-spacing: .5rem;
+     font-size: 5rem;
+     font-weight: 400;
+ }
+
+ .home-banner-left h2 {
+     font-family: Lato, sans-serif;
+     color: var(--ueg-dark-blue);
+     font-weight: 700;
+     font-size: 1.5rem;
+     letter-spacing: .1rem;
+     margin-bottom: 1rem;
+ }
+
+ .home-banner-header-divider {
+     border-width: 10px;
+     border-style: solid;
+     background-color: var(--ueg-dark-blue);
+     border-color: var(--ueg-dark-blue);
+     border-radius: 25px;
+     width: 50%;
+     height: 1px;
+     margin-top: 1rem;
+     margin-bottom: 1rem;
+ }
+
+ .home-banner-text {
+     position: relative;
+     top: -100%;
+     padding-top: 4rem;
+     padding-bottom: 4rem;
+ }
+
+ .btn.btn-yellow {
+     background-color: var(--ueg-yellow);
+     border-radius: 5px;
+     font-family: 'LEMON MILK';
+     font-weight: 400;
+     font-size: 16px;
+     letter-spacing: .1rem;
+     color: var(--ueg-dark-blue);
+     padding: 1rem 3rem;
+     transition: ease all .3s;
+ }
+
+ p.content {
+     font-family: Lato;
+     letter-spacing: 1px;
+     font-size: 16px;
+     color: var(--ueg-dark-blue);
+     word-spacing: 2px;
+ }
+
+ .btn.btn-primary.btn-find-out-more {
+     width: 100%;
+     outline: 0 !important;
+     background-color: var(--ueg-dark-blue);
+     color: #fff;
+     font-family: 'LEMON MILK';
+     font-weight: 300;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+     font-size: 14px;
+     padding: 1rem 1.5rem;
+     border: none !important;
+ }
+
+ .btn.btn-primary.btn-find-out-more:hover {
+     background-color: var(--ueg-yellow) !important;
+     color: var(--ueg-dark-blue) !important;
+     transition: ease all .3s;
+ }
+
+ .banner-card {
+     border-radius: 25px;
+     overflow: hidden;
+ }
+
+ .banner-card .card-content {
+     padding-left: 3rem;
+     margin: auto 0;
+ }
+
+ .card {
+     margin-top: 1.5rem;
+     margin-bottom: 1.5rem;
+ }
+
+ .card .card-image {
+     height: 500px;
+     overflow: hidden;
+     object-fit: cover;
+     display: flex;
+     align-items: center;
+ }
+
+ .card .card-image img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     object-position: right;
+ }
+
+ .courses-card {
+     padding-top: 15px;
+     padding-bottom: 15px;
+ }
+
+ .social-icons {
+     display: flex;
+     align-items: center;
+ }
+
+ .social-icons .single-social svg {
+     max-height: 50px;
+     max-width: 100%;
+ }
+
+ .social-icons .single-social img {
+     max-height: 50px;
+     max-width: 100%;
+ }
+
+
+ .single-social {
+     text-align: center;
+ }
+
+ .card.educator {
+     border: unset;
+     margin-top: 2rem;
+     margin-bottom: 2rem;
+     margin-left: calc(var(--bs-gutter-x)/ 2);
+     margin-right: calc(var(--bs-gutter-x)/ 2);
+     position: relative;
+     border-radius: 25px;
+ }
+
+ .edu-crest {
+     display: grid;
+     padding: 0 1rem;
+     grid-template-columns: 8% 89%;
+     grid-column-gap: 3%;
+     align-items: center;
+ }
+
+ .crest-svg {
+     justify-content: flex-end;
+     display: flex;
+     height: 50px;
+ }
+
+ .educator-month-card {
+     padding: 2rem;
+     display: flex;
+ }
+
+ .navbar {
+     position: fixed;
+     z-index: 100;
+     width: 100%;
+ }
+
+ .bg-dark-bg {
+     background-color: #0B154A !important;
+ }
+
+ .main-footer.uegfooter .copyright {
+     color: rgba(255, 255, 255, .7);
+     font-weight: 100;
+     font-family: 'LEMON MILK';
+     letter-spacing: 1px;
+     font-size: 12px;
+ }
+
+ .main-footer.uegfooter .footer-links a {
+     display: block;
+     font-family: Lato, sans-serif;
+     font-weight: 400;
+     color: rgba(255, 255, 255, .9);
+     text-decoration: none;
+     font-size: 13px;
+     padding-bottom: .3rem;
+     transition: ease all .5s;
+ }
+
+ .spacer-bar {
+     width: 100%;
+     height: auto;
+     background-color: white;
+     transition: all ease-out 0.5s;
+ }
+
+ .spacer-bar-open {
+     height: 66px;
+ }
+ div#DropDownSearch.subnav.subnav-open {
+    top: 120px !important;
+}
+ .subnav {
+     top: -88px;
+     position: fixed;
+     z-index: 99;
+     display: flex;
+     background-color: rgba(154, 189, 221, 0.34);
+     padding: 12px;
+     grid-gap: 20px;
+     width: 100%;
+     transition: all ease-out 0.5s;
+ }
+
+ .subnav .flex-column {
+     width: 15.6%;
+     height: 100%;
+     background-color: white;
+     padding: 12px;
+ }
+
+ .subnav .subnav-image {
+     float: right;
+ }
+
+ .subnav-open {
+     top: 120px;
+ }
+
+ .search-bar-home {
+     display: flex;
+     flex-direction: row;
+     padding-top: 0;
+     padding-bottom: 0;
+ }
+
+ .search-bar-home input {
+     width: 95%;
+     font-family: 'LEMON MILK';
+     outline: 0;
+     letter-spacing: .2rem;
+     color: var(--ueg-dark-blue);
+     font-size: 20px;
+     font-weight: 300;
+     border: 0;
+ }
+
+ .search-bar-home input::placeholder {
+     font-family: 'LEMON MILK';
+     letter-spacing: .2rem;
+     color: var(--ueg-darker-gray);
+     font-size: 20px;
+     font-weight: 300;
+ }
+
+ /*prev. placeholder color: rgba(200,200,200,0.8)*/
+
+ .search-bar-home .search-icon svg {
+     height: 40px;
+ }
+
+ .search-bar-home .search-icon svg path {
+     fill: var(--ueg-dark-gray);
+ }
+
+
+ .bg-light-blue {
+     background-color: var(--ueg-background-blue);
+ }
+
+ .why-ueg-section {
+     padding-top: 3rem;
+     padding-bottom: 3rem;
+ }
+
+ .why-ueg-section .why-item {
+     padding-top: 3rem;
+ }
+
+ .why-ueg-section .yellow-tag {
+     padding-left: 12px;
+ }
+
+ .why-ueg-section .why-item .title {
+     margin-bottom: 0 !important;
+     font-family: 'LEMON MILK';
+     font-weight: 400;
+     font-size: 1.2rem;
+     text-transform: uppercase;
+     padding-top: 1rem;
+     letter-spacing: 2px;
+     color: var(--ueg-dark-blue);
+ }
+
+ .why-ueg-section .why-item .content {
+     font-family: Lato;
+     font-weight: 400;
+     color: #0b154b;
+     font-size: 17px;
+     letter-spacing: 1px;
+     padding-right: 2rem;
+ }
+
+ .educator-month-card {
+     padding: 2rem;
+     display: flex;
+ }
+
+ .educator-month-card .card-author .title.author {
+     color: #9abddd;
+     letter-spacing: .3rem;
+     font-size: 2rem;
+     padding-bottom: 1rem;
+ }
+
+ .educator-month-card .educator-img {
+     display: flex;
+     align-items: center;
+     justify-content: flex-start;
+     z-index: 9;
+ }
+
+ .educator-month-card .educator-img-container {
+     border-radius: 100%;
+     height: 350px;
+     width: 350px;
+     overflow: hidden;
+     border: 20px solid var(--ueg-aqua);
+ }
+
+ .educator-month-card .educator-img-container img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     object-position: center;
+ }
+
+ .educator-month-bg {
+     height: 100%;
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     padding-right: 0;
+     right: 0;
+     overflow: hidden;
+     border-radius: 25px;
+ }
+
+ .educator-month-bg img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     object-position: left;
+ }
+
+ h4.title {
+     font-family: 'LEMON MILK';
+     font-weight: 400;
+     color: var(--ueg-dark-blue);
+     letter-spacing: .1rem;
+ }
+
+ hr.small-blue {
+     border: 5px solid #00cad9;
+     background-color: var(--ueg-aqua);
+     border-radius: 25px;
+     margin-left: 0;
+     margin-right: 0;
+     width: 50px;
+     margin-top: .4rem;
+ }
+
+ hr.big-blue {
+     border: 10px solid #00cad9;
+     background-color: var(--ueg-aqua);
+     border-radius: 25px;
+     margin-left: 0;
+     margin-right: 0;
+     width: 150px;
+ }
+
+ .why-item img {
+     width: 40px !important;
+     height: 40px !important;
+ }
+
+ .yellow-tag {
+     width: auto;
+ }
+
+ .yellow-tag .tag-title {
+     padding: .5rem .5rem;
+     border-radius: 8px;
+     background-color: #f2d415;
+     text-transform: uppercase;
+     font-size: .8rem;
+     font-family: 'LEMON MILK';
+     font-weight: 600;
+     letter-spacing: 2px;
+     margin-bottom: 0 !important;
+     margin-top: 0.5rem;
+ }
+
+ @media (max-width: 1400px) {
+     .home-banner-blue-arrow {}
+
+     .home-banner-blue-arrow img {}
+
+     .home-banner-left {}
+
+     .home-banner-left h1 {
+         letter-spacing: .5rem;
+         font-size: 4.5rem;
+         font-weight: 400;
+     }
+
+     .home-banner-left h2 {
+         font-weight: 700;
+         font-size: 1.25rem;
+         letter-spacing: .1rem;
+         margin-bottom: 1rem;
+     }
+ }
+
+
+ @media (max-width: 1200px) {
+     .home-banner-blue-arrow {}
+
+     .home-banner-blue-arrow img {}
+
+     .home-banner-left {}
+
+     .home-banner-left h1 {
+         letter-spacing: .5rem;
+         font-size: 3.5rem;
+         font-weight: 400;
+     }
+
+     .home-banner-left h2 {
+         font-weight: 700;
+         font-size: 1.25rem;
+         letter-spacing: .1rem;
+         margin-bottom: 1rem;
+     }
+ }
+
+ .zoomimg {
+     height: 150px;
+     width: 100%;
+     transition: transform .2s;
+     margin: 0 auto;
+     border-radius: 10px;
+     overflow: hidden;
+ }
+
+ .zoomimg img {
+     transition: transform .2s;
+     height: 100%;
+     width: 100%;
+     object-fit: cover;
+ }
+
+ .zoomimg:hover img {
+     transform: scale(1.2);
+ }
+
+ .courses-h-list {
+     display: flex;
+     overflow-y: hidden;
+     overflow-x: auto;
+ }
+
+ .courses-box {
+     padding: 14px 33px 20px 33px;
+ }
+
+ .lmtitle {
+     font-family: 'LEMON MILK' !important;
+     font-weight: 400;
+     letter-spacing: 2px;
+     color: var(--ueg-dark-blue) !important;
+     font-size: 20px;
+     margin-bottom: 20px;
+ }
+
+ .course-tn-category {
+     padding-top: 8px;
+     padding-bottom: 8px;
+ }
+
+ .course-tn-name {
+     border-bottom-color: rgba(221, 51, 51, 0.00);
+     font-size: 11px;
+     font-family: 'LEMON MILK';
+     font-weight: 400;
+     letter-spacing: 2px;
+     max-height: 49px;
+     overflow-y: hidden;
+     text-overflow: ellipsis;
+ }
+
+
+ .banner-img {
+     clip-path: polygon(100% -250%, 0 100%, 100% 100%, 100% 0);
+     width: 100%;
+     overflow: hidden;
+     object-fit: cover;
+     object-position: center;
+     height: 655px;
+ }
+
+ .banner-img img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+ }
+
+ .course-banner.page-banner .banner-img {
+     height: 800px;
+ }
+
+ .spread-evenly {
+     justify-content: space-evenly;
+ }
+
+ .navbar .navbar-nav .nav-item .search-icon {
+     background-color: var(--ueg-dark-gray);
+     border-radius: 100%;
+     width: 40px;
+     height: 40px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+
+ .navbar .navbar-nav .nav-item .search-icon svg {
+     width: 20px;
+ }
+
+ .btn.enrol-btn {
+    background-color: var(--ueg-yellow) !important;
+     border-color: var(--ueg-yellow) !important;
+     color: white !important;
+     cursor: pointer;
+ }
+
+ .btn.enrol-btn {
+     font-family: 'LEMON MILK';
+     font-weight: 300;
+     font-size: 14px;
+     border-width: 1px;
+     border-style: solid;
+     border-color: var(--ueg-dark-blue);
+     padding: .6rem 1.7rem;
+     color: var(--ueg-dark-blue) !important;
+ }
+
+ .btn.enrol-btn:hover {
+    background-color: var(--ueg-dark-blue) !important;
+    border-color: var(--ueg-dark-blue) !important;
+     color: #fff !important;
+ }
+ 
+
+ .modal {
+     position: fixed;
+     top: 0;
+     left: 0;
+     z-index: 1050;
+     display: none;
+     width: 100%;
+     height: 100%;
+     overflow: hidden;
+     outline: 0;
+ }
+
+ .modal-content {
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+     pointer-events: auto;
+     background-color: #fff;
+     background-clip: padding-box;
+     border: 1px solid rgba(0, 0, 0, .2);
+     border-radius: .3rem;
+     outline: 0;
+ }
+
+ .modal-header {
+     border-bottom: 0;
+     padding: 1.5rem 1.5rem;
+     padding-bottom: .5rem;
+ }
+
+ .get-started .modal-header {
+     padding-top: 2rem;
+     padding-left: 2rem;
+     padding-right: 2rem;
+     border-bottom: 0;
+ }
+
+ .modal-title {
+     margin-bottom: 0;
+     line-height: 1.5;
+ }
+
+ h5.modal-title {
+     margin-bottom: 0;
+     line-height: 1.5;
+     font-family: 'LEMON MILK';
+     font-weight: 400;
+     letter-spacing: .1rem;
+     color: var(--ueg-dark-blue);
+ }
+
+ .modal-show {
+     display: block;
+     background-color: rgba(0, 0, 0, 0.5);
+ }
+
+ .optional-content {
+     font-style: italic;
+     float: right;
+     font-size: 0.75rem;
+     color: gray;
+     margin-top: 0.25rem;
+ }
+
+ .content .optional-content {
+     font-family: 'Lato', sans-serif !important;
+     color: var(--ueg-dark-blue);
+ }
+
+ .modal-body .content .optional-content {
+     font-size: 12px;
+ }
+
+ .form-control {
+     border-radius: 0 !important;
+     padding: 1.5rem;
+     font-family: Lato !important;
+     font-weight: 300;
+     color: #000;
+     font-size: 13px;
+     background-color: #fff;
+ }
+
+ input,
+ textarea,
+ .form-control .label {
+     font-family: 'Lato', sans-serif !important;
+ }
+
+
+ .modal-content .form-control {
+     padding: .5rem 1rem;
+ }
+
+ .content.submit-text {
+     font-family: Lato, sans-serif;
+     color: rgba(0, 0, 0, 0.5);
+     font-size: 13px;
+     padding-top: 1rem;
+     padding-bottom: 2rem;
+     letter-spacing: 0;
+     word-spacing: 0;
+ }
+
+ .info-bar .btn.btn-yellow {
+     border-radius: 0;
+     padding-top: 2rem;
+     padding-bottom: 2rem;
+     width: 100%;
+ }
+
+ .btn.btn-gray {
+     font-family: 'LEMON MILK' !important;
+     color: var(--ueg-dark-blue);
+     letter-spacing: 2px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background-color: #eaeaea !important;
+     transition: ease all .3s;
+     font-size: 14px;
+     font-weight: 400;
+     padding: .8rem;
+ }
+
+ .btn.btn-gray:hover {
+     background-color: var(--ueg-dark-blue);
+     color: #eaeaea;
+ }
+
+ .educator-banner.banner .container {
+     position: relative;
+     padding-top: 4rem;
+     padding-bottom: 4rem;
+ }
+
+
+ .course-content,
+ .course-overview,
+ .gray-card,
+ .more-courses,
+ .page-section {
+     padding-top: 3rem;
+     padding-bottom: 3rem;
+ }
+
+ .section-padding {
+     padding-top: 3rem;
+     padding-bottom: 3rem;
+ }
+
+ .pagination {
+     position: relative;
+     padding: 1.5rem 2rem;
+     background-color: #ebf2f8;
+     z-index: 99;
+ }
+
+ .pagination .nav-item .nav-link {
+     font-family: 'LEMON MILK' !important;
+     color: #0b154b;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+     font-weight: 400;
+     font-size: 13px;
+     white-space: nowrap;
+ }
+
+ #pagination {
+     position: fixed;
+     top: 0px;
+     z-index: 200;
+     left: 0px;
+     right: 0px;
+     transition: all 0.5s ease-out;
+     transform: translateY(-100%);
+ }
+
+ #pagination.pagination-show {
+     transform: translateY(0px);
+ }
+
+ .modal-content h4.title {
+     font-size: 1.2rem;
+ }
+
+ .modal-content hr.big-blue {
+     margin-top: 0;
+     border-width: 6px;
+     width: 100px;
+ }
+
+ .modal-body {
+     position: relative;
+     flex: 1 1 auto;
+     margin: 1rem;
+ }
+
+ .stack-row {
+     flex-direction: row;
+ }
+
+ #courseLink {
+     border-radius: 0 !important;
+     padding: .5rem;
+     font-family: Lato !important;
+     font-weight: 400;
+     color: rgba(0, 0, 0, .4);
+     font-size: 1rem;
+     background-color: #fff;
+     height: 100%;
+ }
+
+ .share-social-icons {
+     grid-template-columns: 15% 15% 15% 15%;
+ }
+
+ .share-social-icons .social-icon {
+     height: 50px;
+     width: 50px;
+     background-color: #f2f2f2;
+     border-radius: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding: .9rem;
+     transition: ease all .3s;
+ }
+
+ .d-grid {
+     display: grid;
+ }
+
+ .stack-column {
+     flex-direction: column;
+     align-items: flex-start;
+ }
+
+ .bra-0 {
+     border-radius: 0 !important;
+ }
+
+ .show-more {
+     background-color: rgba(240, 240, 240, .6);
+     display: flex;
+     padding: 1rem;
+     align-items: center;
+     justify-content: center;
+     cursor: pointer;
+     margin-bottom: 4rem;
+ }
+
+ .show-more .show-more-title {
+     font-family: 'LEMON MILK';
+     font-weight: 400;
+     letter-spacing: .1rem;
+     color: var(--ueg-dark-blue);
+     text-decoration: none;
+ }
+
+ .show-more .show-more-title::after {
+     display: inline-block;
+     margin-left: .255em;
+     border: none !important;
+     content: url(https://unioneducationgroup.com/icons/NavDropdown.svg);
+     height: 20px;
+     padding: 0 .4rem;
+     transform: rotate(-90deg);
+     transition: ease all .2s;
+ }
+
+ #showMore:hover .show-more-title::after {
+     transform: rotate(0deg);
+ }
+
+ .term-card {
+     padding: .5rem .8rem;
+     background-color: rgba(240, 240, 240, 0.8);
+     box-shadow: 0 3px 10px 2px rgb(0 0 0 / 16%);
+     font-family: 'LEMON MILK';
+     font-weight: 400;
+     letter-spacing: .1rem;
+     font-size: .9rem;
+     color: var(--ueg-dark-blue);
+     transition: ease all .3s;
+     margin-top: .8rem;
+     margin-bottom: .8rem;
+ }
+
+ .term-card:hover {
+     transform: scale(1.03);
+     box-shadow: 0 3px 10px 5px rgb(0 0 0 / 16%);
+     cursor: pointer;
+ }
+
+ .term-card p {
+     margin-bottom: 0;
+ }
+
+ .term-card-line {
+     border-bottom: 1px solid var(--ueg-aqua);
+ }
+
+ .filter-title .title {
+     font-family: 'LEMON MILK';
+     font-weight: 400;
+     letter-spacing: 2px;
+     font-size: 1.5rem;
+     text-transform: uppercase;
+     color: var(--ueg-dark-blue);
+ }
+
+ .filter-search {
+     padding-top: 4rem;
+     padding-bottom: 4rem;
+ }
+
+ a {
+     cursor: pointer;
+ }
+
+ .author-content {
+     display: -webkit-box;
+     -webkit-line-clamp: 3;
+     overflow-y: hidden;
+     text-overflow: ellipsis;
+     -webkit-box-orient: vertical;
+ }
+
+ p.sector-name {
+     font-family: 'Lato';
+ }
+
+ .home-banner-blue-arrow.banner-display-on-mobile {
+     width: 100%;
+ }
+
+ .home-banner-blue-arrow.banner-display-on-mobile img {
+     width: 100%;
+     height: 100%;
+     margin-top: 30vw;
+ }
+
+ .btn-mobile-nav {
+     font-family: 'Lato';
+     text-align: left;
+     font-size: 16px !important;
+     background-color: white;
+     border-radius: 0px;
+     color: black;
+     border-color: var(--ueg-dark-gray);
+ }
+
+ .force-scrollbar::-webkit-scrollbar {
+     -webkit-appearance: none;
+     width: 7px;
+ }
+
+ .force-scrollbar::-webkit-scrollbar-thumb {
+     border-radius: 4px;
+     background-color: rgba(0, 0, 0, 0.5);
+     box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+ }
+
+ .about-banner {
+     background-image: url(/img/banners/about-banner.jpg);
+ }
+
+ .pagination .nav-item {
+     max-width: unset !important;
+ }
+
+
+ /*Banners - universal and partnerships*/
+ @media (max-width: 991px) and (min-width: 767px) {
+     .home-banner-text {
+         top: -80% !important;
+     }
+
+     #contact-partnerships-text {
+         top: 0px !important;
+     }
+
+
+     .home-banner-blue-arrow {
+         width: 92% !important;
+     }
+
+     .home-banner-text.partnerships {
+         top: 23% !important;
+     }
+ }
+
+
+ @media (max-width: 767px) {
+     .home-banner-blue-arrow {
+         width: 95% !important;
+     }
+ }
+
+ @media (max-width: 991px) and (min-width: 710px) {
+     .partnerships .home-banner-blue-arrow {
+         width: 92% !important;
+     }
+ }
+
+ /*Partnerships header banner - adjust banner widths off mobile to keep text visible*/
+ @media (max-width: 710px) and (min-width: 545px) {
+     .partnerships .home-banner-blue-arrow {
+         width: 110% !important;
+     }
+ }
+
+ /* UEG Offshore - New Footer with Tab Control - 16082023 :  Start */
+ .row.socl_icn {
+     justify-content: flex-start;
+ }
+
+ span.footer-link-title {
+     margin-right: 15px;
+ }
+
+ .row.socl_icn .col-2 {
+     max-width: 60px !important;
+     flex: inherit !important;
+     margin: 0 0 24px;
+ }
+
+ .footer_top .subnav {
+     position: relative;
+     background: none;
+     background: #EBF2F8;
+     top: 0;
+ }
+
+ .footer_top {
+     margin: 30px 0 0;
+ }
+
+ .footer_top ul {
+     display: flex;
+     list-style-type: none;
+     padding: 0;
+     margin: 0;
+     justify-content: center;
+ }
+
+ .footer_top ul li a {
+     font-size: 20px;
+     line-height: 27px;
+     text-transform: uppercase;
+     color: #0b154b;
+     font-weight: 300;
+     border: 0 !important;
+ }
+
+ .footer_top ul li a strong {
+     color: #0b154b;
+     margin-left: 10px;
+ }
+
+ .nav-link.active .nav-arrow img {
+     transform: rotate(0deg);
+ }
+
+ /* tab */
+ .tab_common {
+     background: #EBF2F8;
+     padding: 30px;
+ }
+
+ .footer_top .tab-content {
+     padding: 22px 0;
+     background: #EBF2F8;
+ }
+
+ .footer_top .nav-tabs .nav-item a {
+     padding: 20px;
+ }
+
+ .footer_top .nav-tabs .nav-item.show .nav-link,
+ .nav-tabs .nav-link.active {
+     background: #EBF2F8;
+ }
+
+ /* tab end */
+ .layer_inr {
+     display: flex;
+     justify-content: space-between;
+ }
+
+ .layer_inr strong {
+     letter-spacing: 1px;
+     color: #00CAD9;
+     font-size: 12px;
+     line-height: 18px;
+ }
+
+ .tab_common a:hover {
+     text-decoration: none;
+ }
+
+ .layer_inr p {
+     color: #0B154B;
+     font-size: 15px;
+     margin: 5px 0 0;
+     min-height: 30px;
+     line-height: 17px;
+ }
+
+ .layer_inr img {
+     width: 30px !important;
+ }
+
+ .layer_inr.layer_btn {
+     display: block;
+ }
+
+ .layer_inr.layer_btn button.btn.btn-ugme:last-child {
+     margin: 0;
+ }
+
+ .layer_inr.layer_btn button.btn.btn-ugme {
+     display: block;
+     letter-spacing: 1.8px;
+     color: #00CAD9;
+     background: #fff;
+     text-align: center;
+     width: 100%;
+     border-radius: 0;
+     margin-bottom: 10px;
+ }
+
+ .subnav .flex-column.layer_btn_dv {
+     background: none;
+     padding: 0;
+ }
+
+ /* UEG Offshore - New Footer with Tab Control - 16082023 :  End */
+
+
+ /* Equal Heights for OwlCarousel 2 */
+ .owl-carousel .owl-stage {
+     display: flex;
+ }
+
+ .owl-carousel .owl-item {
+     display: flex;
+     flex: 1 0 auto;
+ }
+
+ .owl-carousel .thumbnail {
+     display: flex;
+     flex-direction: column;
+     margin: 0 15px;
+ }
+
+ .owl-carousel .thumbnail .caption {
+     display: flex;
+     flex: 1 0 auto;
+     flex-direction: column;
+ }
+
+ .owl-carousel .thumbnail .caption .flex-text {
+     flex-grow: 1;
+ }
+
+ div.owl-carousel.owl-theme {
+     overflow: hidden;
+     display: block;
+     position: relative;
+ }
+
+ .owl-nav button:focus {
+     background: none !important;
+     border: 0 !important;
+     box-shadow: 0 0 !important;
+     outline: 0 !important;
+ }
+
+ .owl-nav button {
+     background: none;
+     border: 0;
+     font-size: 60px;
+ }
+
+ .owl-nav button.owl-prev {
+     position: absolute;
+     width: 30px;
+     height: 30px;
+     top: 10%;
+     left: 0;
+ }
+
+ .owl-nav button.owl-next {
+     position: absolute;
+     width: 100%;
+     top: 10%;
+     right: 0;
+     width: 30px;
+     height: 30px;
+ }
+
+
+
+ /* 18-08-2023 css */
+ .container-fluid.resource_section {
+     padding-top: 30px;
+ }
+
+ .resource_headr h4.title {
+     text-align: center;
+     font-size: 40px;
+ }
+
+ .resource_headr {
+     margin-bottom: 30px;
+ }
+
+ .mid-divdr {
+     margin: 1rem auto;
+     width: 20%;
+ }
+
+ .resourc_search .search-icon {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+ }
+
+ .resourc_search .search-icon strong {
+     font: normal normal normal 16px/34px LEMON MILK;
+     letter-spacing: 3.75px;
+     color: #0B154B;
+     text-transform: uppercase;
+     background: #EAEAEA;
+     padding: 18px 30px;
+     margin: 0 0 0 20px;
+     cursor: pointer;
+     border-left: 1px solid #B4B4B4;
+ }
+
+ .resourc_search {
+     border: 1px solid #B4B4B4;
+     padding-top: 0;
+     padding-bottom: 0;
+ }
+
+ .search-bar-home.resourc_search input {
+     width: 68%;
+     margin: 0 auto;
+ }
+
+ .resource_caro .items {
+     border: 2px solid #9ABDDD;
+     border-radius: 15px;
+     padding: 10px;
+     width: 100%;
+ }
+
+ .resource_caro .items strong {
+     font: normal normal normal 10px/16px LEMON MILK;
+     color: #0B154B;
+     text-transform: uppercase;
+     display: block;
+     text-align: center;
+     margin-top: 10px;
+ }
+
+ .resource_caro.owl-carousel .items img {
+     display: block;
+     margin: 0 auto;
+     width: auto;
+ }
+
+ .owl-carousel .owl-nav button.owl-next:hover,
+ .owl-carousel .owl-nav button.owl-prev:hover {
+     background: none;
+ }
+
+ .owl-carousel .owl-nav button.owl-next {
+     position: absolute;
+     right: -30px;
+     top: 32%;
+ }
+
+ .owl-carousel .owl-nav button.owl-prev {
+     position: absolute;
+     left: -30px;
+     top: 32%;
+ }
+
+ .owl-carousel .owl-nav button.owl-next span {
+     background: url("../img/NavRight.svg") 0 0 no-repeat;
+ }
+
+ .owl-carousel .owl-nav button.owl-prev span {
+     background: url("../img/NavLeft.svg") 0 0 no-repeat;
+ }
+
+ .owl-carousel .owl-nav button span {
+     font-size: 0;
+     width: 16px;
+     display: block;
+     height: 24px;
+ }
+
+ div.owl-carousel.owl-theme {
+     overflow: inherit;
+ }
+
+ .owl-carousel .owl-stage-outer {
+     overflow: hidden;
+ }
+
+ .resource_caro {
+     margin-bottom: 50px;
+ }
+
+ .owl-carousel .owl-nav button {
+     padding: 0;
+     margin: 0;
+     width: auto;
+ }
+
+ .resources_caro .courses-h-list {
+     justify-content: space-between;
+     gap: 15px;
+ }
+
+ .resources_caro .courses-h-list .layer.course-tn-category span {
+     font: normal normal 300 8px/18px LEMON MILK;
+     margin-left: 5px;
+     color: #0B154B;
+ }
+
+ .resources_caro .courses-h-list a,
+ .resources_caro .courses-h-list a:hover {
+     text-decoration: none;
+ }
+
+ .resources_caro .courses-h-list .layer.course-tn-name {
+     font: normal normal normal 10px/14px LEMON MILK;
+     color: #0B154B;
+     margin-bottom: 10px;
+ }
+
+ .resources_caro .courses-h-list .layer.single-carousel-item {
+     margin-bottom: 20px;
+ }
+
+ .add_card {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     position: relative;
+     padding-bottom: 18px;
+ }
+
+ .add_card::after {
+     height: 9px;
+     content: "";
+     width: 100%;
+     position: absolute;
+     background: #EAEAEA;
+     border-radius: 30px;
+     bottom: 0;
+ }
+
+ .add_card button {
+     background: #FBBC12 0% 0% no-repeat padding-box;
+     border-radius: 8px;
+     font: normal normal normal 8px/11px LEMON MILK;
+     letter-spacing: 1.2px;
+     color: #0B154B;
+     border: 0;
+     padding: 6px 10px;
+ }
+
+ .add_card strong {
+     font: normal normal bold 14px/18px LEMON MILK;
+     color: #0B154B;
+ }
+
+ .resources_caro .courses-h-list .course-tn-category {
+     padding-bottom: 0;
+ }
+
+ .resources_scl .resources_caro .courses-h-list .course-tn-category img {
+     height: 14px;
+ }
+
+ .resources_scl .resources_caro .courses-h-list .layer.course-tn-name {
+     min-height: 30px;
+ }
+
+ .top_head_mnu .cargry_div .dropdown-toggle::after {
+     display: inline-block;
+     margin-left: .255em;
+     border: none !important;
+     content: url(https://unioneducationgroup.com/icons/NavDropdown.svg);
+     height: 20px;
+     padding: 0 .4rem;
+     transform: rotate(-90deg);
+     transition: ease all .2s;
+ }
+
+ .dropdown.cargry_div button {
+     display: flex;
+     align-items: center;
+ }
+
+ .no_of_product ul {
+     list-style-type: none;
+     padding: 0;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     gap: 2px;
+     margin: 0;
+ }
+
+ .no_of_product ul li {
+     background-color: #fff;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding: 3px 3px;
+     cursor: pointer;
+ }
+
+ .no_of_product ul li:hover {
+     background: #0B154B;
+ }
+
+ .no_of_product ul li:hover img {
+     filter: invert(1) brightness(1);
+ }
+
+ .top_head_mnu_inr {
+     display: flex;
+     justify-content: end;
+     padding: 40px 0 20px;
+ }
+
+ .no_of_product {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
+
+ .cargry_div button {
+     font: normal normal normal 12px/14px LEMON MILK;
+     color: #0B154B;
+     text-transform: uppercase;
+     margin-right: 10px;
+ }
+
+ .no_of_product strong {
+     font: normal normal normal 12px/14px LEMON MILK;
+     color: #0B154B;
+     text-transform: uppercase;
+     margin-right: 10px;
+ }
+
+ .cargry_div button:focus {
+     border: 0;
+     box-shadow: 0 0;
+     outline: 0;
+ }
+
+ .top_head_mnu_inr .dropdown-menu {
+     background: #F8F8F8;
+     border: 0;
+ }
+
+ .cargry_div .dropdown-menu ul {
+     background: transparent;
+     display: block;
+     padding: 0;
+     margin: 0;
+     list-style-type: none;
+ }
+
+ .cargry_div .dropdown-menu ul li {
+     padding: 10px;
+     font-size: 14px;
+ }
+
+ /* 18-08-2023 css end*/
+
+
+
+ /* 21-08-2023 css*/
+
+ #myCarousel .list-inline {
+     white-space: nowrap;
+     overflow-x: auto;
+ }
+
+ #myCarousel .carousel-indicators {
+    position: absolute;
+    left: 0;
+    width: initial;
+    right: 0;
+    text-align: center;
+    margin: 0 auto;
+}
+
+ #myCarousel .carousel-indicators>li {
+     width: initial;
+     height: initial;
+     text-indent: initial;
+ }
+
+ #myCarousel .carousel-indicators>li.active img {
+     opacity: 0.7;
+ }
+
+ .cart_tray .add_bag_l button {
+     border: 0;
+     background: none;
+     padding: 0;
+ }
+
+ .add_bag_l,
+ .add_bag {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
+
+ .cart_tray .dropdown-menu.show {
+     width: 256px;
+     padding: 20px;
+     padding: 10px;
+     box-shadow: 0px 3px 8px #00000029;
+ }
+
+ .add_card_lidt ul {
+     padding: 0;
+     margin: 0;
+     list-style-type: none;
+ }
+
+ .add_card_lidt ul li {
+     padding: 0;
+ }
+
+ .add_card_lidt ul li:last-child {
+     margin-bottom: 0;
+ }
+
+ .add_card_lidt ul li {
+     padding: 0;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     margin: 0 0 20px;
+ }
+
+ .add_bag_l strong {
+     font: normal normal normal 8px/11px LEMON MILK;
+     letter-spacing: 1.2px;
+     color: #0B154B;
+     text-transform: uppercase;
+     margin-left: 10px;
+ }
+
+ .add_bag_r strong {
+     font: normal normal normal 8px/11px LEMON MILK;
+     letter-spacing: 1.2px;
+     color: #0B154B;
+     text-transform: uppercase;
+ }
+
+ .cart_tray .dropdown-toggle::after {
+     display: none;
+ }
+
+ .prod_img {
+     width: 56px;
+ }
+
+ .prod_img img {
+     width: 100%;
+ }
+
+ .prod_name {
+     margin: 0 20px;
+ }
+
+ .prod_name strong {
+     font: normal normal normal 8px/11px LEMON MILK;
+     letter-spacing: 1.2px;
+     color: #0B154B;
+     display: block;
+     text-transform: uppercase;
+ }
+
+ .prod_pric strong {
+     font: normal normal normal 8px/11px LEMON MILK;
+     letter-spacing: 1.2px;
+     color: #0B154B;
+     text-transform: uppercase;
+ }
+
+ .add_card_lidt {
+     margin: 10px 0;
+     border-top: 1px solid #eee;
+     padding: 10px 0;
+     border-bottom: 1px solid #eee;
+     max-height: 250px;
+ }
+
+ .estimt_totl_inr span {
+     font: normal normal normal 8px/11px LEMON MILK;
+     letter-spacing: 1.2px;
+     color: #0B154B;
+     display: block;
+     text-transform: uppercase;
+ }
+
+ .estimt_totl_inr {
+     display: flex;
+     justify-content: space-between;
+ }
+
+ .estimt_totl_inr strong {
+     font: normal normal normal 8px/11px LEMON MILK;
+     letter-spacing: 1.2px;
+     color: #0B154B;
+     text-transform: uppercase;
+ }
+
+ .btn.enrol-btn.btn-checkout {
+     display: block;
+     width: 100%;
+     margin: 20px 0 0;
+ }
+
+ .resource_package_inr {
+     background: #fff;
+     box-shadow: 0px 3px 6px #00000029;
+     margin: 3%;
+     padding: 2%;
+ }
+
+ .resource_package_inr .carousel-item {
+     background: #F8F8FA;
+ }
+
+ .resource_package_inr .carousel-item img {
+     display: block;
+     margin: 0 auto;
+ }
+
+ .prod_brif_titl h4 span {
+     font-size: 10px;
+     line-height: 12px;
+     letter-spacing: 1.8px;
+     color: #0B154B;
+     text-transform: uppercase;
+     display: block;
+     font-weight: normal;
+ }
+
+ .prod_brif_titl h4 {
+     letter-spacing: 1.8px;
+     color: #0B154B;
+     text-transform: uppercase;
+     font-weight: bold;
+     margin-left: 10px;
+     font: normal normal normal 12px/28px LEMON MILK;
+ }
+
+ .prod_brif_des p {
+     letter-spacing: NaNpx;
+     color: #0B154B;
+ }
+
+ .prod_brif_titl {
+     display: flex;
+     align-items: center;
+ }
+
+ .detaild_pays ul {
+     list-style-type: none;
+     padding: 0;
+     margin: 0;
+ }
+
+ .prod_dtls li {
+     color: #0B154B;
+     font-size: 16px;
+     padding: 0 0 5px 0;
+
+ }
+
+ .ratng_div strong {
+     font-size: 12px;
+     line-height: 12px;
+     letter-spacing: 1.8px;
+     color: #0B154B;
+ }
+
+ .shar_it ul,
+ .ratng_div ul {
+     display: flex;
+     margin-bottom: 10px;
+ }
+
+ .ratng_div li img {
+     width: 16px;
+ }
+
+ .ratng_div {
+     display: flex;
+     gap: 20px;
+     align-items: center;
+ }
+
+ .shar_it p {
+     margin: 10px 0;
+ }
+
+ .prod_dtls {
+     margin: 20px 0 20px;
+ }
+
+ .prod_dtls {
+     margin: 20px 0 20px;
+     border-top: 1px solid #9ABDDD;
+     padding: 20px 0;
+     border-bottom: 1px solid #9ABDDD;
+ }
+
+ .desc_div>h4 {
+     font: normal normal normal 20px/28px LEMON MILK;
+     letter-spacing: 3px;
+     color: #0B154B;
+     text-transform: uppercase;
+     opacity: 1;
+ }
+
+ .pays_div {
+     border: 2px solid #9ABDDD;
+     padding: 20px;
+     width: 390px;
+ }
+
+ .desc_div {
+     width: 480px;
+     margin: 0 50px 0 0;
+ }
+
+ .detaild_pays {
+     display: flex;
+     justify-content: space-between;
+ }
+
+ .age {
+     display: flex;
+     align-items: center;
+     height: 100%;
+ }
+
+ .age .col-text-center {
+     margin: 0 4px;
+ }
+
+ .age .col-text-center label {
+     /* overflow: hidden; */
+     position: relative;
+
+ }
+
+ .age .imgbgchk:checked+label>.tick_container {
+     opacity: 1;
+ }
+
+ .age .col-text-center label strong {
+     color: #000;
+     width: 35px;
+     height: 35px;
+     border-radius: 50%;
+     border: 2px solid #EAEAEA;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-weight: 600;
+ }
+
+ .age .imgbgchk:checked+label strong {
+     color: #000;
+ }
+
+ .age .tick_container {
+     transition: .5s ease;
+     opacity: 0;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     -ms-transform: translate(-50%, -50%);
+     cursor: pointer;
+     text-align: center;
+     width: 100%;
+     height: 100%;
+     z-index: 2;
+ }
+
+ .age .tick {
+     height: 100%;
+     width: 100%;
+     border-radius: 100%;
+     border: 2px solid #FBBC12;
+     background: rgba(255, 255, 255, 0);
+ }
+
+ .age_select h5 {
+     letter-spacing: 1.8px;
+     color: #0B154B;
+     text-transform: uppercase;
+     font: normal normal normal 12px/28px LEMON MILK;
+     margin: 0;
+ }
+
+ .age_select {
+     margin-top: 10px;
+ }
+
+ .prout_price strong {
+     text-decoration: line-through;
+     color: #00000029;
+ }
+
+ .pays_div p {
+     font: normal normal normal 16px/22px Lato;
+     letter-spacing: 0px;
+     color: #0B154B;
+     border-bottom: 1px solid #9ABDDD;
+     padding-bottom: 10px;
+     margin-bottom: 20px;
+ }
+
+ .pays_div p span {
+     color: #59B20B;
+ }
+
+ .prout_price h3 {
+
+     color: #0B154B;
+     font: normal normal 300 32px/28px LEMON MILK;
+     letter-spacing: 0px;
+ }
+
+ .qntty h5 {
+     letter-spacing: 1.8px;
+     color: #0B154B;
+     text-transform: uppercase;
+     font: normal normal normal 12px/28px LEMON MILK;
+     margin: 0;
+ }
+
+ .qntty {
+     margin: 20px 0;
+ }
+
+ .qntty_innr {
+     position: relative;
+     width: 200px;
+ }
+
+ .qntty_innr input {
+     border: 2px solid #EAEAEA;
+     border-radius: 8px;
+     color: #0B154B;
+     font-size: 12px;
+     padding: 6px 10px;
+     width: 100%;
+
+ }
+
+ .qntty_innr button.btn {
+     position: absolute;
+     top: 4px;
+     padding: 0;
+     border: 0;
+ }
+
+ .qntty_innr button:focus {
+     border: 0;
+     box-shadow: 0 0;
+     padding: 0;
+     outline: 0;
+ }
+
+ .qntty_innr button.btn.btn-addq {
+     right: 10px;
+ }
+
+ .qntty_innr button.btn.btn-subq {
+     right: 40px;
+ }
+
+ .btn.enrol-btn.btn-baskt {
+     background: #FBBC12 !important;
+     font: normal normal normal 13px/17px LEMON MILK;
+     letter-spacing: 1.95px;
+     color: #0B154B !important;
+     text-transform: uppercase;
+     border-color: #FBBC12 !important;
+     display: block;
+     width: 100%;
+     margin: 0 0 12px;
+ }
+
+ .btn.enrol-btn.btn-paynw {
+     display: block;
+     width: 100%;
+ }
+
+ .card_tanb ul.nav.nav-tabs {
+     justify-content: center;
+     margin: 0 0 40px;
+ }
+
+ .card_tanb .nav-tabs .nav-link {
+     font: normal normal bold 16px/21px LEMON MILK;
+     letter-spacing: 2.4px;
+     color: #0B154B;
+     text-transform: uppercase;
+     border: 0;
+
+ }
+
+ .card_tanb .nav-tabs .nav-link.active {
+     position: relative;
+     background: none;
+     border: 0;
+     color: #0B154B;
+ }
+
+ .card_tanb .nav-tabs .nav-link:focus,
+ .card_tanb .nav-tabs .nav-link:hover {
+     border-color: transparent;
+     color: #0B154B;
+     border: 0;
+ }
+
+ .card_tanb .nav-tabs .nav-link.active::after {
+     height: 9px;
+     content: "";
+     width: 100%;
+     position: absolute;
+     background: #00CAD9;
+     border-radius: 30px;
+     bottom: -6px;
+     left: 0;
+ }
+
+ #myCarousel .carousel-indicators>li a img {
+     border: 2px solid #9ABDDD;
+ }
+
+ .paginat {
+     margin-bottom: 10px;
+ }
+
+ .paginat ul {
+     display: flex;
+     list-style-type: none;
+     padding: 0;
+     margin: 0;
+ }
+
+ .paginat ul li {
+     padding-right: 5px;
+ }
+
+ .paginat a {
+     color: #000;
+
+ }
+
+ .payment_page .age .col-text-center label strong {
+     border-color: #FBBC12;
+ }
+
+ .selected_label {
+     display: flex;
+     gap: 20px;
+     align-items: start;
+ }
+
+ .selected_label .age_select {
+     margin-top: 10px;
+     text-align: center;
+ }
+
+ .powred_by {
+     margin-top: 110px;
+ }
+
+ .powred_by ul {
+     display: flex;
+ }
+
+ .powred_by ul li strong {
+     border-right: 1px solid #a9a9a9;
+     padding-right: 5px;
+ }
+
+ .powred_by ul li {
+     display: block;
+     font-size: 10px;
+     line-height: 10px;
+     color: #a9a9a9;
+     padding: 0 3px;
+ }
+
+ .powred_by ul li a {
+     display: block;
+     font-size: 10px;
+     line-height: 10px;
+     color: #a9a9a9;
+ }
+
+ .paymnt_detail li {
+     position: relative;
+ }
+
+ .paymnt_detail li .card_optn {
+     position: absolute;
+     right: 10px;
+     bottom: 20px;
+ }
+
+ .form-select {
+     display: block;
+     width: 100%;
+     padding: .375rem 2.25rem .375rem .75rem;
+     padding-top: 0.375rem;
+     padding-bottom: 0.375rem;
+     padding-left: 0.75rem;
+     -moz-padding-start: calc(0.75rem - 3px);
+     font-size: 1rem;
+     font-weight: 400;
+     line-height: 1.5;
+     color: #212529;
+     background-color: #fff;
+     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+     background-repeat: no-repeat;
+     background-position: right .75rem center;
+     background-size: 16px 12px;
+     border: 1px solid #ced4da;
+     border-radius: .25rem;
+     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+ }
+
+ .payment_page_inner {
+     display: flex;
+     align-items: start;
+     gap: 50px;
+ }
+
+ .payment_page_inner .detaild_pays .desc_div {
+     width: 100%;
+ }
+
+ .payment_div ul {
+     list-style-type: none;
+     padding: 0;
+     margin: 0;
+ }
+
+ .payment_page_inner .detaild_pays {
+     width: 34%;
+ }
+
+ .payment_page_inner .payment_div {
+     width: 40%;
+     box-shadow: -2px 0 12px 2px #00000029;
+     padding: 3%;
+ }
+
+ .btn.buy_gpay.enrol-btn {
+     width: 100%;
+     background: #000 !important;
+ }
+
+ .paymnt_detail {
+     margin: 20px 0;
+ }
+
+ .paymnt_detail li {
+     margin-bottom: 20px;
+ }
+
+ .paymnt_detail li:last-child {
+     margin: 0;
+ }
+
+ .sel_country {
+     width: 50%;
+ }
+
+ .sel_country .form-select {
+     padding: 4px 10px;
+     border-radius: 0 0;
+ }
+
+ .paymnt_detail li .form-control {
+     padding: 16px 10px;
+ }
+
+ .btn.enrol-btn.btn-pay {
+     width: 100%;
+ }
+
+ /* 21-08-2023 css end*/
+
+
+
+
+ /* 28-08-2023 css */
+ .prerecorded_caro .items {
+     width: 100%;
+ }
+
+ .container-fluid.enrolloncourse {
+     background: #F2F2F2 0% 0% no-repeat padding-box;
+     padding-top: 0px;
+     padding-bottom: 30px;
+     transition: all 0.45s ease 0s;
+ }
+
+ .container-fluid.enrolloncourse.sticky {
+     position: fixed;
+     width: 100%;
+     top: 0;
+     z-index: 999;
+     box-shadow: 0 0 8px #919191;
+ }
+
+ .enrolloncourse_top_titl h5 {
+     color: #0B154B;
+     font-size: 20px;
+     line-height: 54px;
+     font-family: 'LEMON MILK';
+     font-weight: 400;
+     letter-spacing: 2.5px;
+     margin: 0;
+ }
+
+ .enrolloncourse_top {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
+
+ .enrolloncourse_top_cor {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
+
+ .enrolloncourse_top_cor strong {
+     display: block;
+     font-size: 12px;
+     line-height: 16px;
+     font-family: 'LEMON MILK';
+     font-weight: 500;
+     letter-spacing: 1.8px;
+     color: #00CAD9;
+     text-transform: uppercase;
+     margin-bottom: 5px;
+ }
+
+ .enrolloncourse_top_cor span {
+     display: block;
+     font-size: 16px;
+     line-height: 19px;
+     font-family: Lato, sans-serif;
+     letter-spacing: 0px;
+     color: #0B154B;
+ }
+
+ .enrolloncourse_top_cor>div {
+     width: 66%;
+ }
+
+ .btn.btn-enrol-start {
+     padding: 30px 30px;
+     text-align: left;
+     font: normal normal normal 20px/34px LEMON MILK;
+     letter-spacing: 2.5px;
+     color: #0B154B;
+     text-transform: uppercase;
+     opacity: 1;
+     background: #FBBC12 0% 0% no-repeat padding-box;
+     border-radius: 0 0;
+ }
+
+ .btn.btn-enrol-resume{
+    padding: 30px 30px;
+    text-align: left;
+    font: normal normal normal 20px/34px LEMON MILK;
+    letter-spacing: 2.5px;
+    color: #0B154B;
+    text-transform: uppercase;
+    opacity: 1;
+    background: #9ABDDD 0% 0% no-repeat padding-box;
+    border-radius: 0 0;
+ }
+
+ .btn.btn-enrol-complete{
+    padding: 30px 30px;
+    text-align: left;
+    font: normal normal normal 20px/34px LEMON MILK;
+    letter-spacing: 2.5px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    opacity: 1;
+    background: #39B07C 0% 0% no-repeat padding-box;
+    border-radius: 0 0;
+ }
+
+ .blue-triangle.before::before {
+     display: inline-block;
+     margin-left: .255em;
+     border: none !important;
+     content: url(https://unioneducationgroup.com/icons/NavDropdown.svg);
+     padding: 0 .4rem;
+     transform: rotate(-90deg);
+     transition: ease all .2s;
+ }
+
+ .commalist li {
+     display: inline;
+ }
+
+ .commalist {
+     display: inline;
+     list-style: none;
+     margin: 0px;
+     margin-block-start: 0px;
+     margin-block-end: 0px;
+     padding-inline-start: 0px;
+ }
+
+ .gray-card .education-content {
+     margin-left: 2.5rem;
+     margin-bottom: 2rem;
+     height: 100%;
+ }
+
+ .enrolloncourse_bot {
+     padding-top: 30px;
+ }
+
+ .enrolloncourse_bot ul {
+     padding: 0;
+     margin: 0;
+     list-style-type: none;
+     display: flex;
+     justify-content: space-between;
+ }
+
+ .enrolloncourse_bot ul li a {
+     font-family: 'LEMON MILK';
+     color: #0b154b;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+     font-weight: 400;
+     font-size: 14px;
+     line-height: 28px;
+     white-space: nowrap;
+     position: relative;
+ }
+
+ .enrolloncourse_bot ul li a.nav-link::after {
+     content: "";
+     position: absolute;
+     height: 10px;
+     width: 100%;
+     left: 0;
+     background: transparent;
+     border-radius: 20px;
+     bottom: -30px;
+ }
+
+ .enrolloncourse_bot ul li.selected a.nav-link::after {
+     background: #00cad9;
+ }
+
+ .card.gray-card-info {
+     background-color: #f8f8f8;
+     border: unset;
+     padding: 1rem;
+     box-shadow: 0 9px 20px rgb(0 0 0 / 20%);
+     border-radius: 15px;
+ }
+
+ .ovrw_cont {
+     display: flex;
+     justify-content: space-between;
+ }
+
+ .ovrw_cont_cont {
+     width: 40%;
+ }
+
+ .ovrw_cont_img {
+     width: 48%;
+ }
+
+ .ovrw_cont_img img {
+     width: 100%;
+ }
+
+ .course-content .table-nobordered,
+ .course-content .table-nobordered th {
+     border: 0 !important;
+ }
+
+ .course-content .table-nobordered td {
+     background: #9ABDDD1A 0% 0% no-repeat padding-box;
+     border-color: #9ABDDD;
+     color: #0B154B;
+ }
+
+ .course-content .table-nobordered th {
+     color: #0B154B;
+     font-weight: normal;
+ }
+
+ .course-content .table-nobordered td:first-child {
+     font-weight: bold;
+     border-left: 1px solid #9ABDDD;
+ }
+
+ .course-content .table-nobordered td:last-child {
+     border-right: 1px solid #9ABDDD;
+ }
+
+ .course-content .table-nobordered th:first-child {
+     font-weight: bold;
+ }
+
+ .course-content .table-nobordered tr:last-child td {
+     border-bottom: 1px solid #9ABDDD;
+ }
+
+ .p_profil_l {
+     width: 250px;
+     height: 250px;
+     overflow: hidden;
+     border-radius: 50%;
+     border: 16px solid #00CAD9;
+     margin-right: 30px;
+ }
+ .p_profil_r {
+    width: 70%;
+}
+.single-social .p_profil_r {
+    width: 48%;
+}
+ .p_profil_l img {
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    height: 100%;
+}
+
+ .p_profil {
+     display: flex;
+     align-items: center;
+     margin-bottom: 30px;
+ }
+
+ .p_profil_r h5 {
+     font: normal normal normal 28px/38px LEMON MILK;
+     letter-spacing: 4.2px;
+     color: #0B154B;
+     text-transform: uppercase;
+     opacity: 1;
+ }
+
+ .p_profil_r span {
+     font: normal normal 300 20px/33px LEMON MILK;
+     letter-spacing: 3.6px;
+     color: #0B154B;
+     text-transform: uppercase;
+     opacity: 1;
+ }
+
+ .educator .ovrw_cont_cont {
+     width: 52%;
+ }
+
+ .edu_catg_list strong {
+     font: normal normal normal 25px/34px LEMON MILK;
+     letter-spacing: 3.75px;
+     color: #0B154B;
+     text-transform: uppercase;
+     opacity: 1;
+ }
+
+ .edu_catg_list ul {
+     list-style-type: none;
+     padding: 0;
+     margin: 0;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+ }
+
+ .edu_catg_list li {
+     width: 48%;
+     margin-top: 40px;
+ }
+
+ .edu_catg_list li button {
+     font: normal normal normal 18px/28px LEMON MILK;
+     letter-spacing: 2px;
+     color: #0B154B;
+     text-transform: uppercase;
+     border: 2px solid #0B154B;
+     border-radius: 15px;
+     background: transparent;
+     width: 100%;
+     padding: 8px;
+ }
+
+ .edu_catg_list {
+     width: 38%;
+ }
+
+ .btn.btn-profl {
+     font: normal normal normal 14px/28px LEMON MILK;
+     letter-spacing: 2px;
+     color: #0B154B;
+     text-transform: uppercase;
+     border: 2px solid #0B154B;
+     border-radius: 15px;
+     background: transparent;
+     padding: 8px 20px;
+     margin-top: 10px;
+ }
+
+ .bg-gray {
+     background-color: #f2f2f2;
+ }
+
+ .edu_rvwe_to {
+     display: flex;
+     align-items: center;
+     margin-bottom: 20px;
+ }
+
+ .edu_rvwe_to .p_profil_l {
+     width: 94px;
+     height: 94px;
+     border: 4px solid #00CAD9;
+ }
+
+ .edu_rvwe_to .p_profil_r h5 {
+     font-size: 16px;
+     line-height: 20px;
+ }
+
+ .edu_rvwe_to .p_profil_r span {
+     font-size: 12px;
+     line-height: 14px;
+ }
+
+ .edu_rvwe_cont p strong {
+     display: block;
+ }
+
+ .edu_rvwe_cont p {
+     font: normal normal normal 18px/32px Lato;
+     letter-spacing: 1.01px;
+     color: #0B154B;
+ }
+
+ .edu_rvwe {
+     background: #FFFFFF 0% 0% no-repeat padding-box;
+     box-shadow: 0px 3px 6px #00000029;
+     padding: 20px;
+ }
+
+ .edu_review_caro.owl-carousel .owl-nav button.owl-prev,
+ .edu_review_caro.owl-carousel .owl-nav button.owl-next {
+     top: 48%;
+ }
+
+
+
+ .partnerships-banner.partnerships-banner-contact-background {
+     background-image: url("../img/partnershipContactBanner.png") !important;
+     background-size: cover;
+     background-position: 80% 60%;
+     background-repeat: no-repeat;
+ }
+
+ .home-banner.partnerships .home-banner-text {
+     position: relative;
+     height: 100%;
+     top: 0px;
+     z-index: 1;
+ }
+
+ .partnerships-banner h2.main-title {
+     font-family: 'LEMON MILK';
+     color: var(--ueg-dark-blue);
+     letter-spacing: .6rem;
+     font-weight: 400;
+     font-size: 42px;
+     line-height: 64px;
+ }
+
+ .main-banner-line.white {
+     margin-left: 0 !important;
+     margin-right: 0 !important;
+     width: 300px;
+     border-top: 15px solid #fff !important;
+     border-radius: 25px !important;
+ }
+
+ .yellow-tag .tag-title {
+     padding: .5rem .5rem;
+     border-radius: 8px;
+     background-color: #f2d415;
+     text-transform: uppercase;
+     font-size: .8rem;
+     font-family: 'LEMON MILK';
+     font-weight: 600;
+     letter-spacing: 2px;
+     margin-bottom: 0 !important;
+     margin-top: 0.5rem;
+ }
+
+ .home-banner.partnerships .home-banner-blue-arrow {
+     position: relative;
+     top: -100%;
+     z-index: 0;
+ }
+
+ .partnerships-contact-banner {
+     height: 780px;
+ }
+
+ .partnerships-contact-banner #contact-partnerships-banner.home-banner-blue-arrow img {
+     width: 100%;
+     /* filter: invert(8) brightness(7); */
+ }
+
+ p.edu_ev_ban_txt {
+     font-weight: bold;
+     color: #0B154B;
+     font-size: 24px;
+     line-height: 30px;
+     margin: 30px 0;
+ }
+
+ .edu_ev_ban_txt span {
+     color: #00CAD9;
+     display: block;
+     padding-top: 10px;
+ }
+
+ button.btn.tag-title.yellow-tag {
+     padding: 8px 20px;
+     border-radius: 8px;
+     background-color: #f2d415;
+     font: normal normal normal 14px/30px LEMON MILK;
+     letter-spacing: 3.3px;
+     color: #0B154B;
+     text-transform: uppercase;
+ }
+
+ .border-radius-2 {
+     border-radius: 10px;
+     overflow: hidden;
+     max-width: 80% !important;
+     margin: 20px 0;
+ }
+
+ .border-radius-2 img {
+     width: 100%;
+ }
+
+ .single-social .p_profil_l {
+     width: 56px;
+     height: 56px;
+ }
+
+ .single-social .p_profil_r h5 {
+     font-size: 14px;
+ }
+
+ .single-social .p_profil_r span {
+     font-size: 10px;
+ }
+
+ .banner-img.bg-gray .page-banner-text {
+     margin: 80px 0 0 auto;
+     width: 70%;
+ }
+
+ .social-icons .single-social .p_profil_l img {
+     max-height: inherit;
+ }
+
+ .single-social .edu_rvwe_to {
+     margin: 0 20px 0 0;
+ }
+
+ .banner-img.bg-gray .page-banner-text p.excerpt.font-weight-normal {
+     margin: 20px 0;
+ }
+
+ .icon-text-course {
+     margin-left: 1rem;
+     margin-bottom: 0;
+     margin-top: .2rem;
+ }
+
+ .enrolloncourse_top .info-group,
+ .enrolloncourse_top .info-group.line-right {
+     display: flex;
+     align-items: center;
+ }
+
+ .enrolloncourse_top .info-group p,
+ .enrolloncourse_top .info-group.line-right p {
+     margin: 0;
+     font-family: 'LEMON MILK';
+     font-weight: 500;
+     letter-spacing: .1rem;
+     font-size: .9rem;
+     color: var(--ueg-dark-blue);
+ }
+
+ .enrolloncourse_top .row.d-flex.align-items-center.w-100 {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+ }
+
+ .bor_lin {
+     height: 100%;
+     width: 1.1px;
+     background: var(--ueg-dark-blue);
+     display: block;
+ }
+
+ /* 28-08-2023 css end*/
+
+
+ /* 06-09-2023 css */
+ .subj_list {
+     display: flex;
+     align-items: center;
+     gap: 20px;
+ }
+
+ .subj_list ul {
+     list-style-type: none;
+     padding: 0;
+     margin: 0;
+     display: flex;
+     align-items: center;
+     gap: 20px;
+ }
+
+ .subj_list li {
+     background: #0B154B 0% 0% no-repeat padding-box;
+     border-radius: 2px;
+     font-family: LEMON MILK;
+     letter-spacing: 3.6px;
+     color: #FFFFFF;
+     text-transform: uppercase;
+     padding: 6px 15px;
+     font-size: 14px;
+ }
+
+ .top_head_mnu_inr.subj_list_top {
+     justify-content: space-between;
+     padding-bottom: 0;
+ }
+
+ .subj_list_search {
+     position: relative;
+ }
+
+ .subj_list_search button {
+     position: absolute;
+     right: 5px;
+     top: 0;
+     width: 25px;
+     background: transparent;
+     border: 0;
+     height: 30px;
+ }
+
+ .subj_list_search input.form-control {
+     padding: 10px 40px 10px 10px;
+     text-align: left;
+ }
+
+ .subj_list_search button svg {
+     fill: #B4B4B4;
+ }
+
+ /* 06-09-2023 css */
+
+
+ /* 29-09-2023 */
+ .filter-result .single-item .single-item-bg {
+     display: flex;
+     flex-direction: column;
+     flex: auto;
+     border-radius: 10px;
+     padding: .5rem;
+     transition: ease all .3s;
+     height: 100%;
+ }
+
+ .filter-result .single-item :hover {
+     background-color: #F6F6F6;
+ }
+
+ .filter-result .single-item :hover .item-image img {
+     transform: scale(1.2);
+ }
+
+ .filter-result .single-item .item-type {
+     display: flex;
+     align-items: center;
+     margin-bottom: 1rem;
+     margin-top: 1.5rem;
+ }
+
+ .filter-result .single-item .item-image {
+     height: 250px;
+     overflow: hidden;
+     border-radius: 10px;
+ }
+
+ .filter-result .single-item .item-type p {
+     font-family: 'LEMON MILK';
+     font-weight: 300;
+     margin-left: .5rem;
+     letter-spacing: .1rem;
+     margin-bottom: 0;
+     font-size: 12px;
+     overflow: hidden;
+     white-space: nowrap;
+     text-overflow: ellipsis;
+ }
+
+ .filter-result .single-item .item-image img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     object-position: center;
+     transition: ease all .3s;
+ }
+
+ .filter-result .single-item .item-title h4.title {
+     font-family: 'LEMON MILK';
+     font-weight: 400;
+     letter-spacing: .1rem;
+     font-size: .9rem;
+     line-height: 1.5rem;
+     color: var(--ueg-dark-blue);
+ }
+
+ .filter-result .single-item .item-author p {
+     font-family: 'LEMON MILK';
+     font-weight: 300;
+     margin-top: .5rem;
+     letter-spacing: .1rem;
+     margin-bottom: 0;
+     font-size: 12px;
+     color: var(--ueg-dark-blue);
+ }
+
+ .author-name {
+     color: var(--ueg-dark-blue);
+ }
+
+ hr.big-long-yellow {
+     margin-left: 0px;
+     border-radius: 25px;
+     border-width: 6px;
+     border-style: solid;
+     border-color: var(--ueg-yellow);
+     background-color: var(--ueg-yellow);
+     width: 50%;
+ }
+
+ .filter-result .item-content {
+     display: flex;
+     flex: auto;
+ }
+
+ .filter-result .item-content p {
+     font-family: Lato, sans-serif;
+     font-weight: 400;
+     margin-top: .5rem;
+     margin-bottom: 1.5rem;
+     font-size: 14px;
+     color: var(--ueg-dark-blue);
+     line-height: 1.5rem;
+ }
+
+ .banner-icon img {
+     width: inherit;
+ }
+
+ .filter-option {
+     /* padding: .2rem .5rem; */
+     align-items: center;
+     padding-left: 10px;
+ }
+
+ .filter-option>p {
+     margin-bottom: 0 !important;
+     padding-left: 1rem;
+     font-family: 'LEMON MILK';
+     font-weight: 200;
+     letter-spacing: 2px;
+     font-size: 10px;
+     padding-top: 10px;
+     padding-bottom: 10px;
+ }
+
+ .filter-suboption {
+     background-color: #f8f8f8;
+     display: flex;
+     padding-left: 28px;
+ }
+
+ .filter-suboption-level-0 {
+     margin-left: 10px;
+     padding-left: 10px;
+     margin-top: 0px;
+ }
+
+ .filter-option-header {
+     transition: all 0.5s ease-in-out;
+ }
+
+ .filter-option-collapse {
+     height: 34px;
+     overflow: hidden;
+ }
+
+ .filter-option-header>p {
+     cursor: pointer;
+ }
+
+ .filter-option-header>p::before {
+     content: '-';
+     font-size: 12px;
+     padding-right: 4px;
+     position: absolute;
+     right: 10px;
+ }
+
+ .filter-option-header.filter-option-collapse>p:before {
+     content: '+';
+     padding-left: 1px;
+     padding-right: 5px;
+ }
+
+ .filter-option-header-new a {
+     text-align: left;
+     font-family: LEMON MILK;
+     font-size: 15px;
+     line-height: 28px;
+     font-weight: bold;
+     letter-spacing: 2.25px;
+     color: #0B154B;
+     text-transform: uppercase;
+     border: 2px solid #9ABDDD;
+     position: relative;
+     display: block;
+     padding: 10px;
+     border-radius: 0;
+ }
+
+ .filter-option-header-new #collapseExample.collapse.show .card.card-body {
+     border-radius: 0;
+     margin-top: 0;
+     border: 0;
+     padding: 10px;
+ }
+
+ .filter-option-header-new a.btn.btn-no-bg.collapsed::before {
+     content: '-';
+     padding-right: 4px;
+     right: 19px;
+     position: absolute;
+     font-size: 20px;
+
+ }
+
+ .filter-option-header-new a.btn.btn-no-bg::before {
+     content: '+';
+     padding-right: 4px;
+     right: 19px;
+     position: absolute;
+     font-size: 20px;
+ }
+
+ .filter-option.filter-option-header.filter-option-header-new .filter-option.filter-suboption p {
+     font-weight: normal;
+     border: 0;
+     font-size: 13px;
+ }
+
+ .filter-option-header-new .filter-option.filter-option-header .filter-option.filter-suboption p::before {
+     display: none;
+ }
+
+ .filter-option.filter-option-header.filter-option-header-new.filter-option-collapse {
+     height: 54px;
+     overflow: hidden;
+ }
+
+ .filter-option-header-new {
+     margin-bottom: 10px;
+ }
+
+ .container.filter-search.srces .search-bar-home.resourc_search {
+     border: 0;
+     margin-top: 30px;
+ }
+
+ .container.filter-search.srces h4.title {
+     font-size: 52px;
+ }
+
+ .top_cargry_in button {
+     border: 2px solid #9ABDDD;
+     border-radius: 8px;
+     font-size: 18px;
+     line-height: 28px;
+     font-family: LEMON MILK;
+     letter-spacing: 2.7px;
+     color: #0B154B;
+     text-transform: uppercase;
+     padding: 10px 15px;
+ }
+
+ .top_cargry_in ul {
+     list-style-type: none;
+     padding: 0;
+     margin: 0;
+     display: flex;
+     flex-wrap: wrap;
+     width: 100%;
+     gap: 20px;
+ }
+
+ .container-fluid.bg-light-blue.top_cargry {
+     padding: 20px 0 50px;
+ }
+
+ .top_cargry_in h4 {
+     font-size: 25px;
+     line-height: 34px;
+     font-family: LEMON MILK;
+     letter-spacing: 3.75px;
+     color: #0B154B;
+     text-transform: uppercase;
+     margin-bottom: 30px;
+ }
+
+ .page-banner-new-img .banner-img {
+     height: 380px;
+ }
+
+ .page-banner-img.page-banner-new-img .banner-accent {
+     transform: rotate(22deg) !important;
+     top: 10%;
+     border-width: 10px;
+     left: 14%;
+ }
+
+ .sing_new_pge_dv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+ .enrolloncourse_bot .btn.btn-enrol {
+     padding: 5px 20px;
+     font-size: 13px;
+     border-radius: 5px;
+ }
+
+ div.enrolloncourse_bot {
+     display: flex;
+     justify-content: space-between;
+ }
+
+ .bredcme ul {
+     list-style-type: none;
+     padding: 0;
+     margin: 0 0 30px;
+     display: flex;
+     gap: 10px;
+ }
+
+ .bredcme li,
+ .bredcme span,
+ .bredcme li a {
+     font-size: 15px;
+     line-height: 42px;
+     font-weight: 300;
+     font-family: LEMON MILK;
+     letter-spacing: 0.75px;
+     color: #00CAD9;
+     text-transform: uppercase;
+ }
+
+ .lesn_new_secn_catg ul {
+     list-style-type: none;
+     display: flex;
+     align-items: center;
+     gap: 40px;
+     padding: 0;
+     margin: 10px 0;
+ }
+
+ .lesn_new_secn_catg ul li img,
+ .lesn_new_secn_catg ul li svg {
+     width: 20px;
+     margin-right: 5px;
+ }
+
+ .lesn_new_secn_catg ul li {
+     font-size: 16px;
+     line-height: 21px;
+     font-weight: 500;
+     font-family: LEMON MILK;
+     letter-spacing: 0.75px;
+     color: #0B154B;
+     display: flex;
+     align-items: center;
+     gap: 10px;
+ }
+
+ .lesn_new_secn_top {
+     display: flex;
+     position: relative;
+     background: #0B154B;
+     gap: 80px;
+     align-items: center;
+     padding: 10px;
+ }
+
+ .lesn_new_secn_top strong {
+     color: #fff;
+     font-size: 16px;
+     line-height: 21px;
+     font-weight: 600;
+ }
+
+ .lesn_new_secn_top p {
+     color: #fff;
+     margin: 0;
+     font-size: 16px;
+     line-height: 21px;
+     font-weight: 400;
+ }
+
+ .lesn_new_secn_top span {
+     color: #fff;
+     position: absolute;
+     right: 10px;
+     font-size: 16px;
+     line-height: 21px;
+     font-weight: 400;
+ }
+
+ .lesn_new_secn_top.first_top {
+     background: none;
+     margin-bottom: 30px;
+     gap: 50px;
+ }
+
+ .lesn_new_secn_top.first_top strong,
+ .lesn_new_secn_top.first_top p {
+     color: #0B154B;
+     font-size: 18px;
+ }
+
+ .lesn_new_secn_catg {
+     margin: 30px;
+ }
+
+ .lesn_new_secn_blo {
+     padding: 0 30px 30px;
+ }
+
+ .lesn_new_secn_blo p {
+     color: #0B154B;
+     font-size: 18px;
+     line-height: 22px;
+ }
+ .lesn_new_secn .btn.btn-enrol-complete,
+ .lesn_new_secn .btn.btn-enrol-resume,
+ .lesn_new_secn .btn.btn-enrol-start {
+     padding: 10px 20px;
+     font-size: 16px;
+     border-radius: 5px;
+     margin: 0 30px;
+ }
+
+ .lesn_new_secn {
+     margin-bottom: 30px;
+ }
+
+ .modal-lg {
+     max-width: 1200px;
+ }
+
+ .lesn_new_secn_data {
+     padding: 20px;
+     text-align: center;
+ }
+
+ .tab_modl_dv table td img {
+     width: 42px;
+ }
+
+ .tab_modl_dv table td {
+     font-size: 18px;
+     line-height: 26px;
+     font-weight: 300;
+     letter-spacing: 0.75px;
+     color: #0B154B;
+     text-transform: none;
+     border: 0;
+
+ }
+
+ .tab_modl_dv table td strong {
+     font-family: LEMON MILK;
+ }
+
+ .tab_modl_dv #myTab {
+     background: rgba(157, 193, 225, 0.2);
+     padding: 30px;
+     display: flex;
+     gap: 80px;
+     border: 0;
+ }
+
+ .tab_modl_dv #myTab.nav-tabs .nav-item a {
+     font-size: 24px;
+     line-height: 28px;
+     font-weight: normal;
+     font-family: LEMON MILK;
+     letter-spacing: 0.75px;
+     color: #0B154B;
+     position: relative;
+ }
+
+ .tab_modl_dv #myTab.nav-tabs .nav-link:hover,
+ .tab_modl_dv #myTab.nav-tabs .nav-link.active {
+     background: none;
+     border-color: transparent;
+ }
+
+ .tab_modl_dv #myTab.nav-tabs .nav-item a::after {
+     position: absolute;
+     height: 10px;
+     width: 100%;
+     content: "";
+     background: #00CAD9;
+     border-radius: 30px;
+     bottom: -35px;
+     left: 0;
+     display: none
+ }
+
+ .tab_modl_dv #myTab.nav-tabs a.nav-item a:focus {
+     border: 0;
+     box-shadow: 0 0;
+     outline: 0;
+     ;
+ }
+
+ .tab_modl_dv #myTab.nav-tabs .nav-item a.active:after {
+     display: block;
+ }
+
+ .tab_modl_dv #myTabContent {
+     padding-top: 40px;
+     border: 0;
+ }
+
+ .navbar .navbar-brand svg {
+     height: 50px;
+ }
+
+ @media(max-height: 568px) {
+     .navbar .navbar-brand svg {
+         height: 36px !important;
+     }
+ }
+
+ .availability-table {
+     border-spacing: 0.1rem 1rem;
+     border-collapse: separate;
+     width: 100%;
+ }
+
+ .availability-table tbody td {
+     font-family: Lato;
+     font-weight: 300;
+ }
+
+ .availability-table tbody td p {
+     font-family: Lato;
+     font-weight: 600;
+     margin-bottom: 0;
+ }
+a
+ .availability-active {
+     background-color: rgba(154, 189, 221, .25);
+ }
+
+ .availability-active svg path {
+     fill: rgba(0, 0, 0, .8);
+ }
+
+ .cls-1 {
+     isolation: isolate;
+ }
+
+ .cls-2 {
+     fill: #1f2345;
+ }
+
+ .cls-3 {
+     fill: #38b07c;
+ }
+
+ .cls-4 {
+     fill: #ffbe0d;
+ }
+
+ .cls-5 {
+     fill: #e01e5a;
+ }
+
+ .page-banner-img {
+     position: relative;
+ }
+
+ #prerecorded_caro.course-dtls .items {
+     width: 15.5%;
+ }
+
+ #prerecorded_caro.course-dtls {
+     display: flex;
+     flex-wrap: wrap;
+     width: 100%;
+     gap: 20px;
+ }
+ a{text-decoration: none !important;}
+
+ .subnav .subnav-image{height: 58px; width: 40px; top: 11px; left: 0px; background-color: rgba(221,51,51,0.00); font-size: 12px; font-family: arial; color: rgba(0,0,0,1.00);}
+ .layr_data_dv .layer:first-child{height: 40px; width: 147px; top: 6px; left: 24px; background-color: rgba(192,192,192,0.00); font-size: 12px; font-family: 'LEMON MILK';font-weight: 300; letter-spacing: .1rem; color: rgba(0,202,217,1.00);color: rgba(0,202,217,1.00);}
+.scrolling-wrapper{overflow-x: auto;margin: 0 auto !important;}
+div#DropDownSearch.subnav {
+    top: -8px;
+}
+.row .bor_lin,
+.row .enrolloncourse_top .info-group, .row .enrolloncourse_top .info-group.line-right {
+    margin-bottom: 10px;
+}
+.accrod_dve .accordion-button::after{display: none !important;}
+.accrod_dve .accordion-item:first-of-type .accordion-button{padding: 0;}
+
+.accrod_dve .lesn_new_secn_top{width: 100%; background: #0B154B;}
+.accrod_dve .collapsed .lesn_new_secn_top{width: 100%; background: #F4F8FC;}
+.accrod_dve .accordion-item {
+    border-color: #9ABDDD;
+}
+.accrod_dve .accordion-button{padding: 0;}
+.accrod_dve .collapsed .lesn_new_secn_top strong,
+.accrod_dve .collapsed .lesn_new_secn_top p,
+.accrod_dve .collapsed .lesn_new_secn_top span {
+    color: #0B154B;
+}
+.accrod_dve .lesn_new_secn_top p,
+.accrod_dve .lesn_new_secn_top strong,
+.accrod_dve .lesn_new_secn_top span{color: #fff;}
+a#sortbyButton {
+    align-items: center;
+}
+.sing_new_pge_r {
+    width: 28%;
+}
+.sing_new_pge_l {
+    width: 70%;
+}
+
+.top_cargry_in button.active{
+    background-color: var(--ueg-dark-blue) !important;
+    border-color: var(--ueg-dark-blue) !important;
+     color: #fff !important;
+ }

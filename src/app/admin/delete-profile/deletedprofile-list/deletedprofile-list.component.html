@@ -1,0 +1,77 @@
+<main role="main" class="pb-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="top_scne">
+                <div class="top_scne_in">
+                    <h1>Delete Profile List</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div>
+                        <div id="datatables-reponsive_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                            <div class="table-responsive">
+                                <table id="datatables-column-search-select-inputs" class="table table-no-striped dataTable"
+                                    style="width: 100%;" aria-describedby="datatables-column-search-select-inputs_info">
+                                    <thead class="thead-dark">
+                                        <tr role="row">
+                                            <th class="sorting align-middle">Sl No.</th>
+                                            <th class="sorting align-middle">Name</th>
+                                            <th class="sorting align-middle">Country Code</th>
+                                            <th class="sorting align-middle">Mobile</th>
+                                            <th class="sorting align-middle">Reason</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngIf="deleteprofileListArr.length == 0">
+                                            <td class="text-center" colspan="20">
+                                                <h4>No Data Found!</h4>
+                                            </td>
+                                        </tr>
+                                        <tr role="row" class="odd" *ngFor="let item of deleteprofileListArr; let i = index">
+                                            <td class="align-middle">{{i+1}}.</td>
+                                            <td class="align-middle">{{item.name}}</td>
+                                            <td class="align-middle">{{item.countrycode}}</td>
+                                            <td class="align-middle">{{item.mobile}}</td>
+                                            <td class="align-middle">{{item.reason}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="d-xl-flex align-items-center mt-3 pegin_sec" *ngIf="deleteprofileListArr.length > 0">
+                                <div class="col-auto d-block">
+                                    <div class="text-center">
+                                        <div class="dataTables_length"><label>Deleted account per page
+                                                <select name="datatables-reponsive_length"
+                                                    aria-controls="datatables-reponsive"
+                                                    class="form-select form-select-sm"
+                                                    (change)="changePagelimit($event)" [(ngModel)]="selectedVal">
+                                                    <option *ngFor="let item of pageList" [value]=item.value>
+                                                        {{item.name}}
+                                                    </option>
+                                                </select> {{offset + 1}} - {{offset + limit}}</label>
+                                            <label class="mx-2">
+                                                <button class="btn btn-dark text-white" [disabled]="previousBtnDesable"
+                                                    (click)="previousPage()"><img src="assets/img/chevron-left.svg"
+                                                        alt="chevron-left"></button>
+                                                &nbsp;
+                                                <button class="btn btn-dark text-white" [disabled]="nextBtnDesable"
+                                                    (click)="nextPage()"><img src="assets/img/chevron-right.svg"
+                                                        alt="chevron-right"></button>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,106 @@
+
+<ng-template #deleteModal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-sm-10">
+                        <h4 class="modal-title d-inline-block align-middle me-2">
+                            Are you want to sure delete this Course Educator Map?
+                        </h4>
+                    </div>
+                    <div class="col-sm-2 d-flex justify-content-end">
+                        <button type="button" (click)="closeModal()" class="btn-close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-secondary btn-lg me-2" (click)="closeModal()">No</button>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-primary btn-lg me-2" (click)="delete()">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+<main role="main" class="pb-3">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="top_scne">
+                <div class="top_scne_in">
+                    <h1 class="add_heading_text">Educator Mapping</h1>
+                    <button class="btn btn-edtng" *ngIf="!courseeducatormapid">Creating</button>
+                    <button class="btn btn-edtng" *ngIf="courseeducatormapid">Editing</button>
+                </div>
+                <!-- <div class="top_scne_rt"><button class="btn btn-preview" *ngIf="courseeducatormapid"
+                        (click)="goToPreview()">Preview</button></div> -->
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="main-content">
+        <div class="main-content-inner">
+
+            <div class="row">
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Course Name:</label>
+                    <input type="text" [(ngModel)]="coursename" (keyup)="searchCourseByName()" [matAutocomplete]="auto"
+                        class="form-control input-text" />
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="getCourseIdByName()">
+                        <mat-option *ngIf="spinner">
+                            <mat-spinner style="width:50px;"></mat-spinner>
+                        </mat-option>
+                        <mat-option *ngFor="let item of courseArr" [value]="item.coursename">
+                            {{ item.coursename }}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <span class="error-msg" *ngIf="coursenameErr">Course name required</span>
+                </div>
+    
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Educator Name:</label>
+                    <input type="text" [(ngModel)]="educatorname" (keyup)="searchEducatorByName()"
+                        [matAutocomplete]="lession" class="form-control input-text" />
+                    <mat-autocomplete #lession="matAutocomplete" (optionSelected)="getEducatorIdByName()">
+                        <mat-option *ngIf="spinnerEducator">
+                            <mat-spinner style="width:50px;"></mat-spinner>
+                        </mat-option>
+                        <mat-option *ngFor="let item of educatorArr" [value]="item.educatorname">
+                            {{ item.educatorname }}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <span class="error-msg" *ngIf="educatornameErr">Educator name required</span>
+                </div>
+    
+    
+            </div>
+
+        </div>
+
+        <div class="bottom-secne" style="text-align: center;">
+            <button class="delete-button btn btn-primary" *ngIf="courseeducatormapid" (click)="onClickDelete(courseeducatormapid)">Delete Course Educator Mapping</button>
+            <div *ngIf="!courseeducatormapid"></div>
+            <div>
+                <button class="cancel-button btn btn-primary" (click)="resetForm()">Cancel</button>
+                <button class="submit-button btn btn-primary" *ngIf="!courseeducatormapid" (click)="add()">Save</button>
+                <button class="submit-button btn btn-primary " *ngIf="courseeducatormapid" (click)="edit()">Save</button>
+            </div>
+
+        </div>
+
+
+    </div>
+</main>

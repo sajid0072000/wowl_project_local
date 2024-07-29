@@ -1,0 +1,125 @@
+<main role="main" class="pb-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="top_scne">
+                <div class="top_scne_in">
+                    <h1>Reading Assesment</h1>
+                    <button class="btn btn-edtng" (click)="add()">Create New</button>
+                </div>
+                <div class="top_scne_rt">
+                    <div class="btn-group btn-group-sm ms-auto unit-list-filt btn-download-group">
+                        <div class="">
+                            <label>Course</label>
+                            <div class="search-bar">
+                                <i class="fa fa-search"></i>
+                                <input type="text" [(ngModel)]="coursename" (keyup)="searchCourseByName()"
+                                    [matAutocomplete]="auto" class="form-control search-bar-input"
+                                    placeholder="Search by course name" />
+                                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="getCourseIdByName()">
+                                    <mat-option *ngIf="spinner">
+                                        <mat-spinner style="width:50px;"></mat-spinner>
+                                    </mat-option>
+                                    <mat-option *ngFor="let item of courseArr" [value]="item.coursename">
+                                        {{ item.coursename }}
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </div>
+                        </div>
+                        <div class="mx-2">
+                            <label>Question</label>
+                            <div class="search-bar">
+                                <i class="fa fa-search"></i>
+                                <input type="text" [(ngModel)]="searchText" class="form-control search-bar-input"
+                                    placeholder="Search by question" (keyup)="search()" (keyup.enter)="onEnter()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div>
+                        <div id="datatables-reponsive_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                            <div class="table-responsive">
+                                <table id="datatables-column-search-select-inputs"
+                                    class="table table-no-striped dataTable" style="width: 100%;"
+                                    aria-describedby="datatables-column-search-select-inputs_info">
+                                    <thead class="thead-dark">
+                                        <tr role="row">
+                                            <th class="sorting align-middle">Sl No.</th>
+                                            <th class="sorting align-middle">Course Name</th>
+                                            <th class="sorting align-middle">Question </th>
+                                            <th class="sorting align-middle">Description</th>
+                                            <th class="sorting align-middle text-center">Created At</th>
+                                            <th class="sorting align-middle">&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngIf="assesmentList.length == 0">
+                                            <td class="text-center" colspan="20">
+                                                <h4>No Data Found!</h4>
+                                            </td>
+                                        </tr>
+                                        <tr role="row" class="odd" *ngFor="let item of assesmentList; let i = index">
+                                            <td class="align-middle">{{i+1}}.</td>
+                                            <td class="align-middle">{{item.coursename}}</td>
+                                            <td class="align-middle">{{item.question}}</td>
+                                            <td class="align-middle">{{item.description}}</td>
+                                            <td class="align-middle text-center">{{item.createdat | date:
+                                                'dd-MM-yy h:mm a'}}</td>
+
+                                            <td class="align-middle">
+                                                <!-- <i class="fa fa-edit editbtn" (click)="edit(item.exerciseid)"
+                                                    style="font-size:24px; cursor: pointer;"></i>
+                                                &nbsp;&nbsp;
+                                                <i class="deletebtn fa fa-trash" style="font-size:24px;  cursor: pointer;"
+                                                    (click)="onClickDelete(item.exerciseid)"></i> -->
+                                                <button class="btn btn-arow" (click)="edit(item.assesmentid)"><i
+                                                        class="fa fa-chevron-right"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="d-xl-flex align-items-center mt-3 pegin_sec" *ngIf="assesmentList.length > 0">
+                                <div class="col-auto d-block">
+                                    <div class="text-center">
+                                        <div class="dataTables_length"><label>Exercises per page
+                                                <select name="datatables-reponsive_length"
+                                                    aria-controls="datatables-reponsive"
+                                                    class="form-select form-select-sm"
+                                                    (change)="changePagelimit($event)" [(ngModel)]="selectedVal">
+                                                    <option *ngFor="let item of pageList" [value]=item.value>
+                                                        {{item.name}}
+                                                    </option>
+                                                </select> {{offset + 1}} - {{offset + limit}}</label>
+                                            <label class="mx-2">
+                                                <button class="btn btn-dark text-white" [disabled]="previousBtnDesable"
+                                                    (click)="previousPage()"><img src="assets/img/chevron-left.svg"
+                                                        alt="chevron-left"></button>
+                                                &nbsp;
+                                                <button class="btn btn-dark text-white" [disabled]="nextBtnDesable"
+                                                    (click)="nextPage()"><img src="assets/img/chevron-right.svg"
+                                                        alt="chevron-right"></button>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</main>

@@ -1,0 +1,130 @@
+<main role="main" class="pb-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="top_scne unit-list-div">
+                <div class=" mt-4">
+                    <h1>All Assignment Scores & Final Assesment Scores</h1>
+                </div>
+
+            </div>
+        </div>
+    </div>
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <div id="datatables-reponsive_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                        <div class="row mb-4">
+                            <div class="col-sm-12">
+                                <!-- <button class="btn btn-secondary float-right" (click)="downloadlistAssmntSheetExl()"><i
+                                        class="bi bi-file-earmark-excel"></i> Download Excel</button> -->
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="datatables-column-search-select-inputs"
+                                class="table table-no-striped dataTable" style="width: 100%"
+                                aria-describedby="datatables-column-search-select-inputs_info">
+                                <thead class="thead-dark">
+                                    <tr role="row">
+                                        <th class="sorting align-middle" style="width: 20%;">Sl No.</th>
+                                        <th class="sorting align-middle" style="width: 40%;">Lesson Name</th>
+                                        <th class="sorting align-middle" style="width: 30%;">Score</th>
+                                        <!-- <th class="sorting align-middle" style="width: 10%;">Lesson Name</th>
+                                        <th class="sorting align-middle" style="width: 25%;">Exercise Name</th> -->
+                                        <!-- <th class="sorting align-middle" style="width: 5%;">Score</th> -->
+                                        <th class="sorting align-middle" style="width: 10%;">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngIf="lessonScore.length == 0">
+                                        <td class="text-center" colspan="20">
+                                            <h4>No Data Found!</h4>
+                                        </td>
+                                    </tr>
+                                    <tr role="row" class="odd" *ngFor="let item of lessonScore; let i = index">
+                                        <td class="align-middle">{{ i + 1 }}.</td>
+                                        <td class="align-middle">{{ item.title }}</td>
+                                        <td class="align-middle">{{ item.score }}</td>
+                                        <td class="align-middle" >
+                                            <span *ngIf="item.score >= 5" class="badge badge-success">Pass</span>
+                                            <span *ngIf="item.score < 5" class="badge badge-danger">Fail</span>
+                                        </td>
+                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+    <!-- assesment table -->
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <div id="datatables-reponsive_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                            <div class="row mb-4">
+                                <div class="col-sm-12">
+                                    <!-- <button class="btn btn-secondary float-right" (click)="downloadlistAssmntSheetExl()"><i
+                                            class="bi bi-file-earmark-excel"></i> Download Excel</button> -->
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="datatables-column-search-select-inputs"
+                                    class="table table-no-striped dataTable" style="width: 100%"
+                                    aria-describedby="datatables-column-search-select-inputs_info">
+                                    <thead class="thead-dark">
+                                        <tr role="row">
+                                            <th class="sorting align-middle" style="width: 20%;">Sl No.</th>
+                                            <th class="sorting align-middle" style="width: 40%;">Lesson Name</th>
+                                            <th class="sorting align-middle" style="width: 30%;">Score</th>
+                                            <!-- <th class="sorting align-middle" style="width: 10%;">Lesson Name</th>
+                                            <th class="sorting align-middle" style="width: 25%;">Exercise Name</th> -->
+                                            <!-- <th class="sorting align-middle" style="width: 5%;">Score</th> -->
+                                            <!-- <th class="sorting align-middle" style="width: 10%;">Status</th> -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngIf="assesmentScore.length == 0">
+                                            <td class="text-center" colspan="20">
+                                                <h4>No Data Found!</h4>
+                                            </td>
+                                        </tr>
+                                        <tr role="row" class="odd" *ngFor="let item of assesmentScore; let i = index">
+                                            <td class="align-middle">{{ i + 1 }}.</td>
+                                            <td class="align-middle" *ngIf="item.assesmenttype ==1" >Reading Assesment</td>
+                                            <td class="align-middle" *ngIf="item.assesmenttype ==2" >Listening Assesment</td>
+                                            <td class="align-middle" *ngIf="item.assesmenttype ==3" >Speaking Assesment</td>
+
+                                            <td class="align-middle">{{ item.max_score }}</td>
+                                            <!-- <td class="align-middle" >
+                                                <span *ngIf="item.score >= 5" class="badge badge-success">Pass</span>
+                                                <span *ngIf="item.score < 5" class="badge badge-danger">Fail</span>
+                                            </td> -->
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    
+    
+    </div>
+</main>

@@ -1,0 +1,108 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "node_modules/angular-notifier/styles.css";
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+
+
+/* html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+} */
+
+/* .container {
+    margin-top: 10%;
+} */
+
+.body-container{
+    padding-top: 120px;padding-bottom: 20px;
+}
+.modal-backdrop.fade.show{
+    z-index: 1050 !important;
+}
+
+/*::-webkit-scrollbar {
+    height: 10px;              !* height of horizontal scrollbar ← You're missing this *!
+    width: 4px;               !* width of vertical scrollbar *!
+    border: 1px solid rgba(0, 0, 0, 0.02);
+}*/
+
+::-webkit-scrollbar{
+    height: 4px;
+    width: 10px;
+    background: gray;
+}
+::-webkit-scrollbar-thumb:horizontal{
+    background: #0074dc;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:vertical{
+    background: #024156;
+    border-radius: 10px;
+}
+
+.cp{
+    cursor: pointer;
+}
+
+.image-videos-banner{
+    height: unset;
+}
+
+.nav-scroll{
+    height: 200px;
+    overflow-y: auto;
+}
+
+.dropdown-menu.show.admin-nav-menu{
+    height: 380px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.display-inline{
+  display: inline-block;
+}
+.wowl-ueg-language-box-button{
+    color: #fff;
+}
+
+.border-r-0{
+    border-right: 0 !important;
+}
+.border-l-0{
+    border-left: 0 !important;
+}
+.inp-border-gr-clr{
+    border-color: #4DBB80;
+}
+.inp-over-lebel{
+    position: absolute;
+    left: 12%;
+  z-index: 9;
+  margin-top: -9px;
+  background: white;
+  padding: 0 5px;
+  font-size: 12px;
+}
+.form-control:disabled{
+    background-color: #ffffff;
+}
+.sign-comm-inr1 input.form-control{
+    border-radius: .25rem !important;
+    box-shadow: none;
+}
+.sign-comm-inr1 input.form-control:focus, .sign-comm-inr1 select:focus{
+    border-color: #4DBB80 !important;
+    box-shadow: none;
+}
+.btn-outline-secondary.border-r-0.inp-border-gr-clr, .btn-outline-secondary.border-r-0.inp-border-gr-clr:hover{
+    background-color: #fff;
+    color: #3C5AAA;
+}

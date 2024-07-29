@@ -1,0 +1,377 @@
+<div class="full-screen" id="fulldiv">
+    <div>
+        <button class="close" (click)="toggleFullScreenImg(0)">X</button>
+    </div>
+    <div class="full-screen-img">
+        <img [src]="fullScreenImg" alt="" style="width: 500px;">
+    </div>
+</div>
+
+<main role="main" class="pb-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="top_scne">
+                <div class="top_scne_in">
+                    <h1 class="add_heading_text">Course</h1>
+                    <button class="btn btn-edtng" *ngIf="!courseid">Creating</button>
+                    <button class="btn btn-edtng" *ngIf="courseid">Editing</button>
+                </div>
+                <!-- <div class="top_scne_rt"><button class="btn btn-preview" *ngIf="courseid"
+                        (click)="goToPreview()">Preview</button></div> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="row">
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Course name</label>
+                    <input type="text" class="form-control input-text" placeholder="Enter course name"
+                        [(ngModel)]="coursename" (keyup)="changeCourseName()">
+                    <span class="error-msg" *ngIf="coursenameErr">Course name required</span>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Course type</label>
+                    <select class="form-select input-text" [(ngModel)]="coursetypeid" (change)="changeCourseTypeName()">
+                        <option value="">Select</option>
+                        <option *ngFor="let data of categoryTypeArr" [value]="data.categorytypeid">
+                            {{data.name}}
+                        </option>
+                    </select>
+                    <span class="error-msg" *ngIf="coursetypeidErr">Course type required</span>
+                </div>
+
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Catagory</label>
+                    <input type="text" placeholder="Search..." [(ngModel)]="categoriesName"
+                        (keyup)="searchCategoriesByName()" [matAutocomplete]="auto2" class="form-control input-text" />
+                    <mat-autocomplete #auto2="matAutocomplete" (optionSelected)="getCategoriesIdByName()">
+                        <mat-option *ngIf="categoriesSpinner">
+                            <mat-spinner style="width:50px;"></mat-spinner>
+                        </mat-option>
+                        <mat-option *ngFor="let item of categoriesArr" [value]="item.name">
+                            {{ item.name }}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <span class="error-msg" *ngIf="categoryListErr">Categories required</span>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label for="name" class="form-label lebel-text">Educators</label>
+                    <input type="text" [(ngModel)]="educatorname" (keyup)="searchEducatorByName()"
+                        [matAutocomplete]="auto" class="form-control input-text" placeholder="Search..." />
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="getEducatorIdByName()">
+                        <mat-option *ngIf="spinnerEducator">
+                            <mat-spinner style="width:50px;"></mat-spinner>
+                        </mat-option>
+                        <mat-option *ngFor="let item of educatorArr" [value]="item.educatorname">
+                            {{ item.educatorname }}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <span class="error-msg" *ngIf="educatoridErr">Educators required</span>
+
+                    <div class="catgry_list_sc">
+                        <div *ngFor="let data of educatorList; let i = index">
+                            <span>{{data.educatorname}}</span>
+                            <a (click)="educatorRemove(i)">X</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Thumbnail image </label>
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="image-upload">
+                                <label for="file-input-thumbnailImage">
+                                    <button type="button" class="btn btn-upload-btn"
+                                        (click)="uploadBtnthumbnailImage()"> Upload image
+                                    </button>
+                                </label>
+                                <input id="file-input-thumbnailImage" type="file"
+                                    (change)="onFileChangedthumbnailImage($event)">
+                            </div>
+                            <span class="error-msg" *ngIf="thumbnailImageErr">Thumbnail image required</span>
+
+                        </div>
+                        <div class="col-7">
+                            <img *ngIf="thumbnailImage" [src]="FILE_URL + thumbnailImage"
+                                class="form-control profile_img" alt="" (click)="imagePopUp()">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Course banner </label>
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="image-upload">
+                                <label for="file-input-Banner">
+                                    <button type="button" class="btn btn-upload-btn" (click)="uploadBtnBanner()"> Upload
+                                        image
+                                    </button>
+                                </label>
+                                <input id="file-input-Banner" type="file" (change)="onFileChangedBanner($event)">
+                            </div>
+                            <span class="error-msg" *ngIf="coursebannerErr">Course banner required</span>
+
+                        </div>
+                        <div class="col-7">
+                            <img *ngIf="coursebanner" [src]="FILE_URL + coursebanner" class="form-control profile_img"
+                                alt="" (click)="imagePopUp()">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Lesson banner image </label>
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="image-upload">
+                                <label for="file-input-Lession-Banner">
+                                    <button type="button" class="btn btn-upload-btn" (click)="uploadBtnLessionBanner()">
+                                        Upload
+                                        image
+                                    </button>
+                                </label>
+                                <input id="file-input-Lession-Banner" type="file"
+                                    (change)="onFileChangedLessionBanner($event)">
+                            </div>
+                            <span class="error-msg" *ngIf="lessionbannerimgErr">Lession banner required</span>
+
+                        </div>
+                        <div class="col-7">
+                            <img *ngIf="lessionbannerimg" [src]="FILE_URL + lessionbannerimg"
+                                class="form-control profile_img" alt="" (click)="imagePopUp()">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Course video </label>
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="image-upload">
+                                <app-ng-chunk-upload (onFileSelect)="onFileChange($event)"></app-ng-chunk-upload>
+                            </div>
+                            <span class="error-msg" *ngIf="coursevideourlErr">Video required</span>
+
+                        </div>
+                        <div class="col-7">
+                            <div id="video-container"></div>
+                            <span *ngIf="coursevideourl !== '' && coursevideourl !== null && trncstatus == 0"
+                                style="color: #e39013;">Transcoding in progress...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text"> Video thumbnail image </label>
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="image-upload">
+                                <label for="Video-Thumbnail">
+                                    <button type="button" class="btn btn-upload-btn"
+                                        (click)="uploadBtnVideothumbnailImage()"> Upload image
+                                    </button>
+                                </label>
+                                <input id="Video-Thumbnail" type="file"
+                                    (change)="onFileChangedVideothumbnailImage($event)">
+                            </div>
+                            <span class="error-msg" *ngIf="videothumbnailErr">Video thumbnail image required</span>
+
+                        </div>
+                        <div class="col-7">
+                            <img *ngIf="videothumbnail" [src]="FILE_URL + videothumbnail"
+                                class="form-control profile_img" alt="" (click)="imagePopUp()">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Syllabus</label>
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="image-upload">
+                                <label for="file-input-Syllabus">
+                                    <button type="button" class="btn btn-upload-btn" (click)="uploadEditBtnSyllabus()">
+                                        Upload
+                                        Syllabus </button>
+                                </label>
+                                <input id="file-input-Syllabus" type="file" (change)="onFileChangedSyllabus($event)">
+                            </div>
+                            <span class="error-msg" *ngIf="syllabusErr">Syllabus required</span>
+
+                        </div>
+                        <div class="col-7">
+                            <h4 *ngIf="syllabus">
+                                <a [href]="FILE_URL + syllabus" target="_blank"><i class="fa fa-file-text fileIcon"
+                                        aria-hidden="true"></i></a>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mb-3 col-md-12">
+                    <label class="form-label lebel-text">Course info</label>
+                    <div *ngFor="let obj of courseInfo; let i = index" class="mb-2">
+                        <div class="row">
+                            <div class="col-sm-11">
+                                <input type="text" class="form-control input-text" placeholder="Enter course info"
+                                    [(ngModel)]="obj.value" (keyup)="changeInfo(obj)">
+                                <span class="error-msg" *ngIf="obj.valueErr">Info required</span>
+                            </div>
+                            <div class="col-sm-1">
+                                <i class="fa fa-trash deletebtn mt-3" style="font-size:24px;  cursor: pointer;"
+                                    (click)="removeInfo(i)"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button (click)="addMoreInfo()" class="add_more" style="float: left;"><img
+                                src="assets/img/addmore.png" style="width: 40px; " /><span>Add
+                                More Infos</span></button>
+                    </div>
+                </div>
+
+
+                <div class="mb-3 col-md-12">
+                    <label class="form-label lebel-text">About course </label>
+                    <ckeditor [config]="{ placeholder:'Enter about course'}" [(ngModel)]="longdesc" [editor]="Editor"
+                        (change)="changeLongDecs()"></ckeditor>
+                    <span class="error-msg" *ngIf="longdescErr">Long description required</span>
+
+                </div>
+
+                <div class="mb-3 col-md-12">
+                    <label class="form-label lebel-text">Outcoming</label>
+                    <div *ngFor="let obj of outcomesList; let i = index" class="mb-2">
+
+                        <div class="row">
+                            <div class="col-sm-11">
+                                <input type="text" class="form-control input-text" [(ngModel)]="obj.outcomes"
+                                    (keyup)="changeOutcomingName(obj)" placeholder="Enter outcoming">
+                                <span class="error-msg" *ngIf="obj.outcomesErr">Outcomes required</span>
+                            </div>
+                            <div class="col-sm-1">
+                                <i class="fa fa-trash deletebtn mt-3" style="font-size:24px;  cursor: pointer;"
+                                    (click)="removeoutcomes(i)"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div>
+                        <button (click)="addMore()" class="add_more" style="float: left;"><img
+                                src="assets/img/addmore.png" style="width: 40px; " /><span>Add
+                                More Outcomes</span></button>
+                    </div>
+
+                </div>
+
+                <div *ngIf="isliveSelf" class="mb-3 col-md-12">
+                    <label class="form-label lebel-text">Self access learning tips</label>
+                    <ckeditor [config]="{ placeholder:'Enter self access learning tips'}" [(ngModel)]="selfAccess" [editor]="Editor1" (change)="changeCourseName()"></ckeditor>
+                    <span class="error-msg" *ngIf="selfAccessErr">Self access learning tips required</span>
+                </div>
+
+
+
+                <div *ngIf="!isliveSelf" class="mb-3 col-md-12">
+                    <label class="form-label lebel-text">Upcoming course</label>
+                    <div *ngFor="let obj of upcomingArr; let i = index" class="mb-2">
+                        <div class="row">
+                            <div class="col-sm-11">
+                                <input type="text" class="form-control input-text" placeholder="Enter upcoming course"
+                                    [(ngModel)]="obj.value" (keyup)="upcomingArr(obj)">
+                                <span class="error-msg" *ngIf="obj.valueErr">Upcoming course required</span>
+                            </div>
+                            <div class="col-sm-1">
+                                <i class="fa fa-trash deletebtn mt-3" style="font-size:24px;  cursor: pointer;"
+                                    (click)="removeUpcoming(i)"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button (click)="addMoreUpcoming()" class="add_more" style="float: left;"><img
+                                src="assets/img/addmore.png" style="width: 40px; " /><span>Add
+                                More Upcoming courses</span></button>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Course code</label>
+                    <input type="text" class="form-control input-text" [(ngModel)]="coursecode"
+                        (keyup)="changecoursecodeName()" placeholder="Enter course code">
+                    <span class="error-msg" *ngIf="coursecodeErr">Course code required</span>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Course sequence</label>
+                    <input type="text" class="form-control input-text" [(ngModel)]="courseseq"
+                        (keyup)="changecourseseq()" placeholder="Enter course sequence">
+                    <span class="error-msg" *ngIf="courseseqErr">Course sequence required</span>
+                </div>
+
+                <div class="col-sm-6 mb-3">
+                    <mat-checkbox [(ngModel)]="ispaid">Paid</mat-checkbox>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="bottom-secne" style="text-align: center;">
+            <button class="delete-button btn btn-primary" *ngIf="courseid" (click)="onClickDelete(courseid)">Delete
+                course</button>
+            <div *ngIf="!courseid"></div>
+            <div>
+                <button class="cancel-button btn btn-primary" (click)="resetForm()">Cancel</button>
+                <button class="submit-button btn btn-primary" *ngIf="courseid == null" (click)="add()">Save</button>
+                <button class="submit-button btn btn-primary " *ngIf="courseid != null" (click)="edit()">Save</button>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<ng-template #deleteModal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-sm-10">
+                        <h4 class="modal-title d-inline-block align-middle me-2">
+                            Are you want to sure delete this course?
+                        </h4>
+                    </div>
+                    <div class="col-sm-2 d-flex justify-content-end">
+                        <button type="button" (click)="closeModal()" class="btn-close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-secondary btn-lg me-2" (click)="closeModal()">No</button>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-primary btn-lg me-2" (click)="delete()">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

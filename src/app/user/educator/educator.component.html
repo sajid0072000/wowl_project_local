@@ -1,0 +1,57 @@
+
+<section class="green_bg  py-4 teamprofile-wowl-ueg-first-head-section">
+    <div class="container">
+    <div class="row">
+        <div class="col-sm-6 themed-grid-col">
+       </div>
+       <div class="col-sm-6 themed-grid-col">
+        <h1>{{educatorDetails.educatorname}}</h1>
+        <h4>{{educatorDetails.categorytypename}} Language teacher</h4>
+        <p>{{educatorDetails.educatorsubheading}}</p>
+      </div>
+   </div>
+</div>
+ </section>
+<!--Body section one end-->
+<!--Body section two start-->
+<section class="white_bg  py-4">
+  <div class="container">
+  <div class="row">
+      <div class="col-sm-6 themed-grid-col">
+        <div class="teamprofile-wowl-ueg-image">
+        <img [src]="FILE_URL+educatorDetails.educatorphotouri" onerror=" this.src='assets/images/person.png'">
+       </div>
+     </div>
+     <div class="col-sm-6 themed-grid-col">
+      <!-- <div class="teamprofile-wowl-ueg-second-head-section">
+        <h4>{{educatorDetails.educatorname}}</h4>
+    </div> -->
+  </div>
+
+
+ </div>
+</div>
+</section>
+<!--Body section two end-->
+<!--Body section three start-->
+<section class="white_bg  py-4 teamprofile-wowl-ueg-below-profilepic-para">
+  <div class="container">
+  <div class="row">
+      <div class="col-sm-6 themed-grid-col">
+        <div class="teamprofile-wowl-ueg-below-profilepic-para">
+          <p [innerHtml]="educatorDetails.about"></p>
+        </div>
+     </div>
+     <div class="col-sm-6 themed-grid-col">
+      <div class="teamprofile-wowl-ueg-below-profilepic-para-head">
+        <h4>Teaching Experience</h4>
+    </div>
+    <div class="teamprofile-wowl-ueg-below-profilepic-para">
+      <p [innerHtml]="educatorDetails.teachingexp"></p>
+  </div>
+  </div>
+
+
+ </div>
+</div>
+</section>

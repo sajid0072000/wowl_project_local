@@ -1,0 +1,128 @@
+<!-- signup modal -->
+<div id="signup-modal" tabindex="-1" aria-labelledby="signup-modalLabel" aria-hidden="true">
+  <div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signup-modalLabel"><img src="assets/images/WOWL-logo.png"></h5>
+        <button type="button" class="btn-close log-col" data-bs-dismiss="modal" aria-label="Close"
+          (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body mt-0">
+
+
+        <!-- signUP -->
+        <div id="signup-div" class="sign-comm" *ngIf="!isView">
+          <p class="mt-0 mb-4">Explore more of the<br>
+            World Of Wonderful Languages</p>
+          <h4>SIGN UP</h4>
+          <div class="sign-comm-inr1">
+
+
+            <div class="w-100 mb-3">
+              <label class="inp-over-lebel">Full Name</label>
+
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <button class="btn btn-outline-secondary border-r-0 inp-border-gr-clr" type="button">
+                    <i class="fa-regular fa-user"></i>
+                  </button>
+                </div>
+                <input autocomplete="off" class="form-control border-l-0 inp-border-gr-clr" type="text"
+                  [(ngModel)]="name" (keyup)="changeName()" (keypress)="onKeyPress($event)" />
+
+              </div>
+              <div class="error-msg" *ngIf="nameErr">Full name required</div>
+            </div>
+
+            <div class="w-100 mb-3">
+              <label class="inp-over-lebel">Country</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <button class="btn btn-outline-secondary border-r-0 inp-border-gr-clr" type="button"><img
+                      src="assets/images/Group.svg" alt="" style="height: 21px;"></button>
+                </div>
+
+                <select class="custom-select border-l-0 inp-border-gr-clr" id="inputGroupSelect03"
+                  [(ngModel)]="countrycode" (change)="onCountryChange()">
+                  <option *ngFor="let obj of allowedCountries" [value]="obj.countrycode">{{obj.country}}</option>
+                </select>
+              </div>
+              <div class="error-msg" *ngIf="countrycodeErr">Country required</div>
+            </div>
+
+
+            <div class="row" *ngIf="countrycode == 91">
+              <div class="col-4">
+                <label class="inp-over-lebel">Country code</label>
+                <input list="menace" name="menace" class="form-control inp-border-gr-clr" [(ngModel)]="countrycode"
+                  (change)="getCallingCode()" type="number" disabled autocomplete="off" pattern="[0-9]*"
+                  (keydown)="onKeyPress($event)" (keyup)="countrycodeFun()" />
+                <datalist id="menace">
+                  <option *ngFor="let data of countryArr">{{ data.emoji+' '+data.callingCode}} </option>
+                </datalist>
+              </div>
+
+              <div class="col-8">
+                <label class="inp-over-lebel">Mobile</label>
+                <input class="form-control inp-border-gr-clr" type="number" [(ngModel)]="mobile"
+                  (keyup)="changeMobile()" autocomplete="off" />
+                <div class="error-msg" *ngIf="mobileErr">Mobile number required</div>
+                <div class="error-msg" *ngIf="validMobileErr">Valid number required</div>
+              </div>
+            </div>
+
+
+            <div class="counrty-co mt-2">
+
+
+              <!-- Email -->
+              <div class="w-100 " *ngIf="countrycode != 91">
+                <label class="inp-over-lebel">Email</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary border-r-0 inp-border-gr-clr" type="button">
+                      <i class="fa-regular fa-envelope"></i>
+                    </button>
+                  </div>
+                  <input type="text" class="form-control border-l-0 inp-border-gr-clr" [(ngModel)]="email"
+                    autocomplete="off" />
+
+                </div>
+                <div class="error-msg" *ngIf="emailErr">Email required</div>
+                <div class="error-msg" *ngIf="validEmailErr">Valid email required</div>
+              </div>
+
+            </div>
+            <div class="sig_btn mt-3">
+              <button class="btn signup_button" (click)="signUp()">SIGN up</button>
+            </div>
+          </div>
+
+          <div class="sign_new_dv mt-3" style="display: flex;
+          justify-content: space-between;">
+            <h6>You already have an account ?</h6>
+            <a class="link-underline-primary" role="button" (click)="openLoginModal()"><u>Sign In</u></a>
+          </div>
+
+        </div>
+
+        <!-- OTP -->
+        <div id="otp-div" class="sign-comm " *ngIf="isView">
+          <p class="mt-2 mb-3">Enter the OTP received</p>
+          <div class="sign-comm-inr mt-0 mb-2">
+            <div class="w-100 mb-3">
+              <input class="Full-Name" type="number" [(ngModel)]="otp" (keyup)="changeOtp()" autofocus />
+              <div class="error-msg" *ngIf="otpErr">Otp required</div>
+            </div>
+          </div>
+          <div class="sig_btn"> <button class="btn signup_button" (click)="varify()">VERIFY</button></div>
+          <p class="reqotp">You can request for new OTP in <span>{{display}}</span> sec <button (click)="resend()"
+              [disabled]="!isTimer">Resend OTP</button></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <notifier-container></notifier-container>

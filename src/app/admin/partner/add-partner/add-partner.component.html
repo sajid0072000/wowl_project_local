@@ -1,0 +1,111 @@
+<ng-template #deleteModal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-sm-10">
+                        <h4 class="modal-title d-inline-block align-middle me-2">
+                            Are you want to sure delete this Partner?
+                        </h4>
+                    </div>
+                    <div class="col-sm-2 d-flex justify-content-end">
+                        <button type="button" (click)="closeModal()" class="btn-close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-secondary btn-lg me-2" (click)="closeModal()">No</button>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-primary btn-lg me-2" (click)="delete()">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+<main role="main" class="pb-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="top_scne">
+                <div class="top_scne_in">
+                    <h1 class="add_heading_text">Partner</h1>
+                    <button class="btn btn-edtng" *ngIf="!updateFlag">Creating</button>
+                    <button class="btn btn-edtng" *ngIf="updateFlag">Editing</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="main-content">
+
+        <div class="main-content-inner">
+            <div class="row">
+                <div class="mb-3 col-md-12">
+                    <label class="form-label lebel-text">Name</label>
+                    <input type="text" class="form-control input-text" placeholder="Enter name" [(ngModel)]="name"
+                        (keypress)="onKeyPressName($event)">
+                    <span class="error-msg" *ngIf="nameErr">Name required</span>
+                    <span class="error-msg" *ngIf="validNameErr && nameErr==false">Valid name required</span>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Country code</label>
+                    <input class="form-control input-text" list="menace" placeholder="Enter countrycode" name="menace"
+                        [(ngModel)]="countrycode" (change)="getCallingCode()" pattern="[0-9]*" (keydown)="onKeyPressCode($event)"/>
+                    <datalist id="menace">
+                        <option *ngFor="let data of countryCodeArr">{{ data.emoji+' '+data.callingCode}} </option>
+                    </datalist>
+                    <span class="error-msg" *ngIf="countrycodeErr">Country code  required
+                    </span>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Mobile </label>
+                    <input type="text" class="form-control input-text" placeholder="Enter mobile no"
+                        [(ngModel)]="mobile" (keypress)="onKeyPressMobile($event)" (keyup)="mobileFun()">
+                    <span class="error-msg" *ngIf="mobileErr">Phone number required</span>
+                    <span class="error-msg" *ngIf="validMobileErr">valid Phone number required</span>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Email</label>
+                    <input type="text" class="form-control input-text" placeholder="Enter email" [(ngModel)]="email"
+                        (keyup)="emailFun()">
+                    <span class="error-msg" *ngIf="emailErr">Email required</span>
+                    <span class="error-msg" *ngIf="validEmailErr">valid email required</span>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label class="form-label lebel-text">Partner Code</label>
+                    <input type="text" class="form-control input-text" placeholder="Enter partnercode"
+                        [(ngModel)]="partnercode" (keyup)="partnerCodefun()">
+                    <span class="error-msg" *ngIf="partnercodeErr">Partner code required</span>
+                </div>
+                <div class="mb-3 col-md-12">
+                    <label class="form-label lebel-text">Address</label>
+                    <textarea type="text" class="form-control input-text" placeholder="Enter address" [(ngModel)]="address"
+                        (keyup)="addressFun()">
+                        </textarea>
+                    <span class="error-msg" *ngIf="addressErr">Address required</span>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-secne" style="text-align: center;">
+            <!-- onClickDelete -->
+            <button class="delete-button btn btn-primary" *ngIf="partnerid" (click)="onClickDelete(partnerid)">Delete Partner</button>
+            <div *ngIf="!partnerid"></div>
+            <div>
+                <button class="cancel-button btn btn-primary" (click)="resetForm()">Cancel</button>
+                <button class="submit-button btn btn-primary"  *ngIf="!updateFlag" (click)="addPartner()">Save</button>
+                <button class="submit-button btn btn-primary"  *ngIf="updateFlag" (click)="updatePartner()">Save</button>
+            </div>
+        </div>
+    </div>
+
+</main>

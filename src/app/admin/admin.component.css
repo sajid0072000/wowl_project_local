@@ -1,0 +1,58 @@
+.example-container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+}
+
+.example-sidenav {
+  width: auto;
+}
+#sidebar > li {
+  text-align: justify;
+}
+#sidebar > li :hover {
+  color: black;
+}
+#hambur {
+  height: 30px;
+  width: 35px;
+}
+#profile_logo {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+}
+a {
+cursor: pointer;
+}
+
+.example-spacer {
+flex: 1 1 auto;
+}
+
+.layout-body {
+margin: 10px;
+padding: 10px;
+}
+
+.sticky-top {
+  box-shadow: 0 0 9px 4px lightgray;
+}
+
+.menu-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1rem;
+}
+
+.menu-button mat-icon {
+  margin-right: 8px;
+}
+

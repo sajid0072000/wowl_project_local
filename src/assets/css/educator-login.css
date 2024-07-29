@@ -1,0 +1,241 @@
+﻿:root {
+    --ueg-primary: #0b154b;
+    --ueg-text: #212529;
+}
+
+/* html {
+    background-color: rgba(154,189,221,.2);
+    font-family: 'Lato';
+} */
+
+.secondary-title {
+    font-size: 48px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    color: var(--ueg-primary);
+}
+
+.tertiary-title {
+    font-size: 20px;
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 0;
+    margin: 0;
+    color: var(--ueg-primary);
+}
+
+.senary-title {
+    font-size: 10px;
+    margin-top: 40px;
+    margin-bottom: 0px;
+    color: grey;
+    font-weight: 400;
+}
+
+.welcome-desc {
+    display: flex;
+    transform: skew(-30deg);
+}
+
+.excerpt {
+    max-width: 55%;
+    color: var(--ueg-text);
+}
+
+.welcome-img {
+    overflow: hidden;
+    float: right;
+    position: absolute;
+    left: 60%;
+    display: block;
+}
+
+    .welcome-img img {
+        object-position: -150px -20px;
+        transform: skew(30deg);
+        object-fit: cover;
+        margin-left: -20%;
+        margin-right: -50%;
+    }
+
+.divider {
+    background-color: var(--ueg-primary);
+    bottom: 15%;
+    left: 59%;
+    position: absolute;
+    right: 39%;
+    border-radius: 60px;
+    top: 15%;
+    z-index: 1;
+}
+
+.ueg-button {
+    padding: 15px 25px;
+    border-radius: 5px;
+    width: auto;
+    margin-top: 5px;
+    margin-right: 20px;
+    font-family: 'Lato';
+    margin-bottom: 60px;
+    background-color: #1084ac;
+    border: none;
+    color: white;
+}
+
+.welcome-title {
+    padding-left: 40px;
+    padding-top: 20px;
+    transform: skew(30deg);
+}
+
+.banner {
+    background-color: white;
+    width: 70%;
+    height: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 10px;
+    border-style: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+    min-width: 800px;
+}
+
+.courses-banner {
+    background-color: white;
+    width: 70%;
+    height: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    border-style: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding-bottom: 30px;
+}
+
+.courses-title {
+    padding: 30px;
+    color: var(--ueg-primary);
+}
+
+.courses-row {
+    display: flex;
+    overflow: scroll;
+    margin: 30px;
+}
+
+.single-course {
+    height: auto;
+    width: 200px;
+    padding: 10px;
+}
+
+.img-course img {
+    height: auto;
+    width: 200px;
+}
+
+.subject-row {
+    display: flex;
+    margin-top: 5px;
+}
+
+.img-subject {
+    width: 20px;
+    padding-right: 3px;
+    color: var(--ueg-primary);
+}
+
+    .img-subject img {
+        width: 20px;
+    }
+
+.subject-type {
+    margin: 2px;
+    font-weight: 400;
+    font-size: 10px;
+}
+
+.course-title {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--ueg-primary);
+}
+
+.subject-divider {
+    height: 1px;
+    width: 50px;
+    top: 0px;
+    left: 0px;
+    border-style: solid;
+    background-color: rgba(0,202,217,1.00);
+    border-width: 5px;
+    border-color: rgba(0,202,217,1.00);
+    border-radius: 5px;
+    box-shadow: 0px 0px 0px -1px rgba(0,0,0,1);
+}
+
+.new-course-banner {
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 10px;
+    background-color: #38ac7c;
+    display: flex;
+    border-radius: 7px;
+}
+
+.new-course-excerpt {
+    color: white;
+    margin: 10px;
+}
+
+.get-started-button {
+    margin-left: auto;
+    border-radius: 5px;
+    border-color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: white;
+    color: #38ac7c;
+    font-family: 'Lato';
+}
+
+.profile-banner {
+    display: flex;
+    background-image: url('/img/edu-month-background.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+}
+
+.profile-title {
+    padding-left: 40px;
+    padding-top: 20px;
+    max-width: 450px;
+}
+
+.profile-excerpt {
+    max-width: 100%;
+    color: var(--ueg-text);
+}
+
+.profile-img-holder {
+    border: rgba(0,202,217,1.00) solid 10px;
+    border-radius: 100%;
+    width: 150px;
+    height: 150px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 10%;
+}
+
+.profile-img {
+    flex-shrink: 0.8;
+    min-width: 100%;
+    min-height: 100%;
+}

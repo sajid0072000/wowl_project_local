@@ -1,0 +1,254 @@
+<ng-template #addmodal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="container-fluid">
+        <div class="row align-items-center position-relative">
+          <div class="col-sm-12">
+            <div class="top_scne">
+              <div class="top_scne_in">
+                <h4 class="modal-title d-inline-block align-middle me-2 text-info">
+                  Application Version
+                </h4>
+                <button class="btn btn-edtng" *ngIf="id">Editing</button>
+                <button class="btn btn-edtng" *ngIf="!id">Creating</button>
+
+              </div>
+            </div>
+          </div>
+          <button type="button" (click)="closeModal()" class="mod-clos btn-close"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-body">
+
+    <div class="container-fluid">
+      <div class="row mb-3">
+        <div class="">
+          <div class="row">
+
+            <div class="mb-3 col-sm-12">
+              <label for="name" class="form-label lebel-text">Package Name</label>
+              <input type="text" class="form-control input-text" [(ngModel)]="packageName"
+                (keyup)="changePackageName()" />
+              <span class="error-msg" *ngIf="packageNameErr">Package name required</span>
+            </div>
+
+            <div class="mb-3 col-sm-12">
+              <label for="name" class="form-label lebel-text">Version Name</label>
+              <input type="text" class="form-control input-text" [(ngModel)]="versionName"
+                (keyup)="changeVersionName()" />
+              <span class="error-msg" *ngIf="versionNameErr">Version name required</span>
+            </div>
+
+            <div class="mb-3 col-sm-12">
+              <label for="name" class="form-label lebel-text">Version Code</label>
+              <input type="text" class="form-control input-text" [(ngModel)]="versionCode"
+                (keyup)="changeVersionCode()" />
+              <span class="error-msg" *ngIf="versionCodeErr">Version Code required</span>
+            </div>
+
+            <div class="mb-3 col-sm-12">
+              <label for="name" class="form-label lebel-text">App Link</label>
+              <input type="text" class="form-control input-text" [(ngModel)]="appLink" (keyup)="changeappLink()" />
+              <span class="error-msg" *ngIf="appLinkErr">App Link required</span>
+            </div>
+
+            <div class="mb-3 col-sm-12">
+              <label for="name" class="form-label lebel-text">Platfrom</label>
+              <select class="form-select" [(ngModel)]="platfrom" (change)="changePlatfrom()">
+                <option value="">Select</option>
+                <option value="android">Android</option>
+                <option value="ios">Ios</option>              
+              </select>
+              <span class="error-msg" *ngIf="platfromErr">Platfrom required</span>
+            </div>
+
+            <div class="mb-3 col-sm-12">
+              <label for="name" class="form-label lebel-text">Update</label>
+              <select class="form-select" [(ngModel)]="isUpdate" (change)="changeUpdate()">
+                <option value="">Select</option>
+                <option value="0">Not required</option>
+                <option value="1">User can or can not update</option>              
+                <option value="2">Must update</option>              
+              </select>
+              <span class="error-msg" *ngIf="isUpdateErr">Update required</span>
+            </div>
+
+
+            <!-- <div class="mb-3 col-sm-12">
+              <mat-checkbox [(ngModel)]="isUpdate">Update</mat-checkbox>
+            </div> -->
+
+            <div class="mb-3 col-sm-12">
+              <mat-checkbox [(ngModel)]="status">Active</mat-checkbox>
+            </div>
+
+          </div>
+
+
+          <div class="row bottom-secne px-0">
+            <div class="col-sm-6 text-left">
+              <!-- <div>
+                <button type="button" class="delete-button btn btn-secondary" *ngIf="id"
+                  (click)="onClickDelete(id)">
+                  Delete Application Version
+                </button>
+              </div> -->
+            </div>
+
+            <div class="col-sm-6 text-right">
+              <div class="d-flex justify-content-end w-100 gap-3">
+                <button type="button" class="cancel-button btn btn-secondary" (click)="resetForm()">
+                  Cancel
+                </button>
+                <button type="button" class="submit-button btn btn-primary" *ngIf="!id"
+                  (click)="add()">
+                  Save
+                </button>
+                <button type="button" class="submit-button btn btn-primary" *ngIf="id" (click)="edit()">
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</ng-template>
+
+<ng-template #deleteModal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-sm-10">
+            <h4 class="modal-title d-inline-block align-middle me-2">
+              Are you want to sure delete this Application version ?
+            </h4>
+          </div>
+          <div class="col-sm-2 d-flex justify-content-end">
+            <button type="button" (click)="closeModal()" class="btn-close"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-6 text-center">
+            <button type="button" class="btn btn-secondary btn-lg me-2" (click)="closeModal()">
+              No
+            </button>
+          </div>
+          <div class="col-sm-6 text-center">
+            <button type="button" class="btn btn-primary btn-lg me-2" (click)="delete()">
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<main role="main" class="pb-3">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="top_scne">
+        <div class="top_scne_in">
+          <h1>Application Version</h1>
+          <button class="btn btn-edtng" (click)="gotoAdd()">Create New</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="main-content">
+    <div class="main-content-inner">
+
+      <div class="row">
+        <div class="col-md-12">
+          <div>
+            <div id="datatables-reponsive_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+              <div class="table-responsive">
+                <table id="datatables-column-search-select-inputs" class="table table-no-striped dataTable"
+                  style="width: 100%" aria-describedby="datatables-column-search-select-inputs_info">
+                  <thead class="thead-dark">
+                    <tr role="row">
+                      <th class="sorting align-middle" style="width: 10%;">Sl No.</th>
+                      <th class="sorting align-middle" style="width: 20%;">Package Name</th>
+                      <th class="sorting align-middle" style="width: 15%;">Version Name</th>
+                      <th class="sorting align-middle" style="width: 15%;">Version Code</th>
+                      <th class="sorting align-middle" style="width: 20%;">App Link</th>
+                      <th class="sorting align-middle" style="width: 15%;">Platfrom</th>
+                      <th class="sorting align-middle">&nbsp;</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngIf="applicationversionList.length == 0">
+                      <td class="text-center" colspan="20">
+                        <h4>No Data Found!</h4>
+                      </td>
+                    </tr>
+                    <tr role="row" class="odd" *ngFor="let item of applicationversionList; let i = index">
+                      <td class="align-middle" >{{i+1}}. </td>
+                      <td class="align-middle">{{item.packageName}}</td>
+                      <td class="align-middle">{{item.versionName}}</td>
+                      <td class="align-middle">{{item.versionCode}}</td>
+                      <td class="align-middle">{{item.appLink}}</td>
+                      <td class="align-middle">{{item.platfrom}}</td>
+
+
+
+                      <td class="align-middle">
+                        <button class="btn btn-arow" (click)="gotoEdit(item)"><i
+                            class="fa fa-chevron-right"></i></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="d-xl-flex align-items-center mt-3 pegin_sec" *ngIf="applicationversionList.length > 0">
+                <div class="col-auto d-block">
+                  <div class="text-center">
+                    <div class="dataTables_length">
+                      <label>Institue per page
+                        <select name="datatables-reponsive_length" aria-controls="datatables-reponsive"
+                          class="form-select form-select-sm" (change)="changePagelimit($event)" [(ngModel)]="limit">
+                          <option *ngFor="let item of pageList" [value]="item.value">
+                            {{ item.name }}
+                          </option>
+                        </select>
+                        {{ offset + 1 }} - {{ offset + limit }}</label>
+                      <label class="mx-2">
+                        <button class="btn btn-dark text-white" [disabled]="previousBtnDesable"
+                          (click)="previousPage()"><img src="assets/img/chevron-left.svg" alt="chevron-left"></button>
+                        &nbsp;
+                        <button class="btn btn-dark text-white" [disabled]="nextBtnDesable" (click)="nextPage()"><img
+                            src="assets/img/chevron-right.svg" alt="chevron-right"></button>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+</main>

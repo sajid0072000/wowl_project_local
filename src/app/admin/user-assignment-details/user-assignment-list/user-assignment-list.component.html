@@ -1,0 +1,164 @@
+<main role="main" class="pb-3">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="top_scne unit-list-div">
+                <div class="top_scne_in mt-4">
+                    <h1>User Assignment</h1>
+                </div>
+                <div class="top_scne_rt">
+                    <div class="btn-group btn-group-sm ms-auto unit-list-filt btn-download-group">
+                        <div>
+                            <label>Course</label>
+                            <div class="search-bar">
+                                <i class="fa fa-search"></i>
+                                <input type="text" [(ngModel)]="coursename" (keyup)="searchCourseByName()"
+                                    [matAutocomplete]="auto" class="form-control search-bar-input"
+                                    placeholder="Search by course name" />
+                                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="getCourseIdByName()">
+                                    <mat-option *ngIf="spinner">
+                                        <mat-spinner style="width:50px;"></mat-spinner>
+                                    </mat-option>
+                                    <mat-option *ngFor="let item of courseArr" [value]="item.coursename">
+                                        {{ item.coursename }}
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </div>
+                        </div>
+                        <div class="mx-2">
+                            <label>Lession</label>
+                            <div class="search-bar">
+                                <i class="fa fa-search"></i>
+                                <input type="text" [(ngModel)]="lessionName" (keyup)="searchLessionByName()"
+                                    [matAutocomplete]="lession" class="form-control search-bar-input"
+                                    placeholder="Search by lession name" />
+                                <mat-autocomplete #lession="matAutocomplete" (optionSelected)="getLessionIdByName()">
+                                    <mat-option *ngIf="spinnerLession">
+                                        <mat-spinner style="width:50px;"></mat-spinner>
+                                    </mat-option>
+                                    <mat-option *ngFor="let item of lessionArr" [value]="item.title">
+                                        {{ item.title }}
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </div>
+                        </div>
+                        <div>
+                            <label>User</label>
+                            <div class="search-bar">
+                                <i class="fa fa-search"></i>
+                                <input type="text" [(ngModel)]="userName" (keyup)="searchUserByName()"
+                                    [matAutocomplete]="auto3" class="form-control search-bar-input"
+                                    placeholder="Search by user name" />
+                                <mat-autocomplete #auto3="matAutocomplete" (optionSelected)="getUserIdByName()">
+                                    <mat-option *ngIf="spinnerUser">
+                                        <mat-spinner style="width:50px;"></mat-spinner>
+                                    </mat-option>
+                                    <mat-option *ngFor="let item of userList" [value]="item.username">
+                                        {{ item.username }}
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <div id="datatables-reponsive_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                            <div class="row mb-4">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-secondary float-right" (click)="downloadlistAssmntSheetExl()"><i
+                                            class="bi bi-file-earmark-excel"></i> Download Excel</button>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="datatables-column-search-select-inputs"
+                                    class="table table-no-striped dataTable" style="width: 100%"
+                                    aria-describedby="datatables-column-search-select-inputs_info">
+                                    <thead class="thead-dark">
+                                        <tr role="row">
+                                            <th class="sorting align-middle" style="width: 6%;">Sl No.</th>
+                                            <th class="sorting align-middle" style="width: 12%;">User Name</th>
+                                            <th class="sorting align-middle" style="width: 10%;">Mobile</th>
+                                            <th class="sorting align-middle" style="width: 17%;">Course Name</th>
+                                            <th class="sorting align-middle" style="width: 10%;">Lesson Name</th>
+                                            <th class="sorting align-middle" style="width: 25%;">Exercise Name</th>
+                                            <th class="sorting align-middle" style="width: 10%;">Time</th>
+                                            <th class="sorting align-middle" style="width: 5%;">Score</th>
+                                            <th class="sorting align-middle" style="width: 5%;">Status</th>
+                                            <th class="sorting align-middle">&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngIf="assignmentList.length == 0">
+                                            <td class="text-center" colspan="20">
+                                                <h4>No Data Found!</h4>
+                                            </td>
+                                        </tr>
+                                        <tr role="row" class="odd" *ngFor="let item of assignmentList; let i = index">
+                                            <td class="align-middle">{{ i + 1 }}.</td>
+                                            <td class="align-middle">{{ item.username }}</td>
+                                            <td class="align-middle">{{ item.mobile }}</td>
+                                            <td class="align-middle">{{ item.coursename }}</td>
+                                            <td class="align-middle">{{ item.lessionname }}</td>
+                                            <td class="align-middle">{{ item.exercisename }}</td>
+                                            <td class="align-middle">{{ item.createdat }}</td>
+                                            <td class="align-middle" style="text-align: center;">{{ item.score ?
+                                                item.score : 0 }}</td>
+                                            <td class="align-middle" style="text-align: center;">
+                                                <span *ngIf="item.score >= 5" class="badge badge-success">Pass</span>
+                                                <span *ngIf="item.score < 5" class="badge badge-danger">Fail</span>
+                                            </td>
+                                            <td class="align-middle">
+                                                <button class="btn btn-arow" (click)="gotoDetials(item)">
+                                                    <i class="fa fa-chevron-right"></i></button>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="d-xl-flex align-items-center mt-3 pegin_sec" *ngIf="assignmentList.length > 0">
+                                <div class="col-auto d-block">
+                                    <div class="text-center">
+                                        <div class="dataTables_length"><label>Courses per page
+                                                <select name="datatables-reponsive_length"
+                                                    aria-controls="datatables-reponsive"
+                                                    class="form-select form-select-sm"
+                                                    (change)="changePagelimit($event)" [(ngModel)]="selectedVal">
+                                                    <option *ngFor="let item of pageList" [value]=item.value>
+                                                        {{item.name}}
+                                                    </option>
+                                                </select> {{offset + 1}} - {{offset + limit}}</label>
+                                            <label class="mx-2">
+                                                <button class="btn btn-dark text-white" [disabled]="previousBtnDesable"
+                                                    (click)="previousPage()"><img src="assets/img/chevron-left.svg"
+                                                        alt="chevron-left"></button>
+                                                &nbsp;
+                                                <button class="btn btn-dark text-white" [disabled]="nextBtnDesable"
+                                                    (click)="nextPage()"><img src="assets/img/chevron-right.svg"
+                                                        alt="chevron-right"></button>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</main>

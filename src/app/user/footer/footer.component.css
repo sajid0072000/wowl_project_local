@@ -1,0 +1,10 @@
+/* ul li svg{
+    fill: white;
+} */
+::placeholder {
+    color: #fff;
+  }
+
+  .footer_form input{
+    color: #fff;
+  }

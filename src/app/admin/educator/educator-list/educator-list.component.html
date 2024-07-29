@@ -1,0 +1,121 @@
+
+
+
+
+<main role="main" class="pb-3">
+   
+    <div class="row">
+        <div class="col-md-12">
+            <div class="top_scne">
+                <div class="top_scne_in">
+                    <h1>Educator</h1>
+                    <button class="btn btn-edtng" (click)="gotoAdd()">Create New</button>
+                </div>
+                <div class="top_scne_rt">
+                    <div class="btn-group btn-group-sm ms-auto  btn-download-group">
+                        <div>
+                            <label>Educator</label>
+                        <div class="search-bar">
+                            <i class="fa fa-search"></i>
+                            <input type="text" [(ngModel)]="searchText" class="form-control search-bar-input" placeholder="Search by educator name" (keyup)="search()" (keyup.enter)="onEnter()">
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="main-content-inner">
+        <div class="row">
+            <div class="col-md-12 ">
+                <div>
+                    <div id="datatables-reponsive_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                        <div class="d-md-flex align-items-center mb-3">
+                           
+                        </div>
+                        <div class="table-responsive">
+                            <table id="datatables-column-search-select-inputs" class="table table-no-striped dataTable"
+                                style="width: 100%;" aria-describedby="datatables-column-search-select-inputs_info">
+                                <thead class="thead-dark">
+                                    <tr role="row">
+                                        <th class="sorting align-middle">Sl No.</th>
+                                        <th class="sorting align-middle">Name</th>
+                                        <!-- <th class="sorting align-middle">Short Name</th> -->
+                                        <th class="sorting align-middle">Email</th>
+                                        <th class="sorting align-middle">Mobile No.</th>
+                                        <!-- <th class="sorting align-middle">Address</th> -->
+                                        <th class="sorting align-middle text-center">Approved</th>
+                                        <th class="sorting align-middle text-center">Active</th>
+                                        <th class="sorting align-middle">&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngIf="educatorsList.length == 0">
+                                        <td class="text-center" colspan="20">
+                                            <h4>No Data Found!</h4>
+                                        </td>
+                                    </tr>
+                                    <tr role="row" class="odd" *ngFor="let item of educatorsList; let i = index">
+                                        <td class="align-middle">{{i+1}}.</td>
+                                        <td class="align-middle">{{item.educatorname}}</td>
+                                        <!-- <td class="align-middle">{{item.shortname}}</td> -->
+                                        <td class="align-middle">{{item.email}}</td>
+                                        <td class="align-middle">{{item.mobile}}</td>
+                                        <!-- <td class="align-middle"><div class="des">{{item.address}}</div></td> -->
+        
+        
+                                        <td class="align-middle text-center">
+                                            <div class="form-check form-switch md-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch"
+                                                    [value]="item.educatorid" id="flexSwitchCheckChecked"
+                                                    [checked]="item.approved === 1" (change)="approve($event)" />
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="form-check form-switch md-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch"
+                                                    [value]="item.educatorid" id="flexSwitchCheckChecked"
+                                                    [checked]="item.active === 1" (change)="enableActive($event)" />
+                                            </div>
+                                        </td>
+                                        <td class="align-middle">
+                                                <button class="btn btn-arow" (click)="gotoEdit(item.educatorid)"><i class="fa fa-chevron-right"></i></button>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+        
+                        <div class="d-xl-flex align-items-center mt-3 pegin_sec" *ngIf="educatorsList.length > 0">
+                            <div class="col-auto d-block">
+                                <div class="text-center">
+                                    <div class="dataTables_length"><label>Educators per page
+                                            <select name="datatables-reponsive_length" aria-controls="datatables-reponsive"
+                                                class="form-select form-select-sm" (change)="changePagelimit($event)"
+                                                [(ngModel)]="limit">
+                                                <option *ngFor="let item of pageList" [value]=item.value>{{item.name}}
+                                                </option>
+                                            </select> {{offset + 1}} - {{offset + limit}}</label>
+                                        <label class="mx-2">
+                                            <button class="btn btn-dark text-white" [disabled]="previousBtnDesable" (click)="previousPage()"><img
+                                                    src="assets/img/chevron-left.svg" alt="chevron-left"></button>
+                                            &nbsp;
+                                            <button class="btn btn-dark text-white" [disabled]="nextBtnDesable" (click)="nextPage()"><img
+                                                    src="assets/img/chevron-right.svg" alt="chevron-right"></button>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    </div>
+    
+</main>

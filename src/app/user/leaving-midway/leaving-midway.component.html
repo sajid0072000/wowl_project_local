@@ -1,0 +1,49 @@
+<div id="self-modal" tabindex="-1" aria-labelledby="self-modalLabel" aria-hidden="false">
+    <div class="modal-content">
+        <div class="modal-header p-0 border-0">
+            <button type="button" class="btn-close new-clos-btn" data-bs-dismiss="modal" aria-label="Close"
+                (click)="closeModal()"></button>
+        </div>
+        <div class="modal-body">
+            <div *ngIf="step===0">
+                <h4 style="color: blue;">LEAVING MIDWAY?</h4>
+                <hr class="big-green" />
+                <div>
+                    <p>
+                        You haven’t completed your current course and trying to join a new one. 
+                    </p>
+                    <p class="mt-2">We don’t recommend course-hopping and would advise you to finish your course before joining a new one.</p>
+                </div>
+                <div style="text-align: center;" class="mt-3">
+                    <h5 class="h5-txt-1" (click)="gotostep(1)">I shall finish my course</h5>
+                    <h5 class="h5-txt-2 mt-2" (click)="gotostep(2)">I’d like to switch anyway</h5>
+                </div>
+            </div>
+
+            <div *ngIf="step===1">
+                <h4 style="color: blue;">THANK YOU</h4>
+                <hr class="big-green" />
+                <div>
+                    <p>Good to see you deciding wisely. Happy learning!</p>
+                </div>
+            </div>
+
+
+            <div *ngIf="step===2">
+                <h4 style="color: blue;">SWITCHING</h4>
+                <hr class="big-green" />
+                <div>
+                    <p>You will lose all access to your half-done course if you switch to a new one now. </p>
+                    <p class="mt-2">You can choose to stay back or switch to new.</p>
+                </div>
+                <div style="text-align: center;" class="mt-3">
+                    <h5 class="h5-txt-1" (click)="gotostep(1)">I shall stay</h5>
+                    <h5 class="h5-txt-2 mt-2" (click)="endSubscription()">I will switch</h5>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<notifier-container></notifier-container>

@@ -1,0 +1,66 @@
+<header>
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" (click)="removeClass()">
+    <div class="container">
+      <a *ngIf="this.common.getUserType() == 1" class="navbar-brand admin-nav"
+        (click)="goto('/admin/app/admin-dashboard')">
+        <img src="assets/images/WOWL-logo.png"></a>
+
+      <a *ngIf="this.common.getUserType() == 2" class="navbar-brand admin-nav"
+        (click)="goto('/admin/app/')">
+        <img src="assets/images/WOWL-logo.png"></a>
+
+      <a *ngIf="this.common.getUserType() == 4" class="navbar-brand admin-nav"
+        (click)="goto('/admin/app/partner-dashboard')">
+        <img src="assets/images/WOWL-logo.png"></a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+        <ul class="navbar-nav navbar-user">
+          <li class="nav-item">
+            <span class="nav-link text-dark mt-2">user: {{this.common.getLoginUserName()}}</span>
+          </li>
+          <li class="nav-item">
+            <form class="form-inline" action="" method="post">
+              <button type="submit" class="nav-link btn btn-link text-dark login-button"
+                (click)="logout()">Logout</button>
+              <input name="" type="hidden" value="">
+            </form>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav flex-grow-1 navbar-main">
+          <li class="nav-item" *ngFor="let data of menuArr; let i = index"
+            [ngClass]="{'dropdown': data.child.length>0}">
+            <div *ngIf="data.child.length==0">
+              <a class="nav-link text-dark" (click)="goto(data.path)">{{data.name}}</a>
+            </div>
+            <div *ngIf="data.child.length>0">
+              <a (click)="addClass(i)" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{data.name}}
+              </a>
+              <div class="dropdown-menu" [ngClass]="{'show': data.navDropdown === true, 'admin-nav-menu': data.child.length > 7,}"
+                aria-labelledby="navbarDropdown">
+                <a class="dropdown-item text-dark" *ngFor="let obj of data.child"
+                  (click)="goto(obj.path)">{{obj.name}}
+                </a>
+
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="container" (click)="removeClass()">
+  <router-outlet></router-outlet>
+</div>
+
+<app-footer></app-footer>
+
+<notifier-container></notifier-container>

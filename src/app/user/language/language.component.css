@@ -1,0 +1,35 @@
+.liveAccess{
+    background-color: #3c5aaa;
+    color: #fff;
+}
+
+.selfAccess{
+    background-color: #4dbb80;
+    color: #000;
+}
+
+
+
+.selfButton{
+    background-color: #4bbe82;
+    color: #fff;
+}
+
+.selfButton:hover{
+    background-color: #3c5aaa;
+    color: #fff;
+}
+
+
+
+.liveButton{
+    background-color: #3c5aaa;
+    color: #fff;
+   
+}
+
+
+.liveButton:hover{
+    background-color: #4bbe82;
+    color: #fff;
+}

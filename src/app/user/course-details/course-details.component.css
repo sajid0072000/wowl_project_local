@@ -1,0 +1,37 @@
+
+.subsBtn{
+    margin-left: 210px;
+}
+
+
+.subBtn{
+    border: 5px solid #4DBB80 !important;
+    background-color: #4DBB80 !important;
+    border-radius: 25px;
+    margin-left: 0;
+    margin-right: 0;
+    width: 155px;
+    padding-top: 3px;
+    opacity: 1;
+  } 
+
+
+  .priceTag{
+    color: #4DBB80 !important;
+    font-size: 20px;
+    font-weight: bold;
+
+  }
+
+  .CheckClass{
+    margin-left: 150px;
+  }
+
+  .liveImg{
+    font-weight: 800;
+  }
+
+
+  .textBlue{
+    color:#3c64aa !important;
+  }

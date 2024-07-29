@@ -1,0 +1,19 @@
+.h5-txt-1{
+    font-size: 18px;
+    color: blue;
+    cursor: pointer;
+}
+
+.h5-txt-1:hover{
+    text-decoration: underline;
+}
+
+.h5-txt-2{
+    font-size: 18px;
+    color: red;
+    cursor: pointer;
+}
+
+.h5-txt-2:hover{
+    text-decoration: underline;
+}

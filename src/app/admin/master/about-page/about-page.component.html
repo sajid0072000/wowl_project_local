@@ -1,0 +1,106 @@
+<div class="full-screen" id="fulldiv"></div>
+
+<main role="main" class="pb-3">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="top_scne">
+        <div class="top_scne_in">
+          <h1 class="add_heading_text">About Us
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="main-content-inner">
+        <div class="row">
+          <div class="mb-3 col-md-12">
+            <div class="mb-3 col-md-12">
+              <label class="form-label lebel-text">About Ueg</label>
+              <ckeditor
+                [(ngModel)]="aboutUEG"
+                [editor]="Editor"
+                (change)="changeAboutUeg()"
+              ></ckeditor>
+              <span class="error-msg" *ngIf="aboutUEGErr"
+                >About Ueg is required</span
+              >
+            </div>
+          </div>
+          <div class="mb-3 col-md-12">
+            <div class="mb-3 col-md-12">
+              <label class="form-label lebel-text">About Wowl</label>
+              <ckeditor
+                [(ngModel)]="aboutWOWL"
+                [editor]="Editor"
+                (change)="changeAboutWowl()"
+              ></ckeditor>
+              <span class="error-msg" *ngIf="aboutWOWLErr"
+                >About wowl is required</span
+              >
+            </div>
+          </div>
+          <div class="mb-3 col-md-6">
+            <label class="form-label lebel-text">Video</label>
+            <div class="row">
+              <div class="col-4">
+                <div class="image-upload">
+                  <app-ng-chunk-upload
+                    (onFileSelect)="onFileChange($event)"
+                  ></app-ng-chunk-upload>
+                </div>
+                <span class="error-msg" *ngIf="videoErr"
+                  >Video required</span
+                >
+              </div>
+              <div class="col-8">
+                <div id="video-container"></div>
+                <!-- <span *ngIf="trnstatus == 0" style="color: #e39013"
+                  >Transcoding in progress...</span
+                > -->
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3 col-md-6">
+            <label class="form-label lebel-text">Videothumbnail Image </label>
+            <div class="row">
+                <div class="col-4">
+                    <div class="image-upload">
+                        <label for="file-input-videothumbnail">
+                            <button type="button" class="btn btn-upload-btn"
+                                (click)="UploadVideothumbnailImage()"> Upload Image
+                            </button>
+                        </label>
+                        <input id="file-input-videothumbnail" type="file"
+                            (change)="onFileChangedvideothumbnailImage($event)">
+                    </div>
+                    <span class="error-msg" *ngIf="videothumbnailErr">Videothumbnail Image Required</span>
+
+                </div>
+                <div class="col-8">
+                    <img *ngIf="videothumbnail" [src]="FILE_URL + videothumbnail"
+                        class="form-control profile_img" alt="">
+                </div>
+            </div>
+        </div>
+
+        </div>
+        <div class="bottom-secne" style="text-align: center">
+          <div>
+            <button class="cancel-button btn btn-primary" (click)="cancelForm()">
+              Cancel
+            </button>
+            <button
+              class="submit-button btn btn-primary"
+              (click)="update()"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+     
+    </div>
+  </div>
+</main>
+

@@ -1,0 +1,172 @@
+<main role="main" class="pb-3">
+
+
+  <div class="row">
+    <div class="col-md-12">
+        <div class="top_scne">
+            <div class="top_scne_in">
+                <h1 class="add_heading_text">Lesson Mapping</h1>
+                <button class="btn btn-edtng" *ngIf="!upDatebtnFlag">Creating</button>
+                <button class="btn btn-edtng" *ngIf="upDatebtnFlag">Editing</button>
+            </div>
+            <!-- <div class="top_scne_rt"><button class="btn btn-preview" *ngIf="upDatebtnFlag"
+                    (click)="goToPreview()">Preview</button></div> -->
+        </div>
+
+    </div>
+</div>
+
+
+
+  <div class="main-content">
+    <div class="main-content-inner">
+
+      <div class="row">
+        <div class="mb-3 mt-2 col-md-6">
+          <label for="" class="form-label lebel-text">Course Name: </label>
+          <div class="example-form">
+            <input type="text" class="form-control input-text" [(ngModel)]="coursename"
+              [matAutocomplete]="auto" (keyup)="searchCourseByName()" />
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="getCourseIdByName()">
+              <mat-option *ngIf="spinner">
+                <mat-spinner style="width: 50px"></mat-spinner>
+              </mat-option>
+              <mat-option *ngFor="let item of courselist" [value]="item.coursename">
+                {{ item.coursename }}
+              </mat-option>
+            </mat-autocomplete>
+            <span class="error-msg" *ngIf="coursenameErr">Course name required</span>
+
+          </div>
+          
+        </div>
+
+        <div class="mb-3 mt-2 col-md-6">
+          <label for="" class="form-label lebel-text">Lesson Name: </label>
+          <div class="example-form">
+            <input type="text"  [(ngModel)]="lessionname" class="form-control input-text"
+              [matAutocomplete]="autoLession" (keyup)="searchLessionByName()" />
+            <mat-autocomplete #autoLession="matAutocomplete" (optionSelected)="getLessonIdByName()">
+              <mat-option *ngIf="spinnerLession">
+                <mat-spinner style="width: 50px"></mat-spinner>
+              </mat-option>
+              <mat-option *ngFor="let item of lessionList" [value]="item.title">
+                {{ item.title }}
+              </mat-option>
+            </mat-autocomplete>
+            <span class="error-msg" *ngIf="lessionnameErr">Lesson name required</span>
+          </div>
+        </div>
+
+        <div class="mb-3 radioBtn">
+          <div class="row">
+            <div class="col-md-6 mt-4">
+              <label class="lebel-text" for="">Select Type:</label>
+              <mat-radio-group [(ngModel)]="selectedOption" (change)="changeTypeFun()">
+                <mat-radio-button value="unit"><span class="lebel-text">Unit</span></mat-radio-button>
+                <mat-radio-button value="exercise"><span class="lebel-text">Exercise</span></mat-radio-button>
+              </mat-radio-group>
+              <div>
+                <span class="error-msg" *ngIf="selectedOptionErr">Type required</span>
+
+              </div>
+
+            </div>
+            <div class="mb-3 col-md-6">
+              <div class="radiInput">
+                <div *ngIf="selectedOption === 'unit'">
+                  <label for="" class="form-label lebel-text">Unit:</label>
+                  <input class="input-text form-control" type="text" [(ngModel)]="unitname"
+                    [matAutocomplete]="autoOption1" (keyup)="searchUnitByName()" />
+                  <mat-autocomplete #autoOption1="matAutocomplete" (optionSelected)="getunitIdByName()">
+
+                    <mat-option *ngIf="spinnerUnit">
+                      <mat-spinner style="width: 50px"></mat-spinner>
+                    </mat-option>
+                    <mat-option *ngFor="let item of unitList" [value]="item.unittitle">
+                      {{ item.unittitle }}
+                    </mat-option>
+                  </mat-autocomplete>
+                  <span class="error-msg" *ngIf="unitnameErr">Unit name required</span>
+
+                </div>
+
+                <div *ngIf="selectedOption === 'exercise'">
+                  <label for="" class="form-label lebel-text">Exercise: </label>
+                  <input type="text" [(ngModel)]="exercisename" [matAutocomplete]="autoOption2" class="form-control input-text"
+                    (keyup)="searchExerciseByName()" />
+                  <mat-autocomplete #autoOption2="matAutocomplete" (optionSelected)="getexerciseIdByName()">
+                    <mat-option *ngIf="spinnerExercise">
+                      <mat-spinner style="width: 50px"></mat-spinner>
+                    </mat-option>
+                    <mat-option *ngFor="let item of exerciseList" [value]="item.exercisename">
+                      {{ item.exercisename }}
+                    </mat-option>
+                  </mat-autocomplete>
+                  <span class="error-msg" *ngIf="exercisenameErr">Exercise name required</span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 col-md-6">
+          <label for="" class="form-label lebel-text">Sequences:</label>
+          <div class="example-form">
+            <input type="number" class="form-control input-text"
+               [(ngModel)]="seq" (keyup)="changeSeqFun()"/>
+               <span class="error-msg" *ngIf="sequenceErr">Sequence required</span>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="bottom-secne" style="text-align: center;">
+      <button class="delete-button btn btn-primary" *ngIf="upDatebtnFlag" (click)="onClickDelete(lessionmapid)">Delete Mapping</button>
+      <div *ngIf="!upDatebtnFlag"></div>
+      <div>
+        <button class="cancel-button btn btn-primary" (click)="resetForm()">Cancel</button>
+        <button class="submit-button btn btn-primary" *ngIf="!upDatebtnFlag" (click)="addLessionmap()">Save</button>
+        <button class="submit-button btn btn-primary " *ngIf="upDatebtnFlag" (click)="updateLessionmap()">Save</button>
+      </div>
+
+    </div>
+
+
+
+  </div>
+</main>
+
+<ng-template #deleteModal>
+  <div class="modal-content">
+      <div class="modal-header">
+          <div class="container-fluid">
+              <div class="row align-items-center">
+                  <div class="col-sm-10">
+                      <h4 class="modal-title d-inline-block align-middle me-2">
+                          Are you want to sure delete this mapping?
+                      </h4>
+                  </div>
+                  <div class="col-sm-2 d-flex justify-content-end">
+                      <button type="button" (click)="closeModal()" class="btn-close"></button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="modal-body">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-sm-6 text-center">
+                      <button type="button" class="btn btn-secondary btn-lg me-2" (click)="closeModal()">No</button>
+                  </div>
+                  <div class="col-sm-6 text-center">
+                      <button type="button" class="btn btn-primary btn-lg me-2" (click)="delete()">Yes</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</ng-template>

@@ -1,0 +1,90 @@
+<nav id="navbar_top" [ngClass]="{'fixed-top': isNav === true}" class="navbar navbar-expand-lg"
+  aria-label="Offcanvas navbar large" (mouseleave)="removeClass()">
+  <div class="container-fluid">
+    <a class="navbar-brand" (click)="goto('/')"><img src="assets/images/WOWL-logo.png" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2"
+      aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end text-bg-dark green_bg" tabindex="-1" id="offcanvasNavbar2"
+      aria-labelledby="offcanvasNavbar2Label">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbar2Label">
+          <img src="assets/images/offcanvas-logo-1.webp" />
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav navbar-center flex-grow-1 pe-3">
+          <li class="nav-item" *ngFor="let obj of menuArr; let i = index" [ngClass]="{'dropdown': obj.child.length>0}">
+            <div *ngIf="obj.child.length==0">
+              <a class="nav-link" aria-current="page" (click)="goto(obj.path)"
+                (mouseenter)="removeClass()">{{obj.name}}</a>
+            </div>
+            <div *ngIf="obj.child.length>0">
+              <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                (mouseenter)="addClass(i)" (click)="goto(obj.path)">
+                {{obj.name}}
+              </a>
+              <span class="dropdown-toggle mobile_main_menu_arrow" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false"></span>
+              <ul class="dropdown-menu" [ngClass]="{'show': obj.navDropdown === true}" (mouseleave)="removeClass()">
+                <li>
+                  <span *ngFor="let data of obj.child" class="dropdown-item">
+                    <!-- <a *ngIf="data.href" [href]="data.href" (click)="gotoHref(data.path)">{{data.name}}</a> -->
+                    <a *ngIf="!data.href" (click)="goto(data.path)">{{data.name}}</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+        <a *ngIf="!this.common.getUserId()"  (mouseenter)="removeClass()" class="btn btn-outline-success login_reg_menu_button" (click)="login()">Sign
+          In / Sign up</a>
+
+
+        <div *ngIf="this.common.getUserId()"  (mouseenter)="removeClass()">
+
+          <span class="mx-2">
+            <button class="menuButton" [matMenuTriggerFor]="menu1" [disabled]="notificationArr.length == 0">
+              <img class="notification-img" src="assets/images/notification.png"/>
+            </button>
+            <span *ngIf="notificationArr.length !== 0" class="notification-img-badge">{{notificationArr.length}}</span>
+            <mat-menu #menu1="matMenu">
+              <ul class="notify">
+                <li *ngFor="let notifiy of notificationArr; let i = index">
+                  <span class="notify-head">{{i+1}}. {{notifiy.title}}</span>
+                  <p class="notify-desc">{{notifiy.description}}</p>
+                </li>
+              </ul>
+            </mat-menu>
+          </span>
+          <button class="menuButton" [matMenuTriggerFor]="menu">
+            <img *ngIf="this.common.getUserImage()" [src]="FILE_URL+this.common.getUserImage()" height="50" width="50" style="border-radius: 50%;" />
+            <img *ngIf="!this.common.getUserImage()" src="assets/images/MyProfile.png" height="50" width="50" />
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="profile()">Profile</button>
+            <button mat-menu-item (click)="gotoCertificate()">Certificate</button>
+            <button mat-menu-item (click)="logout()">Logout</button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+<notifier-container></notifier-container>
+<app-footer></app-footer>
+<button
+  class="scroll_to_top btn btn-sm btn-primary rounded-circle position-fixed bottom-0 end-0 translate-middle"
+  (click)="scrollToTop()"
+  [ngClass]="{'d-none': isTop === true}"
+  id="back-to-up"
+>
+  <i class="fa fa-angle-up" aria-hidden="true"></i>
+</button>
+
+
+
